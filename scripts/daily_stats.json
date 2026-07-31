@@ -1,0 +1,42 @@
+{
+  "JN-001": {
+    "name": "和谐家园",
+    "error": "LOAD_TIMEOUT"
+  },
+  "CH-001": {
+    "name": "红枫岭三期",
+    "error": "LOAD_TIMEOUT"
+  },
+  "CH-002": {
+    "name": "蓝润V客尚东",
+    "error": "LOAD_TIMEOUT"
+  },
+  "CH-003": {
+    "name": "和泓东28",
+    "error": "LOAD_TIMEOUT"
+  },
+  "CH-004": {
+    "name": "鼎城上都",
+    "error": "LOAD_TIMEOUT"
+  },
+  "JN-002a": {
+    "name": "蓝光凯丽豪景",
+    "error": "LOAD_TIMEOUT"
+  },
+  "JN-002b": {
+    "name": "蓝光云鼎",
+    "error": "LOAD_TIMEOUT"
+  },
+  "JN-003": {
+    "name": "中加水岸",
+    "error": "LOAD_TIMEOUT"
+  },
+  "QY-001": {
+    "name": "万科金色领域",
+    "error": "LOAD_TIMEOUT"
+  },
+  "QY-002": {
+    "name": "清溪雅筑",
+    "error": "LOAD_TIMEOUT"
+  }
+}

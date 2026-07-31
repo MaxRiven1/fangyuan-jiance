@@ -1,0 +1,176 @@
+[
+  {
+    "id": "CH-CH-1_s2",
+    "url": "https://cd.ke.com/ershoufang/106126267305.html",
+    "type": "s2",
+    "school": "成华小学",
+    "name": "花样年花郡",
+    "price": 96,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106126267305.html",
+      "huxing": "2室1厅1卫",
+      "area": "62.55㎡",
+      "floor": "低楼层(共32层)咨询楼层",
+      "elevator": "有"
+    }
+  },
+  {
+    "id": "CH-JSFL-3_s3",
+    "url": "https://cd.ke.com/ershoufang/106128220685.html",
+    "type": "s3",
+    "school": "建设路小学枫林校区",
+    "name": "东城映象",
+    "price": 135,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106128220685.html",
+      "huxing": "3室1厅1卫",
+      "area": "80.82㎡",
+      "floor": "中楼层(共18层)咨询楼层",
+      "elevator": "有"
+    }
+  },
+  {
+    "id": "QY-DCG-2_s2",
+    "url": "https://cd.ke.com/ershoufang/106128414153.html",
+    "type": "s2",
+    "school": "东城根街小学",
+    "name": "时代凯悦",
+    "price": 77,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106128414153.html",
+      "huxing": "2室1厅1卫",
+      "area": "56.8㎡",
+      "floor": "中楼层(共24层)咨询楼层",
+      "elevator": "有"
+    }
+  },
+  {
+    "id": "QY-SC-2_s3",
+    "url": "https://cd.ke.com/ershoufang/106126666360.html",
+    "type": "s3",
+    "school": "少城小学",
+    "name": "锦都",
+    "price": 59.8,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106126666360.html",
+      "huxing": "3室2厅2卫",
+      "area": "131.18㎡",
+      "floor": "中楼层(共5层)咨询楼层"
+    }
+  },
+  {
+    "id": "QY-SC-2_s2",
+    "url": "https://cd.ke.com/ershoufang/106107112733.html",
+    "type": "s2",
+    "school": "少城小学",
+    "name": "锦都",
+    "price": 39.8,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106107112733.html",
+      "huxing": "2室1厅1卫",
+      "area": "83.2㎡",
+      "floor": "中楼层(共5层)咨询楼层"
+    }
+  },
+  {
+    "id": "QY-JS-2_s3",
+    "url": "https://cd.ke.com/ershoufang/106127443014.html",
+    "type": "s3",
+    "school": "金沙小学",
+    "name": "揽胜金沙",
+    "price": 129,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106127443014.html",
+      "huxing": "3室1厅1卫",
+      "area": "69.43㎡",
+      "floor": "低楼层(共34层)咨询楼层",
+      "elevator": "有"
+    }
+  },
+  {
+    "id": "JN-CDZ-1_s2",
+    "url": "https://cd.ke.com/ershoufang/106127957635.html",
+    "type": "s2",
+    "school": "茶店子小学",
+    "name": "西城天下",
+    "price": 97.2,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106127957635.html",
+      "huxing": "2室1厅1卫",
+      "area": "72.01㎡",
+      "floor": "高楼层(共31层)咨询楼层",
+      "elevator": "有"
+    }
+  },
+  {
+    "id": "JN-SY-0_s3",
+    "url": "https://cd.ke.com/ershoufang/106125396689.html",
+    "type": "s3",
+    "school": "实验小学本部",
+    "name": "后子门",
+    "price": 62,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106125396689.html",
+      "huxing": "3室1厅1卫",
+      "area": "68.53㎡",
+      "floor": "高楼层(共7层)咨询楼层"
+    }
+  },
+  {
+    "id": "JN-SY-0_s2",
+    "url": "https://cd.ke.com/ershoufang/106121873328.html",
+    "type": "s2",
+    "school": "实验小学本部",
+    "name": "后子门",
+    "price": 38,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106121873328.html",
+      "huxing": "2室1厅1卫",
+      "area": "49.79㎡",
+      "floor": "中楼层(共34层)咨询楼层",
+      "elevator": "有"
+    }
+  },
+  {
+    "id": "JN-SX-0_s3",
+    "url": "https://cd.ke.com/ershoufang/106124266654.html",
+    "type": "s3",
+    "school": "胜西小学",
+    "name": "包家巷",
+    "price": 60,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106124266654.html",
+      "huxing": "3室2厅1卫",
+      "area": "96.34㎡",
+      "floor": "中楼层(共6层)咨询楼层"
+    }
+  },
+  {
+    "id": "JN-SX-0_s2",
+    "url": "https://cd.ke.com/ershoufang/106124778795.html",
+    "type": "s2",
+    "school": "胜西小学",
+    "name": "包家巷",
+    "price": 39.8,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106124778795.html",
+      "huxing": "2室1厅1卫",
+      "area": "65.84㎡",
+      "floor": "中楼层(共6层)咨询楼层"
+    }
+  },
+  {
+    "id": "JN-RB-0_s2",
+    "url": "https://cd.ke.com/ershoufang/106127534635.html",
+    "type": "s2",
+    "school": "人民北路小学",
+    "name": "白马寺街",
+    "price": 59,
+    "verify": {
+      "url": "https://cd.ke.com/ershoufang/106127534635.html",
+      "huxing": "2室1厅1卫",
+      "area": "57.46㎡",
+      "floor": "高楼层(共6层)咨询楼层"
+    }
+  }
+]

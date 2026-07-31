@@ -1,0 +1,3 @@
+const http=require('http');
+function check(){return new Promise(res=>{const req=http.get('http://127.0.0.1:9333/json/list',r=>{let d='';r.on('data',c=>d+=c);r.on('end',()=>{try{const a=JSON.parse(d);res({ok:true,a});}catch(e){res({ok:false});}});});req.on('error',()=>res({ok:false}));req.setTimeout(1500,()=>{req.destroy();res({ok:false});});});}
+(async()=>{for(let i=0;i<15;i++){const r=await check();if(r.ok){console.log('READY targets='+r.a.length);r.a.slice(0,4).forEach(t=>console.log(' -',t.type,'|',t.url));return;}await new Promise(s=>setTimeout(s,1000));}console.log('TIMEOUT: CDP not up after 15s');})();

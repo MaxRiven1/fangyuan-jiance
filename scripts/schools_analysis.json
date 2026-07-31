@@ -1,0 +1,539 @@
+{
+  "CH-SHSH": {
+    "school": "石室小学",
+    "district": "成华区",
+    "area": "万年场/双桥子",
+    "name": "华润二十四城",
+    "totalListings": 30,
+    "maxFloor": 47,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "CH-SL-1": {
+    "school": "双林小学",
+    "district": "成华区",
+    "area": "双桥子",
+    "name": "鹭鸣九章",
+    "totalListings": 17,
+    "maxFloor": 24,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "CH-CH-1": {
+    "school": "成华小学",
+    "district": "成华区",
+    "area": "万年场",
+    "name": "花样年花郡",
+    "totalListings": 30,
+    "maxFloor": 32,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 3,
+    "s2_under100_min": 96,
+    "s2_under100_samples": [
+      {
+        "p": 96,
+        "area": 62.55,
+        "floor": 32,
+        "href": "https://cd.ke.com/ershoufang/106126267305.html",
+        "t": "花样年花郡 2室1厅 西",
+        "ting": 1
+      },
+      {
+        "p": 99,
+        "area": 70.03,
+        "floor": 32,
+        "href": "https://cd.ke.com/ershoufang/106122665201.html",
+        "t": "花样年花郡 2室1厅 南 北",
+        "ting": 1
+      },
+      {
+        "p": 100,
+        "area": 70.03,
+        "floor": 32,
+        "href": "https://cd.ke.com/ershoufang/106114569160.html",
+        "t": "花样年花郡 2室1厅 东南",
+        "ting": 1
+      }
+    ]
+  },
+  "CH-JS-1": {
+    "school": "建设路小学本部",
+    "district": "成华区",
+    "area": "建设路",
+    "name": "万科金域蓝岸",
+    "totalListings": 30,
+    "maxFloor": 40,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "CH-JS-2": {
+    "school": "建设路小学本部",
+    "district": "成华区",
+    "area": "建业路",
+    "name": "龙湖三千里",
+    "totalListings": 30,
+    "maxFloor": 34,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "CH-JSFL-1": {
+    "school": "建设路小学枫林校区",
+    "district": "成华区",
+    "area": "二仙桥",
+    "name": "万科金色乐府",
+    "totalListings": 0,
+    "maxFloor": null,
+    "isElevator": false,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "CH-JSFL-2": {
+    "school": "建设路小学枫林校区",
+    "district": "成华区",
+    "area": "二仙桥",
+    "name": "中环光悦居",
+    "totalListings": 7,
+    "maxFloor": 28,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "CH-JSFL-3": {
+    "school": "建设路小学枫林校区",
+    "district": "成华区",
+    "area": "二仙桥",
+    "name": "东城映象",
+    "totalListings": 27,
+    "maxFloor": 27,
+    "isElevator": true,
+    "s3_under150_count": 1,
+    "s3_under150_min": 135,
+    "s3_under150_samples": [
+      {
+        "p": 135,
+        "area": 80.82,
+        "floor": 18,
+        "href": "https://cd.ke.com/ershoufang/106128220685.html",
+        "t": "东城映象B区 3室1厅 东"
+      }
+    ],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "CH-JSFL-4": {
+    "school": "建设路小学枫林校区",
+    "district": "成华区",
+    "area": "二仙桥",
+    "name": "红枫岭",
+    "totalListings": 28,
+    "maxFloor": 33,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "CH-JSFL-5": {
+    "school": "建设路小学枫林校区",
+    "district": "成华区",
+    "area": "二仙桥",
+    "name": "招商华城",
+    "totalListings": 0,
+    "maxFloor": null,
+    "isElevator": false,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "QY-DCG-1": {
+    "school": "东城根街小学",
+    "district": "青羊区",
+    "area": "西大街/长顺",
+    "name": "新城市广场",
+    "totalListings": 30,
+    "maxFloor": 30,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "QY-DCG-2": {
+    "school": "东城根街小学",
+    "district": "青羊区",
+    "area": "西大街",
+    "name": "时代凯悦",
+    "totalListings": 30,
+    "maxFloor": 40,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "QY-DCG-3": {
+    "school": "东城根街小学",
+    "district": "青羊区",
+    "area": "红墙巷",
+    "name": "红墙国际",
+    "totalListings": 30,
+    "maxFloor": 38,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "QY-SC-1": {
+    "school": "少城小学",
+    "district": "青羊区",
+    "area": "长顺上街",
+    "name": "长富新城",
+    "totalListings": 30,
+    "maxFloor": 26,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "QY-SC-2": {
+    "school": "少城小学",
+    "district": "青羊区",
+    "area": "同仁路",
+    "name": "锦都",
+    "totalListings": 30,
+    "maxFloor": 28,
+    "isElevator": true,
+    "s3_under150_count": 3,
+    "s3_under150_min": 59.8,
+    "s3_under150_samples": [
+      {
+        "p": 59.8,
+        "area": 131.18,
+        "floor": 5,
+        "href": "https://cd.ke.com/ershoufang/106126666360.html",
+        "t": "银海锦都 3室2厅 东南"
+      },
+      {
+        "p": 66,
+        "area": 127.88,
+        "floor": 5,
+        "href": "https://cd.ke.com/ershoufang/106124041983.html",
+        "t": "银海锦都 3室2厅 东南"
+      },
+      {
+        "p": 110,
+        "area": 92.92,
+        "floor": 7,
+        "href": "https://cd.ke.com/ershoufang/106127362214.html",
+        "t": "锦都馨苑 3室1厅 东 北"
+      }
+    ],
+    "s2_under100_count": 3,
+    "s2_under100_min": 39.8,
+    "s2_under100_samples": [
+      {
+        "p": 39.8,
+        "area": 83.2,
+        "floor": 5,
+        "href": "https://cd.ke.com/ershoufang/106107112733.html",
+        "t": "银海锦都 2室1厅 南 北",
+        "ting": 1
+      },
+      {
+        "p": 75,
+        "area": 61.04,
+        "floor": 18,
+        "href": "https://cd.ke.com/ershoufang/106126512343.html",
+        "t": "东方锦都 2室1厅 西南",
+        "ting": 1
+      },
+      {
+        "p": 100,
+        "area": 78.04,
+        "floor": 7,
+        "href": "https://cd.ke.com/ershoufang/106128280971.html",
+        "t": "锦都馨苑 2室2厅 西南",
+        "ting": 2
+      }
+    ]
+  },
+  "QY-JS-1": {
+    "school": "金沙小学",
+    "district": "青羊区",
+    "area": "金沙",
+    "name": "中大君悦金沙",
+    "totalListings": 30,
+    "maxFloor": 32,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "QY-JS-2": {
+    "school": "金沙小学",
+    "district": "青羊区",
+    "area": "金沙",
+    "name": "揽胜金沙",
+    "totalListings": 30,
+    "maxFloor": 34,
+    "isElevator": true,
+    "s3_under150_count": 3,
+    "s3_under150_min": 129,
+    "s3_under150_samples": [
+      {
+        "p": 129,
+        "area": 69.43,
+        "floor": 34,
+        "href": "https://cd.ke.com/ershoufang/106127443014.html",
+        "t": "揽胜金沙 3室1厅 西北"
+      },
+      {
+        "p": 139,
+        "area": 69.44,
+        "floor": 34,
+        "href": "https://cd.ke.com/ershoufang/106124660902.html",
+        "t": "揽胜金沙 3室1厅 西南"
+      },
+      {
+        "p": 145,
+        "area": 68.74,
+        "floor": 34,
+        "href": "https://cd.ke.com/ershoufang/106123936411.html",
+        "t": "揽胜金沙 3室1厅 西南"
+      }
+    ],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "QY-JS-3": {
+    "school": "金沙小学",
+    "district": "青羊区",
+    "area": "金沙",
+    "name": "蓝光凯丽美域",
+    "totalListings": 30,
+    "maxFloor": 31,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "QY-JS-4": {
+    "school": "金沙小学",
+    "district": "青羊区",
+    "area": "金沙",
+    "name": "金沙鹭岛",
+    "totalListings": 30,
+    "maxFloor": 32,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "JN-CDZ-1": {
+    "school": "茶店子小学",
+    "district": "金牛区",
+    "area": "茶店子",
+    "name": "西城天下",
+    "totalListings": 30,
+    "maxFloor": 31,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 3,
+    "s2_under100_min": 97.2,
+    "s2_under100_samples": [
+      {
+        "p": 97.2,
+        "area": 72.01,
+        "floor": 31,
+        "href": "https://cd.ke.com/ershoufang/106127957635.html",
+        "t": "西城天下 2室1厅 东北",
+        "ting": 1
+      },
+      {
+        "p": 97.2,
+        "area": 72.01,
+        "floor": 31,
+        "href": "https://cd.ke.com/ershoufang/106119462788.html",
+        "t": "西城天下 2室1厅 南",
+        "ting": 1
+      },
+      {
+        "p": 100,
+        "area": 72.01,
+        "floor": 31,
+        "href": "https://cd.ke.com/ershoufang/106127340224.html",
+        "t": "西城天下 2室2厅 东南",
+        "ting": 2
+      }
+    ]
+  },
+  "JN-SY-0": {
+    "school": "实验小学本部",
+    "district": "青羊区",
+    "area": "后子门(代表老破小)",
+    "name": "后子门",
+    "totalListings": 30,
+    "maxFloor": 41,
+    "isElevator": true,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "JN-PT-0": {
+    "school": "泡桐树小学本部",
+    "district": "青羊区",
+    "area": "泡桐树街(代表老破小)",
+    "name": "支矶石街",
+    "totalListings": 30,
+    "maxFloor": 7,
+    "isElevator": false,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 0,
+    "s2_under100_min": null,
+    "s2_under100_samples": []
+  },
+  "JN-SX-0": {
+    "school": "胜西小学",
+    "district": "青羊区",
+    "area": "包家巷(代表老破小)",
+    "name": "包家巷",
+    "totalListings": 30,
+    "maxFloor": 7,
+    "isElevator": false,
+    "s3_under150_count": 1,
+    "s3_under150_min": 60,
+    "s3_under150_samples": [
+      {
+        "p": 60,
+        "area": 96.34,
+        "floor": 6,
+        "href": "https://cd.ke.com/ershoufang/106124266654.html",
+        "t": "包家巷8号 3室2厅 东南"
+      }
+    ],
+    "s2_under100_count": 1,
+    "s2_under100_min": 39.8,
+    "s2_under100_samples": [
+      {
+        "p": 39.8,
+        "area": 65.84,
+        "floor": 6,
+        "href": "https://cd.ke.com/ershoufang/106124778795.html",
+        "t": "包家巷7号 2室1厅 东南",
+        "ting": 1
+      }
+    ]
+  },
+  "JN-RB-0": {
+    "school": "人民北路小学",
+    "district": "金牛区",
+    "area": "白马寺(代表老破小)",
+    "name": "白马寺街",
+    "totalListings": 6,
+    "maxFloor": 7,
+    "isElevator": false,
+    "s3_under150_count": 0,
+    "s3_under150_min": null,
+    "s3_under150_samples": [],
+    "s2_under100_count": 5,
+    "s2_under100_min": 59,
+    "s2_under100_samples": [
+      {
+        "p": 59,
+        "area": 57.46,
+        "floor": 6,
+        "href": "https://cd.ke.com/ershoufang/106127534635.html",
+        "t": "白马寺街31号 2室1厅 西南",
+        "ting": 1
+      },
+      {
+        "p": 66,
+        "area": 56.23,
+        "floor": 6,
+        "href": "https://cd.ke.com/ershoufang/106124330868.html",
+        "t": "白马寺街6号 2室1厅 东南",
+        "ting": 1
+      },
+      {
+        "p": 74.5,
+        "area": 61.89,
+        "floor": 6,
+        "href": "https://cd.ke.com/ershoufang/106128253488.html",
+        "t": "白马寺街11号 2室1厅 南",
+        "ting": 1
+      },
+      {
+        "p": 89,
+        "area": 73.55,
+        "floor": 7,
+        "href": "https://cd.ke.com/ershoufang/106127784356.html",
+        "t": "白马寺街14号 2室2厅 东南",
+        "ting": 2
+      }
+    ]
+  }
+}

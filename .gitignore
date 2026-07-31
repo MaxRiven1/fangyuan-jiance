@@ -1,0 +1,8 @@
+# 浏览器profile（含登录态，不提交）
+browser_profile/
+
+# 临时抓取结果
+scripts/beike_result.json
+
+# Node modules
+node_modules/
