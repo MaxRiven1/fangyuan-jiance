@@ -39,31 +39,29 @@ window.openCompare = function() {
   if (list.length < 2) { alert('无足够数据'); return; }
   list.sort(function(a,b){ return (b.scores.totalPct||0) - (a.scores.totalPct||0); });
 
-  var html = '<div style="padding:22px 28px;background:#0f1923;color:#e8edf2;border-radius:12px;max-width:1080px;margin:30px auto;line-height:1.5">';
-  html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;border-bottom:1px solid #2a3848;padding-bottom:14px">';
-  html += '<span style="font-size:30px;font-weight:bold">📊 多小区综合对比 <span style="color:#9caab8;font-size:18px">('+list.length+'盘 · 按综合分降序)</span></span>';
-  html += '<button onclick="closeCompare()" style="background:#1a2a3a;color:#9caab8;border:1px solid #2a3848;cursor:pointer;font-size:24px;width:42px;height:42px;border-radius:6px">✕</button>';
+  var html = '<div style="padding:18px 22px;background:#0f1923;color:#e8edf2;border-radius:10px;max-width:720px;margin:24px auto;line-height:1.4">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid #2a3848;padding-bottom:10px">';
+  html += '<span style="font-size:20px;font-weight:bold">📊 多小区综合对比 <span style="color:#9caab8;font-size:13px">('+list.length+'盘 · 按综合分降序)</span></span>';
+  html += '<button onclick="closeCompare()" style="background:#1a2a3a;color:#9caab8;border:1px solid #2a3848;cursor:pointer;font-size:16px;width:30px;height:30px;border-radius:4px">✕</button>';
   html += '</div>';
 
-  html += '<table style="width:100%;border-collapse:collapse;font-size:18px"><tr style="background:#1a2a3a">';
-  html += '<th style="padding:14px;text-align:left;color:#9caab8;width:110px;font-size:18px">维度</th>';
+  html += '<table style="width:100%;border-collapse:collapse;font-size:12px"><tr style="background:#1a2a3a">';
+  html += '<th style="padding:10px;text-align:left;color:#9caab8;width:80px;font-size:12px">维度</th>';
   list.forEach(function(item,i){
     var medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':'#'+(i+1);
     var color = i===0?'#ffa726':i===1?'#4fc3f7':i===2?'#66bb6a':'#9caab8';
-    html += '<th style="padding:14px 8px;text-align:center;color:'+color+';font-weight:bold;font-size:22px">'+medal+' '+item.community.name+'</th>';
+    html += '<th style="padding:10px 6px;text-align:center;color:'+color+';font-weight:bold;font-size:15px">'+medal+' '+item.community.name+'</th>';
   });
   html += '</tr>';
 
   // 价格
-  html += '<tr><td style="padding:14px;color:#9caab8;font-size:18px">💰 价格</td>';
+  html += '<tr><td style="padding:10px;color:#9caab8;font-size:12px">💰 价格</td>';
   list.forEach(function(item){
-    var c=item.community, s=item.scores;
-    var g=s.priceGap||0;
-    html += '<td style="padding:14px;text-align:center"><b style="color:'+(g<=0?'#66bb6a':'#ffa726')+';font-size:30px">¥'+c.currentPrice+'万</b><br/><span style="font-size:16px;color:'+(g<=0?'#66bb6a':'#ffa726')+'">'+(g<=0?'✅ 已达标':'⚠ 超'+g+'万')+'</span></td>';
+    var c=item.community, s=item.scores, g=s.priceGap||0;
+    html += '<td style="padding:10px;text-align:center"><b style="color:'+(g<=0?'#66bb6a':'#ffa726')+';font-size:20px">¥'+c.currentPrice+'万</b><br/><span style="font-size:11px;color:'+(g<=0?'#66bb6a':'#ffa726')+'">'+(g<=0?'✅ 已达标':'⚠ 超'+g+'万')+'</span></td>';
   });
   html += '</tr>';
 
-  // 距离行
   var rows=[
     {label:'🏫 学校',key:'schoolDist',color:'#e040fb',name:s=>s.schoolName+' · '+(s.schoolGrade||'')},
     {label:'🚇 地铁',key:'metro',color:'#29b6f6',name:s=>s.metro?s.metro.name:''},
@@ -72,40 +70,36 @@ window.openCompare = function() {
     {label:'🌳 公园',key:'park',color:'#66bb6a',name:s=>s.park?s.park.name:''}
   ];
   rows.forEach(function(row){
-    html += '<tr><td style="padding:12px;color:#9caab8;font-size:18px;vertical-align:middle">'+row.label+'</td>';
+    html += '<tr><td style="padding:8px;color:#9caab8;font-size:12px;vertical-align:middle">'+row.label+'</td>';
     list.forEach(function(item){
       var s=item.scores;
       var dist = getDist(s, row.key);
       var bar = Math.max(0,Math.min(100,(1-dist/1500)*100));
       var distStr = dist>=1000 ? (dist/1000).toFixed(1)+'公里' : dist+'米';
-      html += '<td style="padding:10px 8px;text-align:center;vertical-align:middle">';
-      html += '<div style="display:flex;align-items:center;gap:10px">';
-      html += '<div style="flex:1;height:10px;background:#1a2a3a;border-radius:5px">';
-      html += '<div style="width:'+bar+'%;height:100%;background:'+row.color+';border-radius:5px"></div>';
-      html += '</div>';
-      html += '<span style="font-size:20px;font-weight:bold;color:'+row.color+';min-width:90px;text-align:right">'+distStr+'</span>';
+      html += '<td style="padding:6px 5px;text-align:center;vertical-align:middle">';
+      html += '<div style="display:flex;align-items:center;gap:5px">';
+      html += '<div style="flex:1;height:6px;background:#1a2a3a;border-radius:3px"><div style="width:'+bar+'%;height:100%;background:'+row.color+';border-radius:3px"></div></div>';
+      html += '<span style="font-size:13px;font-weight:600;color:'+row.color+';min-width:58px;text-align:right">'+distStr+'</span>';
       html += '</div>';
       if(row.name){
         var n=row.name(s);
-        if(n) html += '<div style="font-size:14px;color:#6a7a8a;margin-top:4px;text-align:left;padding-left:4px">'+n+'</div>';
+        if(n) html += '<div style="font-size:10px;color:#6a7a8a;margin-top:2px;text-align:left">'+n+'</div>';
       }
       html += '</td>';
     });
     html += '</tr>';
   });
 
-  // 综合分
   html += '<tr style="border-top:2px solid #2a3848">';
-  html += '<td style="padding:20px;color:#ffa726;font-weight:bold;font-size:22px">⭐ 综合分</td>';
+  html += '<td style="padding:14px;color:#ffa726;font-weight:bold;font-size:15px">⭐ 综合分</td>';
   list.forEach(function(item){
     var pct = item.scores.totalPct||0;
     var color = pct>=75?'#66bb6a':pct>=50?'#ffa726':'#ef5350';
-    html += '<td style="padding:20px;text-align:center"><span style="font-size:42px;font-weight:bold;color:'+color+'">'+pct+'</span><span style="font-size:18px;color:#9caab8">/100</span></td>';
+    html += '<td style="padding:14px;text-align:center"><span style="font-size:28px;font-weight:bold;color:'+color+'">'+pct+'</span><span style="font-size:12px;color:#9caab8">/100</span></td>';
   });
-  html += '</tr>';
+  html += '</tr></table>';
 
-  html += '</table>';
-  html += '<div style="margin-top:18px;font-size:15px;color:#6a7a8a;text-align:center;padding-top:14px;border-top:1px solid #2a3848">评分权重: 价格25% + 学校25% + 地铁20% + 商圈10% + 医院10% + 公园10%</div>';
+  html += '<div style="margin-top:10px;font-size:10px;color:#6a7a8a;text-align:center;padding-top:8px;border-top:1px solid #2a3848">评分权重: 价格25% + 学校25% + 地铁20% + 商圈10% + 医院10% + 公园10%</div>';
   html += '</div>';
 
   document.getElementById('comparePanel').innerHTML = html;
@@ -137,10 +131,10 @@ function updateCompareBar() {
   }
   if (selectedIds.length === 0) { bar.style.display='none'; return; }
   bar.style.display = 'flex';
-  bar.innerHTML = '<div style="color:#9caab8;font-size:14px">已选 <b style="color:#ffa726;font-size:18px">'+selectedIds.length+'</b> 盘: ' + selectedIds.map(function(n){
-    return '<span style="margin:0 4px;padding:4px 10px;background:#1a2a3a;border-radius:4px;font-size:13px;color:#4fc3f7;cursor:pointer" onclick="toggleCompare(\''+n+'\')">'+n+' ✕</span>';
+  bar.innerHTML = '<div style="color:#9caab8;font-size:13px">已选 <b style="color:#ffa726;font-size:16px">'+selectedIds.length+'</b> 盘: ' + selectedIds.map(function(n){
+    return '<span style="margin:0 3px;padding:3px 8px;background:#1a2a3a;border-radius:3px;font-size:12px;color:#4fc3f7;cursor:pointer" onclick="toggleCompare(\''+n+'\')">'+n+' ✕</span>';
   }).join('') + '</div>' +
-    '<button onclick="openCompare()" style="background:linear-gradient(135deg,#ffa726,#ff7043);color:#fff;border:none;padding:8px 24px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:15px">📊 开始对比</button>';
+    '<button onclick="openCompare()" style="background:linear-gradient(135deg,#ffa726,#ff7043);color:#fff;border:none;padding:7px 20px;border-radius:4px;cursor:pointer;font-weight:bold;font-size:14px">📊 开始对比</button>';
 }
 
 window._dashboardData = [];
