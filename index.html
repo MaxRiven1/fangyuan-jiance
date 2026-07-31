@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成都学区房 · 数智监测看板</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<script src="config.js"></script>
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<!-- 顶部导航栏 -->
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <div class="logo-area">
+      <span class="logo-icon">🏠</span>
+      <span class="logo-text">成都学区房 数智监测看板</span>
+    </div>
+    <div class="top-meta">
+      <span class="meta-item">📅 数据更新：<b id="lastUpdate">--</b></span>
+      <span class="meta-item">🔄 轮询频率：每30分钟</span>
+      <span class="meta-item">💰 数据来源：贝壳网登录实抓</span>
+      <span class="meta-item" id="summaryTotal"></span>
+    </div>
+  </div>
+</header>
+
+<!-- 主内容区：左-中-右三栏 -->
+<main class="main-grid">
+
+  <!-- ========== 左栏：小区详情（3区面板） ========== -->
+  <section class="left-panel">
+    <div class="panel-header">
+      <h2>🏘️ 小区详情</h2>
+      <span class="panel-badge">金牛 · 青羊 · 成华</span>
+    </div>
+    <div id="leftPanels">
+      <!-- JS动态填充 -->
+    </div>
+  </section>
+
+  <!-- ========== 中栏：高德地图 ========== -->
+  <section class="center-panel">
+    <div id="amapContainer"></div>
+    <div class="map-legend">
+      <span class="legend-item"><span class="legend-dot school"></span> 目标小学（14所）</span>
+      <span class="legend-item"><span class="legend-dot ok"></span> 预算内达标</span>
+      <span class="legend-item"><span class="legend-dot warn"></span> 超预算/存疑</span>
+      <span class="legend-item"><span class="legend-dot alert"></span> 无解/剔除</span>
+    </div>
+  </section>
+
+  <!-- ========== 右栏：价格变动（3区面板） ========== -->
+  <section class="right-panel">
+    <div class="panel-header">
+      <h2>📊 价格变动��测</h2>
+      <span class="panel-badge">近7日均价基准</span>
+    </div>
+    <div class="legend-compact">
+      <span class="l-dot green-bg">≤0%</span>
+      <span class="l-dot yellow-bg">0~10%</span>
+      <span class="l-dot orange-bg">10~20%</span>
+      <span class="l-dot red-bg">>20%</span>
+    </div>
+    <div id="rightPanels">
+      <!-- JS动态填充 -->
+    </div>
+  </section>
+
+</main>
+
+<!-- 高德地图 JS API -->
+<script>
+window._AMapSecurityConfig = { securityJsCode: '' };
+(function(){
+  var script = document.createElement('script');
+  script.src = 'https://webapi.amap.com/maps?v=' + DASHBOARD_CONFIG.amapVersion + '&key=' + DASHBOARD_CONFIG.amapKey;
+  script.onload = function(){ window.dispatchEvent(new Event('amap-ready')); };
+  document.head.appendChild(script);
+})();
+</script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
