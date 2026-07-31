@@ -190,6 +190,11 @@ function main(dateStr) {
   }
 
   // 各区汇总
+  // 去重：同名小区加池类型后缀
+  const nameCounts = {};
+  communities.forEach(c => { nameCounts[c.name] = (nameCounts[c.name]||0) + 1; });
+  communities.forEach(c => { if (nameCounts[c.name] > 1) c.name += '(' + c.pool + ')'; });
+
   const districtSummary = {};
   for (const d of ['金牛区','青羊区','成华区']) {
     const list = communities.filter(c => c.district === d);
