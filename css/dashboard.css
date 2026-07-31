@@ -158,9 +158,7 @@ body {
 .legend-dot.poi-transit { background: #29b6f6; }
 .legend-dot.poi-park { background: #66bb6a; }
 .legend-dot.poi-hospital { background: #ef5350; }
-.legend-dot.poi-shop { background: #ff7043; }
-.legend-dot.poi-transit { background: #29b6f6; }
-.legend-dot.poi-park { background: #66bb6a; }
+.legend-dot.poi-landmark { background: #ab47bc; }
 
 /* ===== Right Panel: Price Cards ===== */
 .price-change-card {

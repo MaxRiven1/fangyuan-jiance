@@ -157,15 +157,15 @@
     });
 
     // ===== POI 标记 =====
-    var typeStyles = { shopping:{color:'#ff7043',label:'商圈'}, transit:{color:'#29b6f6',label:'地铁'}, park:{color:'#66bb6a',label:'公园'}, hospital:{color:'#ef5350',label:'医院'}, landmark:{color:'#ab47bc',label:'地标'} };
+    var typeStyles = { shopping:{color:'#ff7043',label:'商'}, transit:{color:'#29b6f6',label:'铁'}, park:{color:'#66bb6a',label:'园'}, hospital:{color:'#ef5350',label:'医'}, landmark:{color:'#ab47bc',label:'景'} };
     for (var district in data.pois || {}) {
       (data.pois[district]||[]).forEach(function(p) {
         var style = typeStyles[p.type] || typeStyles.shopping;
-        var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="21" height="30"><path d="M10.5 0 A10.5 10.5 0 0 0 0 10.5 C0 19.5 10.5 30 10.5 30 S21 19.5 21 10.5 A10.5 10.5 0 0 0 10.5 0 Z" fill="'+style.color+'" stroke="#fff" stroke-width="1.5"/><circle cx="10.5" cy="10.5" r="4.5" fill="#fff" opacity="0.9"/></svg>';
+        var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"><circle cx="14" cy="14" r="13" fill="'+style.color+'" stroke="#fff" stroke-width="2.5"/><text x="14" y="19" text-anchor="middle" font-size="15" fill="#fff" font-weight="bold">'+style.label+'</text></svg>';
         var m = new AMap.Marker({
           position: [p.lng, p.lat],
-          icon: new AMap.Icon({ size:new AMap.Size(21,30), image:'data:image/svg+xml,'+encodeURIComponent(svg), imageSize:new AMap.Size(21,30) }),
-          offset: new AMap.Pixel(-10.5,-30), zIndex:60, title: '【'+style.label+'】 '+p.name
+          icon: new AMap.Icon({ size:new AMap.Size(28,28), image:'data:image/svg+xml,'+encodeURIComponent(svg), imageSize:new AMap.Size(28,28) }),
+          offset: new AMap.Pixel(-14,-14), zIndex:60, title: '【'+style.label+'】 '+p.name
         });
         m.setMap(map); allMarkers.push(m);
         // POI名称标签
