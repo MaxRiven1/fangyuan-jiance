@@ -75,12 +75,11 @@
     try {
       map = new AMap.Map('amapContainer', { zoom: C.mapZoom, center: C.mapCenter, resizeEnable: true });
       console.log('高德地图初始化成功');
-      renderMapMarkers();
-      addDistrictBoundaries();
+      // 注意：不要在这里调用 renderMapMarkers，等数据加载完成后再画
       AMap.plugin('AMap.Transfer', function() { console.log('Transfer plugin ready'); });
     } catch(e) {
       console.error('地图初始化失败:', e.message);
-      document.getElementById('amapContainer').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#8fa4b8;font-size:14px">⚠️ 地图加载失败，请检查高德Key</div>';
+      document.getElementById('amapContainer').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#ef5350;font-size:14px;padding:20px;text-align:center"><div><div style="font-size:32px">⚠️</div><div style="margin-top:12px">' + (e.message||'未知错误') + '</div><div style="color:#8fa4b8;margin-top:8px;font-size:12px">请检查高德Key是否启用Web端JS API</div></div></div>';
     }
   }
 
@@ -97,6 +96,7 @@
   var allTransferLines = [];
 
   function renderMapMarkers() {
+    if (!data) { console.warn('data未就绪，跳过renderMapMarkers'); return; }
     allMarkers.forEach(function(m) { try { m.setMap(null); } catch(e) {} });
     allPolylines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
     allInfoWindows.forEach(function(iw) { try { iw.close(); } catch(e) {} });
