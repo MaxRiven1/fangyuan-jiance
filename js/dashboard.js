@@ -75,9 +75,14 @@
     try {
       map = new AMap.Map('amapContainer', { zoom: C.mapZoom, center: C.mapCenter, resizeEnable: true });
       console.log('高德地图初始化成功');
-      // 如果数据已经加载完毕，直接渲染标记（避免时序问题）
+      // 预加载所有需要的插件
+      AMap.plugin(['AMap.Transfer', 'AMap.DistrictSearch'], function() {
+        console.log('Transfer + DistrictSearch 插件已加载');
+        // 插件就绪后，如果data已加载，立即渲染轮廓
+        if (data) addDistrictBoundaries();
+      });
+      // data先于插件加载时，refreshMap会再次调用addDistrictBoundaries
       if (data) refreshMap();
-      AMap.plugin('AMap.Transfer', function() { console.log('Transfer plugin ready'); });
     } catch(e) {
       console.error('地图初始化失败:', e.message);
       document.getElementById('amapContainer').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#ef5350;font-size:14px;padding:20px;text-align:center"><div><div style="font-size:32px">⚠️</div><div style="margin-top:12px">' + (e.message||'未知错误') + '</div><div style="color:#8fa4b8;margin-top:8px;font-size:12px">请检查高德Key是否启用Web端JS API</div></div></div>';
@@ -89,6 +94,34 @@
     map.clearMap();
     renderMapMarkers();
     addDistrictBoundaries();
+  }
+
+  // 区域轮廓（DistrictSearch 需先通过 AMap.plugin 加载）
+  var districtSearch = null;
+  function addDistrictBoundaries() {
+    var colors = { '金牛区':'#ff7043', '青羊区':'#66bb6a', '成华区':'#4fc3f7' };
+    if (!AMap.DistrictSearch) {
+      console.warn('DistrictSearch 未加载,跳过区域轮廓');
+      return;
+    }
+    if (!districtSearch) districtSearch = new AMap.DistrictSearch({ level:'district', extensions:'all', subdistrict:0 });
+    C.districts.forEach(function(name) {
+      districtSearch.search(name, function(status, result) {
+        if (status==='complete' && result.districtList && result.districtList.length>0) {
+          var bounds = result.districtList[0].boundaries;
+          if (!bounds) return;
+          bounds.forEach(function(boundary) {
+            var poly = new AMap.Polygon({
+              path: boundary, fillColor: colors[name]||'#4fc3f7', fillOpacity: 0.06,
+              strokeColor: colors[name]||'#4fc3f7', strokeWeight: 1.5, strokeOpacity: 0.4, zIndex: 1
+            });
+            poly.setMap(map); allPolylines.push(poly);
+          });
+        } else {
+          console.warn('DistrictSearch失败:', name, status, result);
+        }
+      });
+    });
   }
 
   var allMarkers = [];
@@ -227,26 +260,6 @@
     var dLat=toRad(la2-la1), dLng=toRad(l2-l1);
     var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(toRad(la1))*Math.cos(toRad(la2))*Math.sin(dLng/2)*Math.sin(dLng/2);
     return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
-  }
-
-  function addDistrictBoundaries() {
-    var colors = { '金牛区':'#ff7043', '青羊区':'#66bb6a', '成华区':'#4fc3f7' };
-    var ds = new AMap.DistrictSearch({ level:'district', extensions:'all', subdistrict:0 });
-    C.districts.forEach(function(name) {
-      ds.search(name, function(status, result) {
-        if (status==='complete' && result.districtList && result.districtList.length>0) {
-          var bounds = result.districtList[0].boundaries;
-          if (!bounds) return;
-          bounds.forEach(function(boundary) {
-            var poly = new AMap.Polygon({
-              path: boundary, fillColor: colors[name]||'#4fc3f7', fillOpacity: 0.06,
-              strokeColor: colors[name]||'#4fc3f7', strokeWeight: 1.5, strokeOpacity: 0.4, zIndex: 1
-            });
-            poly.setMap(map); allPolylines.push(poly);
-          });
-        }
-      });
-    });
   }
 
   function startPolling() {
