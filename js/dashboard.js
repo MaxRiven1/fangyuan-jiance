@@ -267,8 +267,18 @@
         if (status==='complete' && result.plans && result.plans.length>0) {
           result.plans[0].routes.forEach(function(route, ri) {
             var routePath=[];
-            if (route.walking_distance) route.steps.forEach(function(s){if(s.path&&s.path.length>1)routePath=routePath.concat(s.path);});
-            else if (route.bus) (route.bus.buslines||[]).forEach(function(bl){bl.path.forEach(function(p){routePath.push(p);});});
+            if (route.walking && route.walking.steps) {
+              route.walking.steps.forEach(function(s){if(s.path&&s.path.length>1)routePath=routePath.concat(s.path);});
+            } else if (route.walking_distance && Array.isArray(route.path)) {
+              routePath = routePath.concat(route.path);
+            }
+            if (route.bus && route.bus.buslines && Array.isArray(route.bus.buslines)) {
+              route.bus.buslines.forEach(function(bl){
+                if (bl.path && Array.isArray(bl.path)) {
+                  bl.path.forEach(function(p){routePath.push(p);});
+                }
+              });
+            }
             if(routePath.length>1){
               var poly=new AMap.Polyline({path:routePath,strokeColor:ri===0?'#66bb6a':'#4fc3f7',strokeWeight:4,strokeOpacity:0.7,zIndex:199});
               poly.setMap(map);allTransferLines.push(poly);hasRoute=true;
