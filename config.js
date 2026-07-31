@@ -1,7 +1,7 @@
 // 房源监测数智看板 - 配置文件
 window.DASHBOARD_CONFIG = {
   // 高德地图 JS API Key
-  amapKey: 'e65d26f058d43da841817ebcc64af5e0',
+  amapKey: '22317d6348c29e0acb4b39c9c27c1ffd',
   amapVersion: '2.0',
   
   // 数据文件路径（相对看板根目录）
