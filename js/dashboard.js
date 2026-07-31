@@ -256,7 +256,7 @@
     var dist = haversine(c.lng, c.lat, school.lng, school.lat);
     var walkMin = Math.round(dist / 80);
     var showContent = function() {
-      var content = '<div style="padding:8px 12px;font-size:12px;min-width:220px"><b style="color:#0f1923;font-size:13px">'+school.name+'</b><br/><span style="color:#666">📍 '+ (school.address||'') +'</span><hr style="margin:4px 0;border:none;border-top:1px solid #eee"/><b>→ '+c.name+'</b><br/><span style="color:#666">直线距离: <b style="color:#4fc3f7">'+dist.toFixed(0)+'米</b> | 步行约'+walkMin+'分钟</span><br/><span style="font-size:10px;color:#999">蓝色虚线=直线距离 | 实线=公交/步行</span></div>';
+      var content = '<div style="padding:8px 12px;font-size:12px;min-width:220px"><b style="color:#0f1923;font-size:13px">'+school.name+'</b><br/><span style="color:#666">📍 '+ (school.address||'') +'</span><hr style="margin:4px 0;border:none;border-top:1px solid #eee"/><b>→ '+c.name+'</b><br/><span style="color:#666">直线距离: <b style="color:#4fc3f7">'+dist.toFixed(0)+'米</b> | 步行约'+walkMin+'分钟</span><br/><span style="font-size:10px;color:#999">绿色=步行段 | 蓝色=公交线路</span></div>';
       var iw = new AMap.InfoWindow({ content: content, offset: new AMap.Pixel(0,-10) });
       iw.open(map, [school.lng, school.lat]); allInfoWindows.push(iw);
     };
