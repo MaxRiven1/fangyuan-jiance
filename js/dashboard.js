@@ -168,6 +168,14 @@
           offset: new AMap.Pixel(-7,-20), zIndex:60, title: '【'+style.label+'】 '+p.name
         });
         m.setMap(map); allMarkers.push(m);
+        // POI名称标签
+        var pt = new AMap.Text({
+          position: [p.lng, p.lat],
+          text: p.name.length > 6 ? p.name.substring(0,5)+'…' : p.name,
+          offset: new AMap.Pixel(0, -22),
+          style: {'background-color':'rgba(15,25,35,0.8)','color':style.color,'font-size':'8px','padding':'1px 3px','border-radius':'2px','border':'none','white-space':'nowrap'}
+        });
+        pt.setMap(map); allMarkers.push(pt);
       });
     }
 
