@@ -21,6 +21,8 @@
         renderLeft();
         renderRight();
         if (map) refreshMap();
+        // 同步数据给对比模块
+        if (window.refreshCompareData) window.refreshCompareData(data.communities, computeScores);
       })
       .catch(function(e) {
         console.error('数据加载失败:', e);
@@ -39,7 +41,9 @@
       comms.forEach(function(c) {
         var tagClass = c.status || 'ok';
         html += '<div class="community-card" data-community="'+c.name+'" onclick="zoomToCommunity(\''+c.name+'\')">';
-        html += '<div class="c-head"><span class="c-name">'+c.name+'</span><span class="c-pool '+(c.pool==='套三'?'s3':'s2')+'">'+c.pool+'</span></div>';
+        html += '<div class="c-head"><span class="c-name">'+c.name+'</span>';
+        html += '<span class="compare-check" data-community="'+c.name+'" onclick="event.stopPropagation();toggleCompare(\''+c.name+'\')">➕</span>';
+        html += '<span class="c-pool '+(c.pool==='套三'?'s3':'s2')+'">'+c.pool+'</span></div>';
         html += '<div class="c-info"><span>📐 '+(c.layout||'?')+'</span><span>📏 '+(c.area||'?')+'㎡</span>'+(c.elevator?'<span>🛗 有电梯</span>':'<span>🚫 无电梯</span>')+'</div>';
         html += '<div class="c-school">🏫 '+(c.school||'?')+'</div>';
         html += '<div class="c-price-row"><span class="c-price">¥'+(c.currentPrice||'?')+'万</span><span class="price-tag '+tagClass+'">'+(c.statusText||'--')+'</span></div>';
@@ -206,6 +210,9 @@
         style: {'background-color':'transparent','color':'#fff','font-size':'15px','font-weight':'bold','border':'none','white-space':'nowrap','text-shadow':'0 0 5px rgba(0,0,0,0.95)'}
       });
       t.setMap(map); allMarkers.push(t);
+      // 500米生活圈
+      var circle = new AMap.Circle({ center:[c.lng,c.lat], radius:500, fillColor:'#4fc3f7', fillOpacity:0.04, strokeColor:'#4fc3f7', strokeWeight:1, strokeOpacity:0.2, zIndex:1 });
+      circle.setMap(map); allPolylines.push(circle);
 
       // 找到对应学校
       var school = (data.schools||[]).find(function(s) {
@@ -395,6 +402,7 @@
   window.zoomToCommunity = zoomToCommunity;
   window.resetMapView = resetMapView;
   window.drawRoute = drawRoute;
+  window.computeScores = computeScores;
 
   // 时效计数器
   var freshnessTimer = null;
