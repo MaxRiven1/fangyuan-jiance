@@ -72,11 +72,11 @@
 
 <!-- 高德地图 JS API -->
 <script>
-window._AMapSecurityConfig = { securityJsCode: '' };
 (function(){
   var script = document.createElement('script');
   script.src = 'https://webapi.amap.com/maps?v=' + DASHBOARD_CONFIG.amapVersion + '&key=' + DASHBOARD_CONFIG.amapKey;
-  script.onload = function(){ window.dispatchEvent(new Event('amap-ready')); };
+  script.onload = function(){ console.log('高德SDK加载完成'); window.dispatchEvent(new Event('amap-ready')); };
+  script.onerror = function(){ console.error('高德SDK加载失败，请检查Key'); };
   document.head.appendChild(script);
 })();
 </script>

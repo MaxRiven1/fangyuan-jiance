@@ -4,7 +4,6 @@
   var C = DASHBOARD_CONFIG;
   var data = null;
   var map = null;
-  var markersLayer = null;
   var timer = null;
 
   // ===== 数据加载 =====
@@ -92,72 +91,100 @@
 
   // ===== 地图初始化 =====
   function initMap() {
-    map = new AMap.Map('amapContainer', {
-      zoom: C.mapZoom,
-      center: C.mapCenter,
-      mapStyle: 'amap://styles/dark',
-      resizeEnable: true
-    });
-    markersLayer = new AMap.LabelsLayer({ zooms: [3,20], zIndex: 10, collision: false });
-    map.add(markersLayer);
-    renderMapMarkers();
+    try {
+      map = new AMap.Map('amapContainer', {
+        zoom: C.mapZoom,
+        center: C.mapCenter,
+        resizeEnable: true
+      });
+      console.log('✅ 高德地图初始化成功');
+      renderMapMarkers();
+    } catch(e) {
+      console.error('❌ 地图初始化失败:', e.message);
+      document.getElementById('amapContainer').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#8fa4b8;font-size:14px">⚠️ 地图加载失败，请检查高德Key是否正确</div>';
+    }
   }
 
   function refreshMap() {
     if (!map || !data) return;
-    markersLayer.clear();
+    map.clearMap();
     renderMapMarkers();
   }
 
+  var allMarkers = [];
   function renderMapMarkers() {
-    var markers = [];
+    allMarkers.forEach(function(m) { try { m.setMap(null); } catch(e) {} });
+    allMarkers = [];
 
-    // 学校标记（紫色圆点 + 标签）
-    (data.schools||[]).forEach(function(s, idx) {
-      var dy = (idx % 3) * 18 - 18;
-      markers.push({
+    // 学校标记
+    (data.schools||[]).forEach(function(s) {
+      var m = new AMap.Marker({
         position: [s.lng, s.lat],
-        icon: { type: 'circle', size: [10,10], color: '#e040fb', strokeColor: '#fff', strokeWeight: 2 },
-        rank: 10
+        icon: new AMap.Icon({
+          size: new AMap.Size(16, 16),
+          image: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><circle cx="8" cy="8" r="7" fill="#e040fb" stroke="#fff" stroke-width="2"/><text x="8" y="11" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">S</text></svg>'),
+          imageSize: new AMap.Size(16, 16)
+        }),
+        offset: new AMap.Pixel(-8, -8),
+        zIndex: 100,
+        title: s.name
       });
+      m.setMap(map);
+      allMarkers.push(m);
+
       // 校名标签
-      var textColor = '#e8edf2';
-      var bgColor = 'rgba(15,25,35,0.85)';
-      markers.push({
+      var labelOffset = (allMarkers.length % 3) * 14 - 14;
+      var t = new AMap.Text({
         position: [s.lng, s.lat],
-        icon: null,
-        text: {
-          content: s.name.indexOf('成都市')===0 ? s.name.replace('成都市','') : s.name,
-          direction: 'top',
-          offset: '10 -' + 5,
-          style: { fontSize: 10, fill: textColor, stroke: bgColor, strokeWidth: 3 }
-        },
-        rank: 11
+        text: s.name.indexOf('成都市')===0 ? s.name.replace('成都市','') : s.name,
+        offset: new AMap.Pixel(0, labelOffset),
+        style: {
+          'background-color': 'rgba(15,25,35,0.85)',
+          'color': '#e8edf2',
+          'font-size': '10px',
+          'padding': '1px 4px',
+          'border-radius': '2px',
+          'border': 'none',
+          'white-space': 'nowrap'
+        }
       });
+      t.setMap(map);
+      allMarkers.push(t);
     });
 
-    // 小区标记（颜色按status分）
+    // 小区标记
     (data.communities||[]).forEach(function(c) {
       var color = c.status === 'ok' ? '#66bb6a' : c.status === 'warn' ? '#ffa726' : '#ef5350';
-      markers.push({
+      var m = new AMap.Marker({
         position: [c.lng, c.lat],
-        icon: { type: 'circle', size: [8,8], color: color, strokeColor: '#fff', strokeWeight: 1.5 },
-        rank: 5
+        icon: new AMap.Icon({
+          size: new AMap.Size(12, 12),
+          image: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><circle cx="6" cy="6" r="5" fill="' + color + '" stroke="#fff" stroke-width="1"/></svg>'),
+          imageSize: new AMap.Size(12, 12)
+        }),
+        offset: new AMap.Pixel(-6, -6),
+        zIndex: 50,
+        title: c.name + ' ¥' + c.currentPrice + '万'
       });
-      markers.push({
-        position: [c.lng, c.lat],
-        icon: null,
-        text: {
-          content: c.name.length > 6 ? c.name.substring(0,5)+'…' : c.name,
-          direction: 'right',
-          offset: '0 8',
-          style: { fontSize: 9, fill: '#8fa4b8', stroke: 'rgba(15,25,35,0.8)', strokeWidth: 4 }
-        },
-        rank: 6
-      });
-    });
+      m.setMap(map);
+      allMarkers.push(m);
 
-    markersLayer.add(markers);
+      var t = new AMap.Text({
+        position: [c.lng, c.lat],
+        text: c.name.length > 5 ? c.name.substring(0,4)+'…' : c.name,
+        offset: new AMap.Pixel(8, -4),
+        style: {
+          'background-color': 'transparent',
+          'color': '#8fa4b8',
+          'font-size': '9px',
+          'border': 'none',
+          'white-space': 'nowrap',
+          'text-shadow': '0 0 3px rgba(0,0,0,0.8)'
+        }
+      });
+      t.setMap(map);
+      allMarkers.push(t);
+    });
   }
 
   // ===== 轮询 =====
