@@ -142,8 +142,8 @@
     (data.schools||[]).forEach(function(s, idx) {
       var m = new AMap.Marker({
         position: [s.lng, s.lat],
-        icon: new AMap.Icon({ size:new AMap.Size(22,22), image:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"><circle cx="11" cy="11" r="10" fill="#e040fb" stroke="#fff" stroke-width="2.5"/><text x="11" y="15" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">校</text></svg>'), imageSize:new AMap.Size(22,22) }),
-        offset: new AMap.Pixel(-11,-11), zIndex:100, title: s.name
+        icon: new AMap.Icon({ size:new AMap.Size(33,33), image:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"><circle cx="16.5" cy="16.5" r="15" fill="#e040fb" stroke="#fff" stroke-width="3"/><text x="16.5" y="21" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">校</text></svg>'), imageSize:new AMap.Size(33,33) }),
+        offset: new AMap.Pixel(-16,-16), zIndex:100, title: s.name
       });
       m.setMap(map); allMarkers.push(m);
 
@@ -151,7 +151,7 @@
       var t = new AMap.Text({
         position: [s.lng, s.lat], text: s.name.indexOf('成都市')===0?s.name.replace('成都市',''):s.name,
         offset: new AMap.Pixel(0, labelOffset),
-        style: {'background-color':'rgba(15,25,35,0.85)','color':'#e8edf2','font-size':'10px','padding':'1px 4px','border-radius':'2px','border':'none','white-space':'nowrap'}
+        style: {'background-color':'rgba(15,25,35,0.85)','color':'#e8edf2','font-size':'15px','padding':'2px 6px','border-radius':'3px','border':'none','white-space':'nowrap'}
       });
       t.setMap(map); allMarkers.push(t);
     });
@@ -161,19 +161,19 @@
     for (var district in data.pois || {}) {
       (data.pois[district]||[]).forEach(function(p) {
         var style = typeStyles[p.type] || typeStyles.shopping;
-        var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="20"><path d="M7 0 A7 7 0 0 0 0 7 C0 13 7 20 7 20 S14 13 14 7 A7 7 0 0 0 7 0 Z" fill="'+style.color+'" stroke="#fff" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="#fff" opacity="0.9"/></svg>';
+        var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="21" height="30"><path d="M10.5 0 A10.5 10.5 0 0 0 0 10.5 C0 19.5 10.5 30 10.5 30 S21 19.5 21 10.5 A10.5 10.5 0 0 0 10.5 0 Z" fill="'+style.color+'" stroke="#fff" stroke-width="1.5"/><circle cx="10.5" cy="10.5" r="4.5" fill="#fff" opacity="0.9"/></svg>';
         var m = new AMap.Marker({
           position: [p.lng, p.lat],
-          icon: new AMap.Icon({ size:new AMap.Size(14,20), image:'data:image/svg+xml,'+encodeURIComponent(svg), imageSize:new AMap.Size(14,20) }),
-          offset: new AMap.Pixel(-7,-20), zIndex:60, title: '【'+style.label+'】 '+p.name
+          icon: new AMap.Icon({ size:new AMap.Size(21,30), image:'data:image/svg+xml,'+encodeURIComponent(svg), imageSize:new AMap.Size(21,30) }),
+          offset: new AMap.Pixel(-10.5,-30), zIndex:60, title: '【'+style.label+'】 '+p.name
         });
         m.setMap(map); allMarkers.push(m);
         // POI名称标签
         var pt = new AMap.Text({
           position: [p.lng, p.lat],
-          text: p.name.length > 6 ? p.name.substring(0,5)+'…' : p.name,
-          offset: new AMap.Pixel(0, -22),
-          style: {'background-color':'rgba(15,25,35,0.8)','color':style.color,'font-size':'8px','padding':'1px 3px','border-radius':'2px','border':'none','white-space':'nowrap'}
+          text: p.name.length > 7 ? p.name.substring(0,6)+'…' : p.name,
+          offset: new AMap.Pixel(0, -34),
+          style: {'background-color':'rgba(15,25,35,0.85)','color':style.color,'font-size':'12px','padding':'2px 5px','border-radius':'3px','border':'none','white-space':'nowrap'}
         });
         pt.setMap(map); allMarkers.push(pt);
       });
@@ -184,15 +184,15 @@
       var color = c.status==='ok'?'#66bb6a':c.status==='warn'?'#ffa726':'#ef5350';
       var m = new AMap.Marker({
         position: [c.lng, c.lat],
-        icon: new AMap.Icon({ size:new AMap.Size(18,26), image:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="18" height="26"><path d="M9 0 C4 0 0 4 0 9 C0 15 9 26 9 26 S18 15 18 9 C18 4 14 0 9 0 Z" fill="'+color+'" stroke="#fff" stroke-width="2"/><circle cx="9" cy="9" r="5" fill="#fff" opacity="0.9"/></svg>'), imageSize:new AMap.Size(18,26) }),
-        offset: new AMap.Pixel(-9,-26), zIndex:50, title: c.name+' ¥'+c.currentPrice+'万'
+        icon: new AMap.Icon({ size:new AMap.Size(27,39), image:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="27" height="39"><path d="M13.5 0 C6 0 0 6 0 13.5 C0 22 13.5 39 13.5 39 S27 22 27 13.5 C27 6 21 0 13.5 0 Z" fill="'+color+'" stroke="#fff" stroke-width="3"/><circle cx="13.5" cy="13.5" r="7.5" fill="#fff" opacity="0.9"/></svg>'), imageSize:new AMap.Size(27,39) }),
+        offset: new AMap.Pixel(-13.5,-39), zIndex:50, title: c.name+' ¥'+c.currentPrice+'万'
       });
       m.setMap(map); allMarkers.push(m);
 
       var t = new AMap.Text({
         position: [c.lng, c.lat], text: c.name.length>5?c.name.substring(0,4)+'…':c.name,
         offset: new AMap.Pixel(0,-24),
-        style: {'background-color':'transparent','color':'#fff','font-size':'10px','font-weight':'bold','border':'none','white-space':'nowrap','text-shadow':'0 0 4px rgba(0,0,0,0.9)'}
+        style: {'background-color':'transparent','color':'#fff','font-size':'15px','font-weight':'bold','border':'none','white-space':'nowrap','text-shadow':'0 0 5px rgba(0,0,0,0.95)'}
       });
       t.setMap(map); allMarkers.push(t);
 
