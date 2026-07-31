@@ -304,47 +304,47 @@
     function bar(label, icon, value, color) {
       color = color || '#4fc3f7';
       var fill = Math.min((value/1000)*100, 100);
-      return '<div style="display:flex;align-items:center;padding:2px 0;font-size:11px">'
-        + '<span style="width:18px">'+icon+'</span>'
-        + '<span style="width:60px;color:#9caab8;font-size:10px">'+label+'</span>'
-        + '<div style="flex:1;height:4px;background:#1a2a3a;border-radius:2px;margin:0 8px">'
-        + '<div style="height:100%;width:'+fill+'%;background:'+color+';border-radius:2px"></div></div>'
-        + '<span style="color:'+color+';font-weight:600;font-size:11px;min-width:55px;text-align:right">'+(value<1000?value+'米':(value/1000).toFixed(1)+'公里')+'</span>'
+      return '<div style="display:flex;align-items:center;padding:3px 0;font-size:17px">'
+        + '<span style="width:24px">'+icon+'</span>'
+        + '<span style="width:90px;color:#9caab8;font-size:15px">'+label+'</span>'
+        + '<div style="flex:1;height:6px;background:#1a2a3a;border-radius:3px;margin:0 10px">'
+        + '<div style="height:100%;width:'+fill+'%;background:'+color+';border-radius:3px"></div></div>'
+        + '<span style="color:'+color+';font-weight:600;font-size:16px;min-width:75px;text-align:right">'+(value<1000?value+'米':(value/1000).toFixed(1)+'公里')+'</span>'
         + '</div>';
     }
 
     function showInfo(plan) {
-      var html = '<div style="padding:10px 12px;font-size:11px;min-width:280px;max-width:320px;background:#0f1923;color:#e8edf2;border-radius:6px">';
+      var html = '<div style="padding:14px 16px;font-size:17px;min-width:340px;max-width:380px;background:#0f1923;color:#e8edf2;border-radius:8px;line-height:1.5">';
       // ── 决策卡片标题 ──
-      html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">';
-      html += '<div><div style="font-size:14px;font-weight:bold;color:#fff">🏠 '+c.name+'</div>';
-      html += '<div style="font-size:10px;color:#9caab8">'+c.district+' · '+(c.layout||'')+'</div></div>';
-      html += '<div style="text-align:right"><div style="font-size:20px;font-weight:bold;color:'+(sc.budgetGap<=0?'#66bb6a':'#ffa726')+'">¥'+c.currentPrice+'万</div>';
-      html += '<div style="font-size:10px;color:'+(sc.budgetGap<=0?'#66bb6a':'#ffa726')+'">'+sc.priceLabel+'</div></div>';
+      html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">';
+      html += '<div><div style="font-size:21px;font-weight:bold;color:#fff">🏠 '+c.name+'</div>';
+      html += '<div style="font-size:15px;color:#9caab8">'+c.district+' · '+(c.layout||'')+'</div></div>';
+      html += '<div style="text-align:right"><div style="font-size:30px;font-weight:bold;color:'+(sc.priceGap<=0?'#66bb6a':'#ffa726')+'">¥'+c.currentPrice+'万</div>';
+      html += '<div style="font-size:15px;color:'+(sc.priceGap<=0?'#66bb6a':'#ffa726')+'">'+sc.priceLabel+'</div></div>';
       html += '</div>';
       // ── 分割线 ──
-      html += '<div style="border-top:1px solid #2a3848;margin:4px 0"></div>';
+      html += '<div style="border-top:1px solid #2a3848;margin:6px 0"></div>';
       // ── 综合得分条 ──
       html += bar('对口学校','🏫',sc.schoolDist,'#e040fb');
-      html += '<div style="font-size:9px;color:#6a7a8a;padding-left:18px;margin:-2px 0 2px">'+sc.schoolName+' · '+sc.schoolGrade+'</div>';
+      html += '<div style="font-size:14px;color:#6a7a8a;padding-left:24px;margin:0 0 4px">'+sc.schoolName+' · '+sc.schoolGrade+'</div>';
       if(sc.metro) html += bar('最近地铁','🚇',sc.metro.dist,'#29b6f6');
-      if(sc.metro) html += '<div style="font-size:9px;color:#6a7a8a;padding-left:18px;margin:-2px 0 2px">'+sc.metro.name+'</div>';
+      if(sc.metro) html += '<div style="font-size:14px;color:#6a7a8a;padding-left:24px;margin:0 0 4px">'+sc.metro.name+'</div>';
       if(sc.mall) html += bar('最近商场','🛒',sc.mall.dist,'#ff7043');
-      if(sc.mall) html += '<div style="font-size:9px;color:#6a7a8a;padding-left:18px;margin:-2px 0 2px">'+sc.mall.name+'</div>';
+      if(sc.mall) html += '<div style="font-size:14px;color:#6a7a8a;padding-left:24px;margin:0 0 4px">'+sc.mall.name+'</div>';
       if(sc.hospital) html += bar('最近医院','🏥',sc.hospital.dist,'#ef5350');
-      if(sc.hospital) html += '<div style="font-size:9px;color:#6a7a8a;padding-left:18px;margin:-2px 0 2px">'+sc.hospital.name+'</div>';
+      if(sc.hospital) html += '<div style="font-size:14px;color:#6a7a8a;padding-left:24px;margin:0 0 4px">'+sc.hospital.name+'</div>';
       if(sc.park) html += bar('最近公园','🌳',sc.park.dist,'#66bb6a');
-      if(sc.park) html += '<div style="font-size:9px;color:#6a7a8a;padding-left:18px;margin:-2px 0 2px">'+sc.park.name+'</div>';
+      if(sc.park) html += '<div style="font-size:14px;color:#6a7a8a;padding-left:24px;margin:0 0 4px">'+sc.park.name+'</div>';
       // ── 路线段 ──
       if (plan) {
-        html += '<div style="border-top:1px solid #2a3848;margin:6px 0 4px"></div>';
+        html += '<div style="border-top:1px solid #2a3848;margin:8px 0 6px"></div>';
         var totalTime = plan.time?Math.round(plan.time/60):'?';
-        html += '<div style="font-size:10px;color:#9caab8;margin-bottom:4px">🚌 到学校: <b style="color:#4fc3f7">'+totalTime+'分钟</b> · '+plan.cost+'元</div>';
+        html += '<div style="font-size:15px;color:#9caab8;margin-bottom:6px">🚌 到学校: <b style="color:#4fc3f7">'+totalTime+'分钟</b> · '+plan.cost+'元</div>';
         (plan.segments||[]).forEach(function(seg){
           var mode = seg.transit_mode || (seg.transit&&seg.transit.transit_mode) || '?';
           var icon = mode==='WALK'?'🚶':'🚌';
           var color = mode==='WALK'?'#66bb6a':'#4fc3f7';
-          html += '<div style="color:'+color+';font-size:10px;padding:1px 0"><span>'+icon+'</span> '+(seg.instruction||'')+'</div>';
+          html += '<div style="color:'+color+';font-size:15px;padding:2px 0"><span>'+icon+'</span> '+(seg.instruction||'')+'</div>';
         });
       }
       html += '</div>';
