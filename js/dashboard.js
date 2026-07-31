@@ -248,7 +248,7 @@
     map.setZoomAndCenter(C.mapZoom, C.mapCenter);
   }
 
-  // 路线+气泡提取为独立函数
+  // 路线+气泡
   function drawRoute(c, school) {
     allTransferLines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
     allInfoWindows.forEach(function(iw) { try { iw.close(); } catch(e) {} });
@@ -256,37 +256,25 @@
     var dist = haversine(c.lng, c.lat, school.lng, school.lat);
     var walkMin = Math.round(dist / 80);
 
-    // 生成气泡内容
-    function showInfoWindow(plan) {
-      var html = '<div style="padding:8px 12px;font-size:12px;min-width:240px;max-width:320px">';
-      html += '<b style="color:#0f1923;font-size:13px">🏫 '+school.name+'</b><br/>';
-      html += '<span style="color:#666;font-size:10px">📍 '+ (school.address||'?') +'</span>';
+    function showInfo(plan) {
+      var html = '<div style="padding:8px 12px;font-size:12px;min-width:240px">';
+      html += '<b style="font-size:13px">🏫 '+school.name+'</b><br/>';
+      html += '<span style="font-size:10px;color:#666">📍 '+(school.address||'?')+'</span>';
       html += '<hr style="margin:4px 0;border:none;border-top:1px solid #eee"/>';
       html += '<b>→ 🏠 '+c.name+'</b><br/>';
-      html += '<span style="color:#666;font-size:11px">直线: '+dist.toFixed(0)+'米 ~步行'+walkMin+'分钟</span>';
-
+      html += '<span style="font-size:11px;color:#666">直线: '+dist.toFixed(0)+'米</span>';
       if (plan) {
-        var totalWalk=0, totalBus=0, totalBusMin=0, busNames=[];
-        plan.routes.forEach(function(seg) {
-          if ((seg.walking||seg.walk)&&(seg.walking||seg.walk).distance) {
-            var w = seg.walking||seg.walk;
-            totalWalk += w.distance;
-          }
-          if (seg.bus&&seg.bus.buslines) seg.bus.buslines.forEach(function(bl){
-            totalBus += bl.duration||0;
-            busNames.push((bl.name||bl.key_name||'?').replace(/\s+/g,''));
-          });
+        html += '<hr style="margin:3px 0;border:none;border-top:1px dashed #ddd"/>';
+        var totalTime = Math.round((plan.time||0)/60);
+        html += '<span style="font-size:11px;color:#333">🕐 全程 '+(plan.time?(totalTime+'分钟'):'?')+' | 💰 '+(plan.cost||'0')+'元</span><br/>';
+        (plan.segments||[]).forEach(function(seg,i){
+          var mode = (seg.transit||seg).transit_mode || seg.mode || '?';
+          var icon = mode==='WALK' || mode==='walking' ? '🚶' : '🚌';
+          var color = mode==='WALK' || mode==='walking' ? '#66bb6a' : '#4fc3f7';
+          html += '<span style="color:'+color+';font-size:10px">'+icon+' '+(seg.instruction||(mode==='WALK'?'步行':'公交'))+'</span><br/>';
         });
-        if (busNames.length) {
-          totalBusMin = Math.round(totalBus/60);
-          html += '<hr style="margin:3px 0;border:none;border-top:1px dashed #ddd"/>';
-          html += '<span style="font-size:11px;color:#333">🚶 步行'+totalWalk+'米 → ';
-          html += '🚌 <b>'+busNames.slice(0,3).join(' / ')+(busNames.length>3?'…':'')+'</b>';
-          html += ' ('+totalBusMin+'分钟)</span><br/>';
-          html += '<span style="font-size:10px;color:#999">总耗时约 '+(Math.round(totalWalk/80)+totalBusMin)+' 分钟</span>';
-        }
       }
-      html += '</div>';
+      html += '<span style="font-size:9px;color:#999">🟢步行段 | 🔵公交段</span></div>';
       var iw = new AMap.InfoWindow({ content: html, offset: new AMap.Pixel(0,-10) });
       iw.open(map, [school.lng, school.lat]); allInfoWindows.push(iw);
     }
@@ -297,32 +285,25 @@
       transfer.search([c.lng, c.lat], [school.lng, school.lat], function(status, result) {
         if (status==='complete' && result.plans && result.plans.length>0) {
           var plan = result.plans[0];
-          plan.routes.forEach(function(seg) {
-            var path=[], color='#66bb6a';
-            // 步行段
-            if (seg.walking && seg.walking.steps) {
-              seg.walking.steps.forEach(function(s){ if(s.path&&Array.isArray(s.path)) path=path.concat(s.path); });
-            } else if (seg.walk && seg.walk.steps) {
-              seg.walk.steps.forEach(function(s){ if(s.path&&Array.isArray(s.path)) path=path.concat(s.path); });
+          (plan.segments||[]).forEach(function(seg){
+            var path = null, isWalk = false;
+            var t = seg.transit || seg;
+            if (t.path && Array.isArray(t.path)) { path = t.path; isWalk = true; }
+            // 也检查steps中的子路径
+            if (!path && t.steps) {
+              var merged = [];
+              t.steps.forEach(function(s){ if(s.path&&Array.isArray(s.path)) merged=merged.concat(s.path); });
+              if (merged.length>1) { path = merged; isWalk = true; }
             }
-            // 公交段（蓝色）
-            if (seg.bus && seg.bus.buslines) {
-              color = '#4fc3f7';
-              seg.bus.buslines.forEach(function(bl){
-                if (bl.path && Array.isArray(bl.path)) {
-                  bl.path.forEach(function(p){ path.push(p); });
-                }
-              });
-            }
-            if (path.length>1) {
-              var poly = new AMap.Polyline({ path:path, strokeColor:color, strokeWeight:4, strokeOpacity:0.75, zIndex:199 });
+            if (path && path.length>1) {
+              var color = isWalk ? '#66bb6a' : '#4fc3f7';
+              var poly = new AMap.Polyline({ path:path, strokeColor:color, strokeWeight:4, strokeOpacity:0.7, zIndex:199 });
               poly.setMap(map); allTransferLines.push(poly); hasDrawn = true;
             }
           });
-          showInfoWindow(plan);
+          showInfo(plan);
         } else {
-          // 路线为空,只画fallback+直线距离气泡
-          showInfoWindow(null);
+          showInfo(null);
         }
         if (!hasDrawn) {
           var dashed = new AMap.Polyline({ path:[[c.lng,c.lat],[school.lng,school.lat]], strokeColor:'#4fc3f7', strokeWeight:2, strokeStyle:'dashed', zIndex:199 });
@@ -332,7 +313,7 @@
     } catch(err){
       var dashed = new AMap.Polyline({ path:[[c.lng,c.lat],[school.lng,school.lat]], strokeColor:'#4fc3f7', strokeWeight:2, strokeStyle:'dashed', zIndex:199 });
       dashed.setMap(map); allTransferLines.push(dashed);
-      showInfoWindow(null);
+      showInfo(null);
     }
   }
 
