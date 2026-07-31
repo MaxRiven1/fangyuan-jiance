@@ -64,9 +64,12 @@ function main(dateStr) {
 
   const schoolsArr = Object.values(SCHOOL_COORDS);
   const communities = [];
+  const EXCLUDED = ['中加水岸', '蓝润V客尚东']; // 14校范围外
 
   // --- 处理套三池 ---
   for (const entry of poolS3['小区池'] || []) {
+    const cName = entry['小区'] || '';
+    if (EXCLUDED.includes(cName)) { console.log(' 跳过(非14校):', cName); continue; }
     const ph = entry['价格历史'] || [];
     const recent7 = ph.slice(-7);
     const avg = recent7.reduce((s, x) => s + (x['双卫最低万'] || x['套三最低万'] || 0), 0) / (recent7.length || 1);
@@ -79,7 +82,6 @@ function main(dateStr) {
     else if ((current || 0) > 150 && status !== 'alert') { status = 'warn'; statusText = '超预算'; }
     if (current > 150 + 20) { status = 'alert'; statusText = '严重超预算'; }
 
-    const cName = entry['小区'] || '';
     const coords = COMM_COORDS[cName] || { lng: 104.06, lat: 30.67 };
 
     communities.push({
