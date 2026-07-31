@@ -57,6 +57,8 @@ const POIS = {
     {name:'凯德广场·金牛',lng:104.024,lat:30.708,type:'shopping',address:'茶店子西街'},
     {name:'茶店子客运站',lng:104.014,lat:30.693,type:'transit',address:'地铁2号线'},
     {name:'羊犀立交地铁站',lng:104.057,lat:30.700,type:'transit',address:'地铁2/7号线'},
+    {name:'人民北路地铁站',lng:104.075,lat:30.688,type:'transit',address:'地铁1号线'},
+    {name:'花牌坊地铁站',lng:104.058,lat:30.682,type:'transit',address:'地铁6号线'},
     {name:'新金牛公园',lng:104.019,lat:30.692,type:'park',address:'茶店子'},
     {name:'花牌坊商圈',lng:104.061,lat:30.681,type:'shopping',address:'花牌坊街'},
     {name:'万达广场(金牛)',lng:104.061,lat:30.694,type:'shopping',address:'人民北路一段'},
@@ -68,13 +70,18 @@ const POIS = {
   '青羊区': [
     {name:'天府广场',lng:104.066,lat:30.659,type:'landmark',address:'人民南路'},
     {name:'宽窄巷子',lng:104.057,lat:30.667,type:'landmark',address:'金河路口'},
+    {name:'杜甫草堂',lng:104.040,lat:30.658,type:'landmark',address:'草堂路'},
+    {name:'金沙遗址博物馆',lng:104.005,lat:30.672,type:'landmark',address:'金沙遗址路'},
     {name:'青羊万达',lng:103.978,lat:30.680,type:'shopping',address:'光华北三路'},
     {name:'鹏瑞利广场',lng:104.005,lat:30.673,type:'shopping',address:'培风路'},
+    {name:'西单商场',lng:104.008,lat:30.671,type:'shopping',address:'金沙公交枢纽旁'},
     {name:'茂业仁和春天百货',lng:104.066,lat:30.654,type:'shopping',address:'人民中路'},
     {name:'太升路商圈',lng:104.067,lat:30.660,type:'shopping',address:'太升南路'},
+    {name:'送仙桥古玩市场',lng:104.041,lat:30.660,type:'shopping',address:'送仙桥'},
     {name:'浣花溪公园',lng:104.040,lat:30.659,type:'park',address:'草堂东路'},
     {name:'人民公园地铁站',lng:104.055,lat:30.660,type:'transit',address:'地铁2号线'},
     {name:'骡马市地铁站',lng:104.066,lat:30.660,type:'transit',address:'地铁1/4号线'},
+    {name:'金沙公交枢纽站',lng:104.008,lat:30.670,type:'transit',address:'BRT金沙站'},
     {name:'四川省人民医院',lng:104.048,lat:30.656,type:'hospital',address:'一环路西二段'},
     {name:'成都市第三人民医院',lng:104.065,lat:30.658,type:'hospital',address:'青龙街'},
     {name:'成都市妇女儿童中心医院',lng:103.982,lat:30.682,type:'hospital',address:'光华东一路'},
@@ -84,12 +91,14 @@ const POIS = {
     {name:'SM广场(成都)',lng:104.110,lat:30.667,type:'shopping',address:'二仙桥'},
     {name:'伊藤洋华堂(建设路)',lng:104.108,lat:30.660,type:'shopping',address:'建设路'},
     {name:'万象城(成都)',lng:104.105,lat:30.640,type:'shopping',address:'双成二路'},
+    {name:'双桥子家乐福',lng:104.103,lat:30.648,type:'shopping',address:'双桥子立交'},
     {name:'339购物中心',lng:104.110,lat:30.660,type:'landmark',address:'建设北路'},
     {name:'东郊记忆',lng:104.118,lat:30.662,type:'landmark',address:'建设南支路'},
     {name:'地铁3号线红星桥',lng:104.105,lat:30.665,type:'transit',address:'红星桥站'},
     {name:'地铁8号线东郊记忆',lng:104.118,lat:30.660,type:'transit',address:'东郊记忆站'},
     {name:'成都市第六人民医院',lng:104.112,lat:30.648,type:'hospital',address:'建设南街'},
     {name:'二仙桥公园',lng:104.108,lat:30.658,type:'park',address:'二仙桥'},
+    {name:'新华公园',lng:104.105,lat:30.670,type:'park',address:'双林路'},
     {name:'成华公园',lng:104.108,lat:30.670,type:'park',address:'府青路'},
     {name:'成都自然博物馆',lng:104.117,lat:30.677,type:'landmark',address:'成华大道'},
   ],
@@ -118,7 +127,7 @@ function main(dateStr) {
     const ph = entry['价格历史'] || [];
     const recent7 = ph.slice(-7);
     const avg = recent7.reduce((s, x) => s + (x['双卫最低万'] || x['套三最低万'] || 0), 0) / (recent7.length || 1);
-    const current = entry['双卫最低总价万'] || entry['基线总价万'] || 0;
+    const current = entry['双卫最低总价万'] || (recent7.length>0 && recent7[recent7.length-1]['套三最低万']) || entry['基线总价万'] || 0;
     const baseline = entry['基线总价万'] || current;
     const pctChange = avg ? ((current - avg) / avg * 100) : 0;
 
@@ -147,6 +156,7 @@ function main(dateStr) {
       statusText: statusText,
       status: status,
       daysCount: recent7.length,
+      priceHistory: recent7.map(x => x['双卫最低万'] || x['套二单卫最低万'] || x['套三最低万'] || 0),
       note: (entry['预算可行性'] || '').replace(/（.*$/, '').trim().substring(0, 40)
     });
   }
@@ -185,6 +195,7 @@ function main(dateStr) {
       statusText: statusText,
       status: status,
       daysCount: recent7.length,
+      priceHistory: recent7.map(x => x['双卫最低万'] || x['套二单卫最低万'] || x['套三最低万'] || 0),
       note: (entry['预算可行性'] || '').replace(/（.*$/, '').trim().substring(0, 40)
     });
   }

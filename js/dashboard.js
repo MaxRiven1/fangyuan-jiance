@@ -11,9 +11,11 @@
       .then(function(r) { return r.json(); })
       .then(function(d) {
         data = d;
-        var lo = document.getElementById('loadingOverlay');
+                var lo = document.getElementById('loadingOverlay');
         if (lo) lo.style.display = 'none';
-        document.getElementById('lastUpdate').textContent = d.generatedAt ? d.generatedAt.substring(0,10) : '--';
+        document.getElementById('lastUpdate').textContent = d.generatedAt ? d.generatedAt.substring(0,16) : '--';
+        // 启动时效更新
+        startFreshnessTimer();
         document.getElementById('summaryTotal').textContent =
           '🏘️ ' + d.communities.length + '个小区 | 🏫 ' + d.schools.length + '所学校 | ' + (Object.values(d.pois||{}).reduce(function(s,l){return s+l.length},0)) + '个POI';
         renderLeft();
@@ -65,6 +67,13 @@
         var cardClass = absPct>=20?' price-change-card chg-alert':' price-change-card';
         var barPercent = Math.min(absPct*4, 100);
         html += '<div class="'+cardClass+'" data-community="'+c.name+'" onclick="zoomToCommunity(\''+c.name+'\')"><div class="pc-head"><span class="pc-name">'+c.name+'</span><span class="pc-pool '+(c.pool==='套三'?'s3':'s2')+'">'+c.pool+'</span></div>';
+        // 迷你趋势线
+        var hist = c.priceHistory || [];
+        if (hist.length > 1) {
+          var hMax = Math.max(...hist), hMin = Math.min(...hist), hRange = hMax - hMin || 1;
+          var pts = hist.map(function(v,i){ return (i*3+1) + ',' + (20 - Math.round((v-hMin)/hRange*16)); }).join(' ');
+          html += '<div style="margin:4px 0"><svg width="'+(hist.length*3)+'" height="22" style="vertical-align:middle"><polyline points="'+pts+'" fill="none" stroke="'+(c.priceChangePct>=0?'#ef5350':'#66bb6a')+'" stroke-width="1.5"/><circle cx="1" cy="'+(20-Math.round((hist[0]-hMin)/hRange*16))+'" r="1.5" fill="#8fa4b8"/><circle cx="'+(hist.length*3-2)+'" cy="'+(20-Math.round((hist[hist.length-1]-hMin)/hRange*16))+'" r="1.5" fill="'+(c.priceChangePct>=0?'#ef5350':'#66bb6a')+'"/></svg></div>';
+        }
         html += '<div class="pc-bar-row"><span class="pc-label">基准</span><span class="pc-val">¥'+(c.price7dAvg||0).toFixed(1)+'万</span></div>';
         html += '<div class="pc-bar-row"><span class="pc-label">当前</span><div class="pc-bar-bg"><div class="pc-bar-fill '+barClass+'" style="width:'+barPercent+'%"></div></div><span class="pc-val '+chgClass+'">'+chgSign+pct.toFixed(1)+'%</span></div>';
         html += '<div class="pc-detail"><span>🏫 '+(c.school||'?')+'</span><span>📅 '+(c.daysCount||'4')+'天</span></div></div>';
@@ -270,8 +279,32 @@
     } catch(err){ showContent(); }
   }
 
+  // 键盘快捷键
+  document.addEventListener('keydown', function(e) {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.key === '0') resetMapView();
+    if (e.key === '1' && data) { var cs=data.communities.filter(function(c){return c.district==='金牛区'}); if(cs.length) map.setZoomAndCenter(14,[cs[0].lng,cs[0].lat]); }
+    if (e.key === '2' && data) { var cs=data.communities.filter(function(c){return c.district==='青羊区'}); if(cs.length) map.setZoomAndCenter(14,[cs[0].lng,cs[0].lat]); }
+    if (e.key === '3' && data) { var cs=data.communities.filter(function(c){return c.district==='成华区'}); if(cs.length) map.setZoomAndCenter(14,[cs[0].lng,cs[0].lat]); }
+  });
+
   window.zoomToCommunity = zoomToCommunity;
   window.resetMapView = resetMapView;
+
+  // 时效计数器
+  var freshnessTimer = null;
+  var lastLoadTime = null;
+  function startFreshnessTimer() {
+    lastLoadTime = Date.now();
+    if (freshnessTimer) clearInterval(freshnessTimer);
+    freshnessTimer = setInterval(function() {
+      var mins = Math.floor((Date.now() - lastLoadTime) / 60000);
+      var el = document.getElementById('lastUpdate');
+      if (mins === 0) el.textContent = '刚刚更新';
+      else if (mins < 60) el.textContent = mins + '分钟前';
+      else { var h = Math.floor(mins/60); var m = mins%60; el.textContent = h + '小时' + m + '分钟前'; }
+    }, 30000);
+  }
 
   function startPolling() {
     loadData();

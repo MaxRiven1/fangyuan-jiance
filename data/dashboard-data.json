@@ -131,6 +131,20 @@
         "address": "地铁2/7号线"
       },
       {
+        "name": "人民北路地铁站",
+        "lng": 104.075,
+        "lat": 30.688,
+        "type": "transit",
+        "address": "地铁1号线"
+      },
+      {
+        "name": "花牌坊地铁站",
+        "lng": 104.058,
+        "lat": 30.682,
+        "type": "transit",
+        "address": "地铁6号线"
+      },
+      {
         "name": "新金牛公园",
         "lng": 104.019,
         "lat": 30.692,
@@ -196,6 +210,20 @@
         "address": "金河路口"
       },
       {
+        "name": "杜甫草堂",
+        "lng": 104.04,
+        "lat": 30.658,
+        "type": "landmark",
+        "address": "草堂路"
+      },
+      {
+        "name": "金沙遗址博物馆",
+        "lng": 104.005,
+        "lat": 30.672,
+        "type": "landmark",
+        "address": "金沙遗址路"
+      },
+      {
         "name": "青羊万达",
         "lng": 103.978,
         "lat": 30.68,
@@ -210,6 +238,13 @@
         "address": "培风路"
       },
       {
+        "name": "西单商场",
+        "lng": 104.008,
+        "lat": 30.671,
+        "type": "shopping",
+        "address": "金沙公交枢纽旁"
+      },
+      {
         "name": "茂业仁和春天百货",
         "lng": 104.066,
         "lat": 30.654,
@@ -222,6 +257,13 @@
         "lat": 30.66,
         "type": "shopping",
         "address": "太升南路"
+      },
+      {
+        "name": "送仙桥古玩市场",
+        "lng": 104.041,
+        "lat": 30.66,
+        "type": "shopping",
+        "address": "送仙桥"
       },
       {
         "name": "浣花溪公园",
@@ -243,6 +285,13 @@
         "lat": 30.66,
         "type": "transit",
         "address": "地铁1/4号线"
+      },
+      {
+        "name": "金沙公交枢纽站",
+        "lng": 104.008,
+        "lat": 30.67,
+        "type": "transit",
+        "address": "BRT金沙站"
       },
       {
         "name": "四川省人民医院",
@@ -296,6 +345,13 @@
         "address": "双成二路"
       },
       {
+        "name": "双桥子家乐福",
+        "lng": 104.103,
+        "lat": 30.648,
+        "type": "shopping",
+        "address": "双桥子立交"
+      },
+      {
         "name": "339购物中心",
         "lng": 104.11,
         "lat": 30.66,
@@ -338,6 +394,13 @@
         "address": "二仙桥"
       },
       {
+        "name": "新华公园",
+        "lng": 104.105,
+        "lat": 30.67,
+        "type": "park",
+        "address": "双林路"
+      },
+      {
         "name": "成华公园",
         "lng": 104.108,
         "lat": 30.67,
@@ -373,6 +436,12 @@
       "statusText": "达标",
       "status": "ok",
       "daysCount": 4,
+      "priceHistory": [
+        120,
+        120,
+        120,
+        120
+      ],
       "note": "预算内-第一顺位"
     },
     {
@@ -394,6 +463,12 @@
       "statusText": "达标",
       "status": "ok",
       "daysCount": 4,
+      "priceHistory": [
+        128,
+        128,
+        128,
+        128
+      ],
       "note": "预算内-第二顺位"
     },
     {
@@ -415,6 +490,12 @@
       "statusText": "超预算",
       "status": "warn",
       "daysCount": 4,
+      "priceHistory": [
+        156,
+        156,
+        156,
+        156
+      ],
       "note": "超预算6万-议价可及"
     },
     {
@@ -436,6 +517,12 @@
       "statusText": "严重超预算",
       "status": "alert",
       "daysCount": 4,
+      "priceHistory": [
+        178,
+        178,
+        178,
+        178
+      ],
       "note": "超预算28万"
     },
     {
@@ -457,6 +544,12 @@
       "statusText": "超预算",
       "status": "warn",
       "daysCount": 4,
+      "priceHistory": [
+        168,
+        168,
+        168,
+        168
+      ],
       "note": "超预算18万起，中位远超"
     },
     {
@@ -470,14 +563,20 @@
       "layout": "",
       "area": null,
       "elevator": true,
-      "currentPrice": 115,
+      "currentPrice": 99.8,
       "baselinePrice": 115,
       "price7dAvg": 99.8,
-      "priceChange": 15.2,
-      "priceChangePct": 15.23,
+      "priceChange": 0,
+      "priceChangePct": 0,
       "statusText": "无双卫·剔除",
       "status": "alert",
       "daysCount": 4,
+      "priceHistory": [
+        99.8,
+        99.8,
+        99.8,
+        99.8
+      ],
       "note": "不符合硬性要求"
     },
     {
@@ -491,14 +590,20 @@
       "layout": "",
       "area": null,
       "elevator": true,
-      "currentPrice": 122,
+      "currentPrice": 119,
       "baselinePrice": 122,
       "price7dAvg": 119,
-      "priceChange": 3,
-      "priceChangePct": 2.52,
+      "priceChange": 0,
+      "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
       "daysCount": 4,
+      "priceHistory": [
+        119,
+        119,
+        119,
+        119
+      ],
       "note": "存疑-72㎡小套三或全为单卫"
     },
     {
@@ -520,6 +625,11 @@
       "statusText": "达标",
       "status": "ok",
       "daysCount": 3,
+      "priceHistory": [
+        96,
+        96,
+        96
+      ],
       "note": "预算内-顶尖学校最可及"
     },
     {
@@ -541,6 +651,11 @@
       "statusText": "达标",
       "status": "ok",
       "daysCount": 3,
+      "priceHistory": [
+        78,
+        78,
+        78
+      ],
       "note": "预算内-百万元内套二最丰富"
     },
     {
@@ -562,6 +677,11 @@
       "statusText": "达标",
       "status": "ok",
       "daysCount": 3,
+      "priceHistory": [
+        82,
+        82,
+        82
+      ],
       "note": "预算内-百万元内套二"
     },
     {
@@ -583,6 +703,10 @@
       "statusText": "达标",
       "status": "ok",
       "daysCount": 2,
+      "priceHistory": [
+        96,
+        96
+      ],
       "note": "预算内-成华小学对口唯一百万元内套二"
     },
     {
@@ -604,6 +728,10 @@
       "statusText": "达标",
       "status": "ok",
       "daysCount": 2,
+      "priceHistory": [
+        77,
+        77
+      ],
       "note": "预算内-东城根街小学对口最低价标的"
     },
     {
@@ -625,6 +753,10 @@
       "statusText": "达标",
       "status": "ok",
       "daysCount": 2,
+      "priceHistory": [
+        97.2,
+        97.2
+      ],
       "note": "预算内-茶店子小学对口第二选择"
     }
   ],
