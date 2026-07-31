@@ -287,8 +287,21 @@
 
     // 价格评分 - 越接近预算越高
     var budget = 150, gap = (c.currentPrice||0) - budget;
-    scores.priceLabel = gap <= 0 ? '✅ 已入预算' : '⚠ 超预算 ' + gap + '万';
-    scores.budgetGap = gap;
+    scores.priceLabel = gap <= 0 ? '已达标' : '超' + gap + '万';
+    scores.priceGap = gap;
+    scores.priceScore = Math.max(0, 1 - Math.abs(gap)/50);
+
+    // 归一化距离:1.5公里外=0
+    var maxD = 1500, norm = function(d) { return d ? Math.max(0, 1 - d/maxD) : 0; };
+
+    // 加权综合分
+    scores.total = scores.priceScore * 0.25
+      + norm(scores.schoolDist) * 0.25
+      + norm(scores.metro ? scores.metro.dist : 9999) * 0.20
+      + norm(scores.mall ? scores.mall.dist : 9999) * 0.10
+      + norm(scores.hospital ? scores.hospital.dist : 9999) * 0.10
+      + norm(scores.park ? scores.park.dist : 9999) * 0.10;
+    scores.totalPct = Math.round(scores.total * 100);
 
     return scores;
   }
