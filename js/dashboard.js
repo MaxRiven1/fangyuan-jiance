@@ -11,6 +11,8 @@
       .then(function(r) { return r.json(); })
       .then(function(d) {
         data = d;
+        var lo = document.getElementById('loadingOverlay');
+        if (lo) lo.style.display = 'none';
         document.getElementById('lastUpdate').textContent = d.generatedAt ? d.generatedAt.substring(0,10) : '--';
         document.getElementById('summaryTotal').textContent =
           '🏘️ ' + d.communities.length + '个小区 | 🏫 ' + d.schools.length + '所学校 | ' + (Object.values(d.pois||{}).reduce(function(s,l){return s+l.length},0)) + '个POI';
@@ -201,64 +203,10 @@
         return (c.school||'').indexOf(s.name.replace('成都市','').replace('小学','').substring(0,2))>=0 || (c.school||'').indexOf(s.name.replace('成都市',''))>=0;
       });
 
-      // 点击小区 → 清除旧路线 + 公交路线规划
+      // 点击小区 → 画路线
       m.on('click', function() {
-        allTransferLines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
-        allInfoWindows.forEach(function(iw) { try { iw.close(); } catch(e) {} });
-        allTransferLines = [];
-
         if (!school) return;
-        var dist = haversine(c.lng, c.lat, school.lng, school.lat);
-
-        // 真实公交路线
-        try {
-          var transfer = new AMap.Transfer({ map: map, city: '成都', extensions: 'all' });
-          transfer.search([c.lng, c.lat], [school.lng, school.lat], function(status, result) {
-            if (status === 'complete' && result.plans && result.plans.length > 0) {
-              var plan = result.plans[0];
-              // 画所有路段
-              plan.routes.forEach(function(route, ri) {
-                var routePath = [];
-                if (route.walking_distance) {
-                  route.steps.forEach(function(step) {
-                    if (step.path && step.path.length > 1) routePath = routePath.concat(step.path);
-                  });
-                } else if (route.bus) {
-                  var busStops = [];
-                  (route.bus.buslines||[]).forEach(function(bl) {
-                    bl.path.forEach(function(p) { busStops.push(p); });
-                  });
-                  routePath = busStops;
-                }
-                if (routePath.length > 1) {
-                  var poly = new AMap.Polyline({
-                    path: routePath,
-                    strokeColor: ri===0?'#66bb6a':'#4fc3f7',
-                    strokeWeight: 4,
-                    strokeOpacity: 0.7,
-                    zIndex: 199
-                  });
-                  poly.setMap(map);
-                  allTransferLines.push(poly);
-                }
-              });
-            }
-            // 气泡（始终显示）
-            var walkMin = Math.round(dist / 80);
-            var content = '<div style="padding:8px 12px;font-size:12px;min-width:220px"><b style="color:#0f1923;font-size:13px">'+school.name+'</b><br/><span style="color:#666">📍 '+ (school.address||'') +'</span><hr style="margin:4px 0;border:none;border-top:1px solid #eee"/><b>→ '+c.name+'</b><br/><span style="color:#666">直线距离: <b style="color:#4fc3f7">'+dist.toFixed(0)+'米</b> | 步行约'+walkMin+'分钟</span><br/><span style="font-size:10px;color:#999">蓝色=公交路线 | 绿色=步行段</span></div>';
-            var iw = new AMap.InfoWindow({ content: content, offset: new AMap.Pixel(0,-10) });
-            iw.open(map, [school.lng, school.lat]);
-            allInfoWindows.push(iw);
-          });
-        } catch(err) {
-          console.log('公交路线规划失败,回退直线:', err);
-          // 回退直线
-          var line = new AMap.Polyline({ path:[[c.lng,c.lat],[school.lng,school.lat]], strokeColor:'#4fc3f7', strokeWeight:2, strokeStyle:'dashed', zIndex:199 });
-          line.setMap(map); allTransferLines.push(line);
-          var content = '<div style="padding:8px 12px;font-size:12px"><b style="font-size:13px">'+school.name+'</b><br/><span style="color:#666">→ '+c.name+'</span><br/><span style="color:#4fc3f7">直线距离 '+dist.toFixed(0)+'米</span></div>';
-          var iw = new AMap.InfoWindow({ content:content, offset:new AMap.Pixel(0,-10) });
-          iw.open(map, [school.lng, school.lat]); allInfoWindows.push(iw);
-        }
+        drawRoute(c, school);
       });
     });
   }
@@ -271,23 +219,59 @@
     return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
   }
 
-  // 点击面板中的小区名 → 地图缩放定位到该小区
+  // 点击面板中的小区名 → 地图缩放定位 + 同步画路线
   function zoomToCommunity(name) {
     if (!map || !data) return;
     var c = (data.communities||[]).find(function(x) { return x.name === name; });
     if (!c) return;
-    // 平滑飞到该位置并放大
     map.setZoomAndCenter(16, [c.lng, c.lat]);
-    // 弹窗提示
-    var iw = new AMap.InfoWindow({
-      content: '<div style="padding:6px 10px;font-size:12px"><b>'+c.name+'</b> ¥'+c.currentPrice+'万<br/><span style="color:#666">'+c.school+' | '+c.layout+'</span></div>',
-      offset: new AMap.Pixel(0,-30)
+    // 找到对应学校并模拟点击事件触发路线
+    var school = (data.schools||[]).find(function(s) {
+      return (c.school||'').indexOf(s.name.replace('成都市','').replace('小学','').substring(0,2))>=0 
+        || (c.school||'').indexOf(s.name.replace('成都市',''))>=0;
     });
-    iw.open(map, [c.lng, c.lat]);
-    setTimeout(function() { iw.close(); }, 4000);
+    if (school) drawRoute(c, school);
+  }
+
+  // 回全景
+  function resetMapView() {
+    if (!map) return;
+    map.setZoomAndCenter(C.mapZoom, C.mapCenter);
+  }
+
+  // 路线+气泡提取为独立函数（marker点击和面板点击共用）
+  function drawRoute(c, school) {
+    allTransferLines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
+    allInfoWindows.forEach(function(iw) { try { iw.close(); } catch(e) {} });
+    allTransferLines = [];
+    var dist = haversine(c.lng, c.lat, school.lng, school.lat);
+    var walkMin = Math.round(dist / 80);
+    var showContent = function() {
+      var content = '<div style="padding:8px 12px;font-size:12px;min-width:220px"><b style="color:#0f1923;font-size:13px">'+school.name+'</b><br/><span style="color:#666">📍 '+ (school.address||'') +'</span><hr style="margin:4px 0;border:none;border-top:1px solid #eee"/><b>→ '+c.name+'</b><br/><span style="color:#666">直线距离: <b style="color:#4fc3f7">'+dist.toFixed(0)+'米</b> | 步行约'+walkMin+'分钟</span><br/><span style="font-size:10px;color:#999">蓝色=公交路线 | 绿色=步行段</span></div>';
+      var iw = new AMap.InfoWindow({ content: content, offset: new AMap.Pixel(0,-10) });
+      iw.open(map, [school.lng, school.lat]); allInfoWindows.push(iw);
+    };
+    try {
+      var transfer = new AMap.Transfer({ map: map, city: '成都', extensions: 'all' });
+      transfer.search([c.lng, c.lat], [school.lng, school.lat], function(status, result) {
+        if (status==='complete' && result.plans && result.plans.length>0) {
+          result.plans[0].routes.forEach(function(route, ri) {
+            var routePath=[];
+            if (route.walking_distance) route.steps.forEach(function(s){if(s.path&&s.path.length>1)routePath=routePath.concat(s.path);});
+            else if (route.bus) (route.bus.buslines||[]).forEach(function(bl){bl.path.forEach(function(p){routePath.push(p);});});
+            if(routePath.length>1){
+              var poly=new AMap.Polyline({path:routePath,strokeColor:ri===0?'#66bb6a':'#4fc3f7',strokeWeight:4,strokeOpacity:0.7,zIndex:199});
+              poly.setMap(map);allTransferLines.push(poly);
+            }
+          });
+        }
+        showContent();
+      });
+    } catch(err){ showContent(); }
   }
 
   window.zoomToCommunity = zoomToCommunity;
+  window.resetMapView = resetMapView;
 
   function startPolling() {
     loadData();

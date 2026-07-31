@@ -39,15 +39,15 @@
     {
       "name": "成都市草堂小学",
       "district": "青羊区",
-      "lng": 104.04,
-      "lat": 30.66,
-      "address": "草堂片区"
+      "lng": 104.042,
+      "lat": 30.663,
+      "address": "草堂北路"
     },
     {
       "name": "成都市金沙小学",
       "district": "青羊区",
-      "lng": 104,
-      "lat": 30.675,
+      "lng": 104.005,
+      "lat": 30.674,
       "address": "金阳路90号"
     },
     {
@@ -60,9 +60,9 @@
     {
       "name": "成都市石笋街小学",
       "district": "金牛区",
-      "lng": 104.06,
-      "lat": 30.68,
-      "address": "花牌坊片区"
+      "lng": 104.058,
+      "lat": 30.682,
+      "address": "花牌坊街"
     },
     {
       "name": "成都市茶店子小学",
@@ -74,15 +74,15 @@
     {
       "name": "成都市石室小学",
       "district": "成华区",
-      "lng": 104.11,
-      "lat": 30.65,
-      "address": "双桥子片区"
+      "lng": 104.108,
+      "lat": 30.648,
+      "address": "双桥子"
     },
     {
       "name": "成都市双林小学",
       "district": "成华区",
-      "lng": 104.1,
-      "lat": 30.66,
+      "lng": 104.102,
+      "lat": 30.662,
       "address": "双林路"
     },
     {
@@ -582,7 +582,7 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 1,
+      "daysCount": 2,
       "note": "预算内-成华小学对口唯一百万元内套二"
     },
     {
@@ -603,7 +603,7 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 1,
+      "daysCount": 2,
       "note": "预算内-东城根街小学对口最低价标的"
     },
     {
@@ -624,7 +624,7 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 1,
+      "daysCount": 2,
       "note": "预算内-茶店子小学对口第二选择"
     }
   ],
