@@ -113,8 +113,8 @@
           if (!bounds) return;
           bounds.forEach(function(boundary) {
             var poly = new AMap.Polygon({
-              path: boundary, fillColor: colors[name]||'#4fc3f7', fillOpacity: 0.06,
-              strokeColor: colors[name]||'#4fc3f7', strokeWeight: 1.5, strokeOpacity: 0.4, zIndex: 1
+              path: boundary, fillColor: colors[name]||'#4fc3f7', fillOpacity: 0.18,
+              strokeColor: colors[name]||'#4fc3f7', strokeWeight: 2.5, strokeOpacity: 0.8, zIndex: 1
             });
             poly.setMap(map); allPolylines.push(poly);
           });
