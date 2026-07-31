@@ -257,24 +257,29 @@
     var walkMin = Math.round(dist / 80);
 
     function showInfo(plan) {
-      var html = '<div style="padding:8px 12px;font-size:12px;min-width:240px">';
-      html += '<b style="font-size:13px">🏫 '+school.name+'</b><br/>';
-      html += '<span style="font-size:10px;color:#666">📍 '+(school.address||'?')+'</span>';
-      html += '<hr style="margin:4px 0;border:none;border-top:1px solid #eee"/>';
-      html += '<b>→ 🏠 '+c.name+'</b><br/>';
-      html += '<span style="font-size:11px;color:#666">直线: '+dist.toFixed(0)+'米</span>';
+      var html = '<div style="padding:10px 14px;font-size:12px;min-width:260px;background:#0f1923;color:#e8edf2;border-radius:6px">';
+      // 学校名 - 紫底白字粗体
+      html += '<div style="background:linear-gradient(135deg,#9c27b0,#6a1b9a);color:#fff;padding:6px 10px;border-radius:4px;margin-bottom:6px;font-size:14px;font-weight:bold;display:flex;align-items:center"><span style="font-size:16px;margin-right:6px">🏫</span>'+school.name+'</div>';
+      html += '<div style="color:#9caab8;font-size:11px;padding:0 4px;margin-bottom:4px">📍 '+(school.address||'?')+'</div>';
+      html += '<div style="border-top:1px solid #2a3848;margin:6px 0"></div>';
+      // 小区名 - 绿底白字粗体
+      html += '<div style="background:linear-gradient(135deg,#43a047,#2e7d32);color:#fff;padding:6px 10px;border-radius:4px;margin-bottom:6px;font-size:14px;font-weight:bold;display:flex;align-items:center"><span style="font-size:16px;margin-right:6px">🏠</span>'+c.name+'</div>';
+      html += '<div style="color:#9caab8;font-size:11px;padding:0 4px">直线距离: <b style="color:#4fc3f7">'+dist.toFixed(0)+'</b> 米</div>';
       if (plan) {
-        html += '<hr style="margin:3px 0;border:none;border-top:1px dashed #ddd"/>';
-        var totalTime = Math.round((plan.time||0)/60);
-        html += '<span style="font-size:11px;color:#333">🕐 全程 '+(plan.time?(totalTime+'分钟'):'?')+' | 💰 '+(plan.cost||'0')+'元</span><br/>';
-        (plan.segments||[]).forEach(function(seg,i){
-          var mode = (seg.transit||seg).transit_mode || seg.mode || '?';
+        html += '<div style="border-top:1px solid #2a3848;margin:6px 0"></div>';
+        var totalTime = plan.time?Math.round(plan.time/60):'?';
+        html += '<div style="padding:4px;font-size:12px;color:#e8edf2">🕐 全程 <b style="color:#4fc3f7">'+totalTime+'分钟</b> | 💰 <b style="color:#ffa726">'+plan.cost+'</b>元</div>';
+        html += '<div style="padding:4px 0;font-size:11px;line-height:1.6">';
+        (plan.segments||[]).forEach(function(seg){
+          var mode = seg.transit_mode || (seg.transit&&seg.transit.transit_mode) || '?';
           var icon = mode==='WALK' || mode==='walking' ? '🚶' : '🚌';
           var color = mode==='WALK' || mode==='walking' ? '#66bb6a' : '#4fc3f7';
-          html += '<span style="color:'+color+';font-size:10px">'+icon+' '+(seg.instruction||(mode==='WALK'?'步行':'公交'))+'</span><br/>';
+          html += '<div style="color:'+color+';font-weight:600">'+icon+' '+(seg.instruction||(mode==='WALK'?'步行':'公交'))+(seg.distance?' <span style=color:#9caab8>· '+seg.distance+'米</span>':'')+'</div>';
         });
+        html += '</div>';
       }
-      html += '<span style="font-size:9px;color:#999">🟢步行段 | 🔵公交段</span></div>';
+      html += '<div style="border-top:1px solid #2a3848;margin-top:6px;padding-top:4px;font-size:10px;color:#6a7a8a;text-align:center">🟢步行段 | 🔵公交段</div>';
+      html += '</div>';
       var iw = new AMap.InfoWindow({ content: html, offset: new AMap.Pixel(0,-10) });
       iw.open(map, [school.lng, school.lat]); allInfoWindows.push(iw);
     }
