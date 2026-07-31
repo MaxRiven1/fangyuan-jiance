@@ -75,7 +75,8 @@
     try {
       map = new AMap.Map('amapContainer', { zoom: C.mapZoom, center: C.mapCenter, resizeEnable: true });
       console.log('高德地图初始化成功');
-      // 注意：不要在这里调用 renderMapMarkers，等数据加载完成后再画
+      // 如果数据已经加载完毕，直接渲染标记（避免时序问题）
+      if (data) refreshMap();
       AMap.plugin('AMap.Transfer', function() { console.log('Transfer plugin ready'); });
     } catch(e) {
       console.error('地图初始化失败:', e.message);
