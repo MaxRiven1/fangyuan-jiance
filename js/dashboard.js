@@ -328,6 +328,7 @@
 
   window.zoomToCommunity = zoomToCommunity;
   window.resetMapView = resetMapView;
+  window.drawRoute = drawRoute;
 
   // 时效计数器
   var freshnessTimer = null;
