@@ -34,7 +34,8 @@
       html += '<div class="district-block"><div class="district-title"><span class="dot '+dotClass+'"></span>'+district+'<span style="color:var(--text-dim);font-weight:400;font-size:11px">('+comms.length+'个小区)</span></div>';
       comms.forEach(function(c) {
         var tagClass = c.status || 'ok';
-        html += '<div class="community-card"><div class="c-head"><span class="c-name">'+c.name+'</span><span class="c-pool '+(c.pool==='套三'?'s3':'s2')+'">'+c.pool+'</span></div>';
+        html += '<div class="community-card" data-community="'+c.name+'" onclick="zoomToCommunity(\''+c.name+'\')">';
+        html += '<div class="c-head"><span class="c-name">'+c.name+'</span><span class="c-pool '+(c.pool==='套三'?'s3':'s2')+'">'+c.pool+'</span></div>';
         html += '<div class="c-info"><span>📐 '+(c.layout||'?')+'</span><span>📏 '+(c.area||'?')+'㎡</span>'+(c.elevator?'<span>🛗 有电梯</span>':'<span>🚫 无电梯</span>')+'</div>';
         html += '<div class="c-school">🏫 '+(c.school||'?')+'</div>';
         html += '<div class="c-price-row"><span class="c-price">¥'+(c.currentPrice||'?')+'万</span><span class="price-tag '+tagClass+'">'+(c.statusText||'--')+'</span></div>';
@@ -61,7 +62,7 @@
         var chgSign = pct>0?'+':'';
         var cardClass = absPct>=20?' price-change-card chg-alert':' price-change-card';
         var barPercent = Math.min(absPct*4, 100);
-        html += '<div class="'+cardClass+'"><div class="pc-head"><span class="pc-name">'+c.name+'</span><span class="pc-pool '+(c.pool==='套三'?'s3':'s2')+'">'+c.pool+'</span></div>';
+        html += '<div class="'+cardClass+'" data-community="'+c.name+'" onclick="zoomToCommunity(\''+c.name+'\')"><div class="pc-head"><span class="pc-name">'+c.name+'</span><span class="pc-pool '+(c.pool==='套三'?'s3':'s2')+'">'+c.pool+'</span></div>';
         html += '<div class="pc-bar-row"><span class="pc-label">基准</span><span class="pc-val">¥'+(c.price7dAvg||0).toFixed(1)+'万</span></div>';
         html += '<div class="pc-bar-row"><span class="pc-label">当前</span><div class="pc-bar-bg"><div class="pc-bar-fill '+barClass+'" style="width:'+barPercent+'%"></div></div><span class="pc-val '+chgClass+'">'+chgSign+pct.toFixed(1)+'%</span></div>';
         html += '<div class="pc-detail"><span>🏫 '+(c.school||'?')+'</span><span>📅 '+(c.daysCount||'4')+'天</span></div></div>';
@@ -73,7 +74,7 @@
 
   function initMap() {
     try {
-      map = new AMap.Map('amapContainer', { zoom: C.mapZoom, center: C.mapCenter, resizeEnable: true });
+      map = new AMap.Map('amapContainer', { zoom: C.mapZoom, center: C.mapCenter, resizeEnable: true, mapStyle: 'amap://styles/blue' });
       console.log('高德地图初始化成功');
       // 预加载所有需要的插件
       AMap.plugin(['AMap.Transfer', 'AMap.DistrictSearch'], function() {
@@ -137,12 +138,12 @@
     allTransferLines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
     allMarkers = []; allPolylines = []; allInfoWindows = []; allTransferLines = [];
 
-    // ===== 学校标记 =====
+    // ===== 学校标记（放大） =====
     (data.schools||[]).forEach(function(s, idx) {
       var m = new AMap.Marker({
         position: [s.lng, s.lat],
-        icon: new AMap.Icon({ size:new AMap.Size(18,18), image:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><circle cx="9" cy="9" r="8" fill="#e040fb" stroke="#fff" stroke-width="2"/><text x="9" y="12" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">校</text></svg>'), imageSize:new AMap.Size(18,18) }),
-        offset: new AMap.Pixel(-9,-9), zIndex:100, title: s.name
+        icon: new AMap.Icon({ size:new AMap.Size(22,22), image:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"><circle cx="11" cy="11" r="10" fill="#e040fb" stroke="#fff" stroke-width="2.5"/><text x="11" y="15" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">校</text></svg>'), imageSize:new AMap.Size(22,22) }),
+        offset: new AMap.Pixel(-11,-11), zIndex:100, title: s.name
       });
       m.setMap(map); allMarkers.push(m);
 
@@ -175,8 +176,8 @@
       var color = c.status==='ok'?'#66bb6a':c.status==='warn'?'#ffa726':'#ef5350';
       var m = new AMap.Marker({
         position: [c.lng, c.lat],
-        icon: new AMap.Icon({ size:new AMap.Size(14,14), image:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="14" height="20"><path d="M7 0 C3.1 0 0 3.1 0 7 C0 12 7 20 7 20 S14 12 14 7 C14 3.1 10.9 0 7 0 Z" fill="'+color+'" stroke="#fff" stroke-width="1.5"/><circle cx="7" cy="7" r="3" fill="#fff" opacity="0.9"/></svg>'), imageSize:new AMap.Size(14,20) }),
-        offset: new AMap.Pixel(-7,-20), zIndex:50, title: c.name+' ¥'+c.currentPrice+'万'
+        icon: new AMap.Icon({ size:new AMap.Size(18,26), image:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="18" height="26"><path d="M9 0 C4 0 0 4 0 9 C0 15 9 26 9 26 S18 15 18 9 C18 4 14 0 9 0 Z" fill="'+color+'" stroke="#fff" stroke-width="2"/><circle cx="9" cy="9" r="5" fill="#fff" opacity="0.9"/></svg>'), imageSize:new AMap.Size(18,26) }),
+        offset: new AMap.Pixel(-9,-26), zIndex:50, title: c.name+' ¥'+c.currentPrice+'万'
       });
       m.setMap(map); allMarkers.push(m);
 
@@ -261,6 +262,24 @@
     var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(toRad(la1))*Math.cos(toRad(la2))*Math.sin(dLng/2)*Math.sin(dLng/2);
     return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
   }
+
+  // 点击面板中的小区名 → 地图缩放定位到该小区
+  function zoomToCommunity(name) {
+    if (!map || !data) return;
+    var c = (data.communities||[]).find(function(x) { return x.name === name; });
+    if (!c) return;
+    // 平滑飞到该位置并放大
+    map.setZoomAndCenter(16, [c.lng, c.lat]);
+    // 弹窗提示
+    var iw = new AMap.InfoWindow({
+      content: '<div style="padding:6px 10px;font-size:12px"><b>'+c.name+'</b> ¥'+c.currentPrice+'万<br/><span style="color:#666">'+c.school+' | '+c.layout+'</span></div>',
+      offset: new AMap.Pixel(0,-30)
+    });
+    iw.open(map, [c.lng, c.lat]);
+    setTimeout(function() { iw.close(); }, 4000);
+  }
+
+  window.zoomToCommunity = zoomToCommunity;
 
   function startPolling() {
     loadData();
