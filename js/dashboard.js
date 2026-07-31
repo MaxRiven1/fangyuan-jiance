@@ -1,4 +1,4 @@
-// 学区房数智监测看板 - 核心逻辑
+// 学区房数智监测看板 - v2 商圈+路线+区域轮廓
 (function() {
   'use strict';
   var C = DASHBOARD_CONFIG;
@@ -6,15 +6,14 @@
   var map = null;
   var timer = null;
 
-  // ===== 数据加载 =====
   function loadData() {
     fetch(C.dataFile + '?t=' + Date.now())
       .then(function(r) { return r.json(); })
       .then(function(d) {
         data = d;
-        document.getElementById('lastUpdate').textContent = data.lastUpdate || data.generatedAt;
+        document.getElementById('lastUpdate').textContent = d.generatedAt ? d.generatedAt.substring(0,10) : '--';
         document.getElementById('summaryTotal').textContent =
-          '🏘️ ' + data.communities.length + '个小区 | 🏫 ' + data.schools.length + '所学校';
+          '🏘️ ' + d.communities.length + '个小区 | 🏫 ' + d.schools.length + '所学校 | ' + (Object.values(d.pois||{}).reduce(function(s,l){return s+l.length},0)) + '个POI';
         renderLeft();
         renderRight();
         if (map) refreshMap();
@@ -25,83 +24,63 @@
       });
   }
 
-  // ===== 左侧：小区详情3区面板 =====
   function renderLeft() {
     var container = document.getElementById('leftPanels');
     var html = '';
     C.districts.forEach(function(district) {
       var comms = data.communities.filter(function(c) { return c.district === district; });
       comms.sort(function(a,b) { return (a.currentPrice||0) - (b.currentPrice||0); });
-      var dotClass = '';
-      if (district === '金牛区') dotClass = 'jinniu';
-      else if (district === '青羊区') dotClass = 'qingyang';
-      else dotClass = 'chenghua';
-      html += '<div class="district-block">';
-      html += '<div class="district-title"><span class="dot ' + dotClass + '"></span>' + district + ' <span style="color:var(--text-dim);font-weight:400;font-size:11px">(' + comms.length + '个小区)</span></div>';
+      var dotClass = district==='金牛区'?'jinniu':district==='青羊区'?'qingyang':'chenghua';
+      html += '<div class="district-block"><div class="district-title"><span class="dot '+dotClass+'"></span>'+district+'<span style="color:var(--text-dim);font-weight:400;font-size:11px">('+comms.length+'个小区)</span></div>';
       comms.forEach(function(c) {
-        var poolClass = c.pool === '套三' ? 's3' : 's2';
         var tagClass = c.status || 'ok';
-        html += '<div class="community-card">';
-        html += '<div class="c-head"><span class="c-name">' + c.name + '</span><span class="c-pool ' + poolClass + '">' + c.pool + '</span></div>';
-        html += '<div class="c-info"><span>📐 ' + (c.layout||'?') + '</span><span>📏 ' + (c.area||'?') + '㎡</span>' + (c.elevator ? '<span>🛗 有电梯</span>' : '<span>🚫 无电梯</span>') + '</div>';
-        html += '<div class="c-school">🏫 ' + (c.school||'?') + '</div>';
-        html += '<div class="c-price-row"><span class="c-price">¥' + (c.currentPrice||'?') + '万</span><span class="price-tag ' + tagClass + '">' + (c.statusText||'--') + '</span></div>';
-        html += '<div class="c-note">' + (c.note||'') + '</div>';
-        html += '</div>';
+        html += '<div class="community-card"><div class="c-head"><span class="c-name">'+c.name+'</span><span class="c-pool '+(c.pool==='套三'?'s3':'s2')+'">'+c.pool+'</span></div>';
+        html += '<div class="c-info"><span>📐 '+(c.layout||'?')+'</span><span>📏 '+(c.area||'?')+'㎡</span>'+(c.elevator?'<span>🛗 有电梯</span>':'<span>🚫 无电梯</span>')+'</div>';
+        html += '<div class="c-school">🏫 '+(c.school||'?')+'</div>';
+        html += '<div class="c-price-row"><span class="c-price">¥'+(c.currentPrice||'?')+'万</span><span class="price-tag '+tagClass+'">'+(c.statusText||'--')+'</span></div>';
+        html += '<div class="c-note">'+(c.note||'')+'</div></div>';
       });
       html += '</div>';
     });
     container.innerHTML = html;
   }
 
-  // ===== 右侧：价格变动3区面板 =====
   function renderRight() {
     var container = document.getElementById('rightPanels');
     var html = '';
     C.districts.forEach(function(district) {
       var comms = data.communities.filter(function(c) { return c.district === district; });
       comms.sort(function(a,b) { return Math.abs(b.priceChangePct||0) - Math.abs(a.priceChangePct||0); });
-      var dotClass = '';
-      if (district === '金牛区') dotClass = 'jinniu';
-      else if (district === '青羊区') dotClass = 'qingyang';
-      else dotClass = 'chenghua';
-      html += '<div class="district-block">';
-      html += '<div class="district-title"><span class="dot ' + dotClass + '"></span>' + district + ' 价格变动</div>';
+      var dotClass = district==='金牛区'?'jinniu':district==='青羊区'?'qingyang':'chenghua';
+      html += '<div class="district-block"><div class="district-title"><span class="dot '+dotClass+'"></span>'+district+' 价格变动</div>';
       comms.forEach(function(c) {
         var pct = c.priceChangePct || 0;
         var absPct = Math.abs(pct);
-        var barClass = absPct >= 20 ? 'alert' : absPct >= 10 ? 'orange' : absPct > 0 ? 'warn' : 'ok';
-        var chgClass = absPct >= 20 ? 'pc-chg-red' : absPct >= 10 ? 'pc-chg-orange' : absPct > 0 ? 'pc-chg-yellow' : 'pc-chg-green';
-        var chgSign = pct > 0 ? '+' : '';
-        var cardClass = absPct >= 20 ? ' price-change-card chg-alert' : ' price-change-card';
-        var poolClass = c.pool === '套三' ? 's3' : 's2';
-        var barPercent = Math.min(absPct * 4, 100); // Scale so 25% = 100% bar width
-
-        html += '<div class="' + cardClass + '">';
-        html += '<div class="pc-head"><span class="pc-name">' + c.name + '</span><span class="pc-pool ' + poolClass + '">' + c.pool + '</span></div>';
-        html += '<div class="pc-bar-row"><span class="pc-label">基准</span><span class="pc-val">¥' + (c.price7dAvg||0).toFixed(1) + '万</span></div>';
-        html += '<div class="pc-bar-row"><span class="pc-label">当前</span><div class="pc-bar-bg"><div class="pc-bar-fill ' + barClass + '" style="width:' + barPercent + '%"></div></div><span class="pc-val ' + chgClass + '">' + chgSign + pct.toFixed(1) + '%</span></div>';
-        html += '<div class="pc-detail"><span>🏫 ' + (c.school||'?') + '</span><span>📅 历史天数: ' + (c.daysCount||'4') + '天</span></div>';
-        html += '</div>';
+        var barClass = absPct>=20?'alert':absPct>=10?'orange':absPct>0?'warn':'ok';
+        var chgClass = absPct>=20?'pc-chg-red':absPct>=10?'pc-chg-orange':absPct>0?'pc-chg-yellow':'pc-chg-green';
+        var chgSign = pct>0?'+':'';
+        var cardClass = absPct>=20?' price-change-card chg-alert':' price-change-card';
+        var barPercent = Math.min(absPct*4, 100);
+        html += '<div class="'+cardClass+'"><div class="pc-head"><span class="pc-name">'+c.name+'</span><span class="pc-pool '+(c.pool==='套三'?'s3':'s2')+'">'+c.pool+'</span></div>';
+        html += '<div class="pc-bar-row"><span class="pc-label">基准</span><span class="pc-val">¥'+(c.price7dAvg||0).toFixed(1)+'万</span></div>';
+        html += '<div class="pc-bar-row"><span class="pc-label">当前</span><div class="pc-bar-bg"><div class="pc-bar-fill '+barClass+'" style="width:'+barPercent+'%"></div></div><span class="pc-val '+chgClass+'">'+chgSign+pct.toFixed(1)+'%</span></div>';
+        html += '<div class="pc-detail"><span>🏫 '+(c.school||'?')+'</span><span>📅 '+(c.daysCount||'4')+'天</span></div></div>';
       });
       html += '</div>';
     });
     container.innerHTML = html;
   }
 
-  // ===== 地图初始化 =====
   function initMap() {
     try {
-      map = new AMap.Map('amapContainer', {
-        zoom: C.mapZoom,
-        center: C.mapCenter,
-        resizeEnable: true
-      });
-      console.log('✅ 高德地图初始化成功');
+      map = new AMap.Map('amapContainer', { zoom: C.mapZoom, center: C.mapCenter, resizeEnable: true });
+      console.log('高德地图初始化成功');
       renderMapMarkers();
+      addDistrictBoundaries();
+      AMap.plugin('AMap.Transfer', function() { console.log('Transfer plugin ready'); });
     } catch(e) {
-      console.error('❌ 地图初始化失败:', e.message);
-      document.getElementById('amapContainer').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#8fa4b8;font-size:14px">⚠️ 地图加载失败，请检查高德Key是否正确</div>';
+      console.error('地图初始化失败:', e.message);
+      document.getElementById('amapContainer').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#8fa4b8;font-size:14px">⚠️ 地图加载失败，请检查高德Key</div>';
     }
   }
 
@@ -109,217 +88,176 @@
     if (!map || !data) return;
     map.clearMap();
     renderMapMarkers();
+    addDistrictBoundaries();
   }
 
   var allMarkers = [];
   var allPolylines = [];
   var allInfoWindows = [];
+  var allTransferLines = [];
+
   function renderMapMarkers() {
     allMarkers.forEach(function(m) { try { m.setMap(null); } catch(e) {} });
     allPolylines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
     allInfoWindows.forEach(function(iw) { try { iw.close(); } catch(e) {} });
-    allMarkers = [];
-    allPolylines = [];
-    allInfoWindows = [];
+    allTransferLines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
+    allMarkers = []; allPolylines = []; allInfoWindows = []; allTransferLines = [];
 
-    // 学校标记
-    (data.schools||[]).forEach(function(s) {
+    // ===== 学校标记 =====
+    (data.schools||[]).forEach(function(s, idx) {
       var m = new AMap.Marker({
         position: [s.lng, s.lat],
-        icon: new AMap.Icon({
-          size: new AMap.Size(16, 16),
-          image: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><circle cx="8" cy="8" r="7" fill="#e040fb" stroke="#fff" stroke-width="2"/><text x="8" y="11" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">S</text></svg>'),
-          imageSize: new AMap.Size(16, 16)
-        }),
-        offset: new AMap.Pixel(-8, -8),
-        zIndex: 100,
-        title: s.name
+        icon: new AMap.Icon({ size:new AMap.Size(18,18), image:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><circle cx="9" cy="9" r="8" fill="#e040fb" stroke="#fff" stroke-width="2"/><text x="9" y="12" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">校</text></svg>'), imageSize:new AMap.Size(18,18) }),
+        offset: new AMap.Pixel(-9,-9), zIndex:100, title: s.name
       });
-      m.setMap(map);
-      allMarkers.push(m);
+      m.setMap(map); allMarkers.push(m);
 
-      // 校名标签
-      var labelOffset = (allMarkers.length % 3) * 14 - 14;
+      var labelOffset = -16 + (idx%3)*16;
       var t = new AMap.Text({
-        position: [s.lng, s.lat],
-        text: s.name.indexOf('成都市')===0 ? s.name.replace('成都市','') : s.name,
+        position: [s.lng, s.lat], text: s.name.indexOf('成都市')===0?s.name.replace('成都市',''):s.name,
         offset: new AMap.Pixel(0, labelOffset),
-        style: {
-          'background-color': 'rgba(15,25,35,0.85)',
-          'color': '#e8edf2',
-          'font-size': '10px',
-          'padding': '1px 4px',
-          'border-radius': '2px',
-          'border': 'none',
-          'white-space': 'nowrap'
-        }
+        style: {'background-color':'rgba(15,25,35,0.85)','color':'#e8edf2','font-size':'10px','padding':'1px 4px','border-radius':'2px','border':'none','white-space':'nowrap'}
       });
-      t.setMap(map);
-      allMarkers.push(t);
+      t.setMap(map); allMarkers.push(t);
     });
 
-    // 周边商圈POI标记（橙色）
-    var typeColors = { shopping: '#ff7043', transit: '#29b6f6', park: '#66bb6a', landmark: '#ab47bc' };
-    (data.pois||{}).forEach(function(list, district) {
-      (list||[]).forEach(function(p) {
-        var color = typeColors[p.type] || '#ff7043';
-        var iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="18"><path d="M7 0 a7 7 0 0 0 -7 7 c0 5 7 11 7 11 s7 -6 7 -11 a7 7 0 0 0 -7 -7 z" fill="' + color + '" stroke="#fff" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="#fff"/></svg>';
+    // ===== POI 标记 =====
+    var typeStyles = { shopping:{color:'#ff7043',label:'商圈'}, transit:{color:'#29b6f6',label:'地铁'}, park:{color:'#66bb6a',label:'公园'}, hospital:{color:'#ef5350',label:'医院'}, landmark:{color:'#ab47bc',label:'地标'} };
+    for (var district in data.pois || {}) {
+      (data.pois[district]||[]).forEach(function(p) {
+        var style = typeStyles[p.type] || typeStyles.shopping;
+        var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="20"><path d="M7 0 A7 7 0 0 0 0 7 C0 13 7 20 7 20 S14 13 14 7 A7 7 0 0 0 7 0 Z" fill="'+style.color+'" stroke="#fff" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="#fff" opacity="0.9"/></svg>';
         var m = new AMap.Marker({
           position: [p.lng, p.lat],
-          icon: new AMap.Icon({
-            size: new AMap.Size(14, 18),
-            image: 'data:image/svg+xml,' + encodeURIComponent(iconSvg),
-            imageSize: new AMap.Size(14, 18)
-          }),
-          offset: new AMap.Pixel(-7, -18),
-          zIndex: 60,
-          title: '【' + (p.type||'POI') + '】 ' + p.name + '\n地址: ' + (p.address||'')
+          icon: new AMap.Icon({ size:new AMap.Size(14,20), image:'data:image/svg+xml,'+encodeURIComponent(svg), imageSize:new AMap.Size(14,20) }),
+          offset: new AMap.Pixel(-7,-20), zIndex:60, title: '【'+style.label+'】 '+p.name
         });
-        m.setMap(map);
-        allMarkers.push(m);
+        m.setMap(map); allMarkers.push(m);
       });
-    });
+    }
 
-    // 小区标记（颜色按status分）+ 点击显示路线
+    // ===== 小区标记 + 点击显示真实公交路线 =====
     (data.communities||[]).forEach(function(c) {
-      var color = c.status === 'ok' ? '#66bb6a' : c.status === 'warn' ? '#ffa726' : '#ef5350';
+      var color = c.status==='ok'?'#66bb6a':c.status==='warn'?'#ffa726':'#ef5350';
       var m = new AMap.Marker({
         position: [c.lng, c.lat],
-        icon: new AMap.Icon({
-          size: new AMap.Size(12, 12),
-          image: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><circle cx="6" cy="6" r="5" fill="' + color + '" stroke="#fff" stroke-width="1"/></svg>'),
-          imageSize: new AMap.Size(12, 12)
-        }),
-        offset: new AMap.Pixel(-6, -6),
-        zIndex: 50,
-        title: c.name + ' ¥' + c.currentPrice + '万'
+        icon: new AMap.Icon({ size:new AMap.Size(14,14), image:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="14" height="20"><path d="M7 0 C3.1 0 0 3.1 0 7 C0 12 7 20 7 20 S14 12 14 7 C14 3.1 10.9 0 7 0 Z" fill="'+color+'" stroke="#fff" stroke-width="1.5"/><circle cx="7" cy="7" r="3" fill="#fff" opacity="0.9"/></svg>'), imageSize:new AMap.Size(14,20) }),
+        offset: new AMap.Pixel(-7,-20), zIndex:50, title: c.name+' ¥'+c.currentPrice+'万'
       });
-      m.setMap(map);
-      allMarkers.push(m);
+      m.setMap(map); allMarkers.push(m);
 
       var t = new AMap.Text({
-        position: [c.lng, c.lat],
-        text: c.name.length > 5 ? c.name.substring(0,4)+'…' : c.name,
-        offset: new AMap.Pixel(8, -4),
-        style: {
-          'background-color': 'transparent',
-          'color': '#8fa4b8',
-          'font-size': '9px',
-          'border': 'none',
-          'white-space': 'nowrap',
-          'text-shadow': '0 0 3px rgba(0,0,0,0.8)'
-        }
+        position: [c.lng, c.lat], text: c.name.length>5?c.name.substring(0,4)+'…':c.name,
+        offset: new AMap.Pixel(0,-24),
+        style: {'background-color':'transparent','color':'#fff','font-size':'10px','font-weight':'bold','border':'none','white-space':'nowrap','text-shadow':'0 0 4px rgba(0,0,0,0.9)'}
       });
-      t.setMap(map);
-      allMarkers.push(t);
+      t.setMap(map); allMarkers.push(t);
 
       // 找到对应学校
       var school = (data.schools||[]).find(function(s) {
-        return (c.school||'').indexOf(s.name.replace('成都市','').replace('小学','').substring(0,2)) >= 0 ||
-               (c.school||'').indexOf(s.name.replace('成都市','')) >= 0;
+        return (c.school||'').indexOf(s.name.replace('成都市','').replace('小学','').substring(0,2))>=0 || (c.school||'').indexOf(s.name.replace('成都市',''))>=0;
       });
 
-      // 点击小区 → 画路线 + 气泡显示距离
+      // 点击小区 → 清除旧路线 + 公交路线规划
       m.on('click', function() {
-        // 清除已有路线
-        allPolylines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
+        allTransferLines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
         allInfoWindows.forEach(function(iw) { try { iw.close(); } catch(e) {} });
-        allPolylines = [];
-        allInfoWindows = [];
+        allTransferLines = [];
 
-        if (school) {
-          // 距离
-          var dist = haversine(c.lng, c.lat, school.lng, school.lat);
-          // 路线
-          var line = new AMap.Polyline({
-            path: [[c.lng, c.lat], [school.lng, school.lat]],
-            strokeColor: '#4fc3f7',
-            strokeWeight: 3,
-            strokeStyle: 'dashed',
-            zIndex: 200
-          });
-          line.setMap(map);
-          allPolylines.push(line);
+        if (!school) return;
+        var dist = haversine(c.lng, c.lat, school.lng, school.lat);
 
-          // 距离标签
-          var distLabel = new AMap.Text({
-            position: [(c.lng + school.lng) / 2, (c.lat + school.lat) / 2],
-            text: '↔ ' + dist.toFixed(0) + '米',
-            offset: new AMap.Pixel(0, 0),
-            style: {
-              'background-color': '#4fc3f7',
-              'color': '#0f1923',
-              'font-size': '11px',
-              'font-weight': 'bold',
-              'padding': '2px 6px',
-              'border-radius': '3px',
-              'border': 'none',
-              'white-space': 'nowrap'
+        // 真实公交路线
+        try {
+          var transfer = new AMap.Transfer({ map: map, city: '成都', extensions: 'all' });
+          transfer.search([c.lng, c.lat], [school.lng, school.lat], function(status, result) {
+            if (status === 'complete' && result.plans && result.plans.length > 0) {
+              var plan = result.plans[0];
+              // 画所有路段
+              plan.routes.forEach(function(route, ri) {
+                var routePath = [];
+                if (route.walking_distance) {
+                  route.steps.forEach(function(step) {
+                    if (step.path && step.path.length > 1) routePath = routePath.concat(step.path);
+                  });
+                } else if (route.bus) {
+                  var busStops = [];
+                  (route.bus.buslines||[]).forEach(function(bl) {
+                    bl.path.forEach(function(p) { busStops.push(p); });
+                  });
+                  routePath = busStops;
+                }
+                if (routePath.length > 1) {
+                  var poly = new AMap.Polyline({
+                    path: routePath,
+                    strokeColor: ri===0?'#66bb6a':'#4fc3f7',
+                    strokeWeight: 4,
+                    strokeOpacity: 0.7,
+                    zIndex: 199
+                  });
+                  poly.setMap(map);
+                  allTransferLines.push(poly);
+                }
+              });
             }
+            // 气泡（始终显示）
+            var walkMin = Math.round(dist / 80);
+            var content = '<div style="padding:8px 12px;font-size:12px;min-width:220px"><b style="color:#0f1923;font-size:13px">'+school.name+'</b><br/><span style="color:#666">📍 '+ (school.address||'') +'</span><hr style="margin:4px 0;border:none;border-top:1px solid #eee"/><b>→ '+c.name+'</b><br/><span style="color:#666">直线距离: <b style="color:#4fc3f7">'+dist.toFixed(0)+'米</b> | 步行约'+walkMin+'分钟</span><br/><span style="font-size:10px;color:#999">蓝色=公交路线 | 绿色=步行段</span></div>';
+            var iw = new AMap.InfoWindow({ content: content, offset: new AMap.Pixel(0,-10) });
+            iw.open(map, [school.lng, school.lat]);
+            allInfoWindows.push(iw);
           });
-          distLabel.setMap(map);
-          allPolylines.push(distLabel);
-
-          // 气泡
-          var iw = new AMap.InfoWindow({
-            content: '<div style="padding:8px 12px;font-size:12px;color:#222;min-width:200px">' +
-                     '<b style="color:#0f1923;font-size:13px">' + school.name + '</b><br/>' +
-                     '<span style="color:#666">📍 ' + (school.address||'') + '</span><br/>' +
-                     '<hr style="margin:4px 0;border:none;border-top:1px solid #eee"/>' +
-                     '<b style="color:#0f1923">→ ' + c.name + '</b><br/>' +
-                     '<span style="color:#666">距离: <b style="color:#4fc3f7">' + dist.toFixed(0) + '米</b> | 步行约' + Math.round(dist/80) + '分钟</span>' +
-                     '</div>',
-            offset: new AMap.Pixel(0, -10)
-          });
-          iw.open(map, [school.lng, school.lat]);
-          allInfoWindows.push(iw);
+        } catch(err) {
+          console.log('公交路线规划失败,回退直线:', err);
+          // 回退直线
+          var line = new AMap.Polyline({ path:[[c.lng,c.lat],[school.lng,school.lat]], strokeColor:'#4fc3f7', strokeWeight:2, strokeStyle:'dashed', zIndex:199 });
+          line.setMap(map); allTransferLines.push(line);
+          var content = '<div style="padding:8px 12px;font-size:12px"><b style="font-size:13px">'+school.name+'</b><br/><span style="color:#666">→ '+c.name+'</span><br/><span style="color:#4fc3f7">直线距离 '+dist.toFixed(0)+'米</span></div>';
+          var iw = new AMap.InfoWindow({ content:content, offset:new AMap.Pixel(0,-10) });
+          iw.open(map, [school.lng, school.lat]); allInfoWindows.push(iw);
         }
       });
     });
   }
 
-  // 哈弗辛公式：两点经纬度→米
-  function haversine(lng1, lat1, lng2, lat2) {
-    var R = 6371000;
-    var toRad = function(d) { return d * Math.PI / 180; };
-    var dLat = toRad(lat2 - lat1);
-    var dLng = toRad(lng2 - lng1);
-    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
-            Math.sin(dLng/2) * Math.sin(dLng/2);
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  function haversine(l1, la1, l2, la2) {
+    var R=6371000;
+    var toRad=function(d){return d*Math.PI/180;};
+    var dLat=toRad(la2-la1), dLng=toRad(l2-l1);
+    var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(toRad(la1))*Math.cos(toRad(la2))*Math.sin(dLng/2)*Math.sin(dLng/2);
+    return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
   }
 
-  // ===== 轮询 =====
+  function addDistrictBoundaries() {
+    var colors = { '金牛区':'#ff7043', '青羊区':'#66bb6a', '成华区':'#4fc3f7' };
+    var ds = new AMap.DistrictSearch({ level:'district', extensions:'all', subdistrict:0 });
+    C.districts.forEach(function(name) {
+      ds.search(name, function(status, result) {
+        if (status==='complete' && result.districtList && result.districtList.length>0) {
+          var bounds = result.districtList[0].boundaries;
+          if (!bounds) return;
+          bounds.forEach(function(boundary) {
+            var poly = new AMap.Polygon({
+              path: boundary, fillColor: colors[name]||'#4fc3f7', fillOpacity: 0.06,
+              strokeColor: colors[name]||'#4fc3f7', strokeWeight: 1.5, strokeOpacity: 0.4, zIndex: 1
+            });
+            poly.setMap(map); allPolylines.push(poly);
+          });
+        }
+      });
+    });
+  }
+
   function startPolling() {
     loadData();
     if (timer) clearInterval(timer);
     timer = setInterval(loadData, C.pollInterval);
   }
 
-  // ===== 入口 =====
-  function ready() {
-    // 等待高德 SDK 加载
-    if (typeof AMap !== 'undefined') {
-      initMap();
-    }
-    // 即使地图未加载，数据面板也先渲染
-    loadData();
-    startPolling();
-  }
-
   window.addEventListener('amap-ready', function() {
-    if (typeof AMap !== 'undefined' && !map) initMap();
+    if (typeof AMap!=='undefined' && !map) initMap();
   });
-
-  // 如果AMap已提前加载（直接<script>方式）
-  setTimeout(function() {
-    if (typeof AMap !== 'undefined' && !map) initMap();
-  }, 2000);
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', ready);
-  } else {
-    ready();
-  }
+  setTimeout(function() { if (typeof AMap!=='undefined' && !map) initMap(); }, 2000);
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', startPolling);
+  else startPolling();
 })();
