@@ -10,7 +10,6 @@
 </head>
 <body>
 
-<!-- 顶部导航栏 -->
 <header class="top-bar">
   <div class="top-bar-inner">
     <div class="logo-area">
@@ -26,35 +25,33 @@
   </div>
 </header>
 
-<!-- 主内容区：左-中-右三栏 -->
 <main class="main-grid">
 
-  <!-- ========== 左栏：小区详情（3区面板） ========== -->
   <section class="left-panel">
     <div class="panel-header">
       <h2>🏘️ 小区详情</h2>
       <span class="panel-badge">金牛 · 青羊 · 成华</span>
     </div>
-    <div id="leftPanels">
-      <!-- JS动态填充 -->
-    </div>
+    <div id="leftPanels"></div>
   </section>
 
-  <!-- ========== 中栏：高德地图 ========== -->
   <section class="center-panel">
     <div id="amapContainer"></div>
     <div class="map-legend">
       <span class="legend-item"><span class="legend-dot school"></span> 目标小学（14所）</span>
-      <span class="legend-item"><span class="legend-dot ok"></span> 预算内达标</span>
-      <span class="legend-item"><span class="legend-dot warn"></span> 超预算/存疑</span>
-      <span class="legend-item"><span class="legend-dot alert"></span> 无解/剔除</span>
+      <span class="legend-item"><span class="legend-dot ok"></span> 小区（达标）</span>
+      <span class="legend-item"><span class="legend-dot warn"></span> 小区（超预算）</span>
+      <span class="legend-item"><span class="legend-dot alert"></span> 小区（无解）</span>
+      <span class="legend-item"><span class="legend-dot poi-shop"></span> 商圈</span>
+      <span class="legend-item"><span class="legend-dot poi-transit"></span> 地铁</span>
+      <span class="legend-item"><span class="legend-dot poi-park"></span> 公园</span>
+      <span class="legend-item" style="color:#4fc3f7">━ ━ 路线（点击小区）</span>
     </div>
   </section>
 
-  <!-- ========== 右栏：价格变动（3区面板） ========== -->
   <section class="right-panel">
     <div class="panel-header">
-      <h2>📊 价格变动��测</h2>
+      <h2>📊 价格变动监测</h2>
       <span class="panel-badge">近7日均价基准</span>
     </div>
     <div class="legend-compact">
@@ -63,14 +60,11 @@
       <span class="l-dot orange-bg">10~20%</span>
       <span class="l-dot red-bg">>20%</span>
     </div>
-    <div id="rightPanels">
-      <!-- JS动态填充 -->
-    </div>
+    <div id="rightPanels"></div>
   </section>
 
 </main>
 
-<!-- 高德地图 JS API -->
 <script>
 (function(){
   var script = document.createElement('script');

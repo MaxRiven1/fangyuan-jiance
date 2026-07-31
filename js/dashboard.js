@@ -112,9 +112,15 @@
   }
 
   var allMarkers = [];
+  var allPolylines = [];
+  var allInfoWindows = [];
   function renderMapMarkers() {
     allMarkers.forEach(function(m) { try { m.setMap(null); } catch(e) {} });
+    allPolylines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
+    allInfoWindows.forEach(function(iw) { try { iw.close(); } catch(e) {} });
     allMarkers = [];
+    allPolylines = [];
+    allInfoWindows = [];
 
     // 学校标记
     (data.schools||[]).forEach(function(s) {
@@ -152,7 +158,29 @@
       allMarkers.push(t);
     });
 
-    // 小区标记
+    // 周边商圈POI标记（橙色）
+    var typeColors = { shopping: '#ff7043', transit: '#29b6f6', park: '#66bb6a', landmark: '#ab47bc' };
+    (data.pois||{}).forEach(function(list, district) {
+      (list||[]).forEach(function(p) {
+        var color = typeColors[p.type] || '#ff7043';
+        var iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="18"><path d="M7 0 a7 7 0 0 0 -7 7 c0 5 7 11 7 11 s7 -6 7 -11 a7 7 0 0 0 -7 -7 z" fill="' + color + '" stroke="#fff" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="#fff"/></svg>';
+        var m = new AMap.Marker({
+          position: [p.lng, p.lat],
+          icon: new AMap.Icon({
+            size: new AMap.Size(14, 18),
+            image: 'data:image/svg+xml,' + encodeURIComponent(iconSvg),
+            imageSize: new AMap.Size(14, 18)
+          }),
+          offset: new AMap.Pixel(-7, -18),
+          zIndex: 60,
+          title: '【' + (p.type||'POI') + '】 ' + p.name + '\n地址: ' + (p.address||'')
+        });
+        m.setMap(map);
+        allMarkers.push(m);
+      });
+    });
+
+    // 小区标记（颜色按status分）+ 点击显示路线
     (data.communities||[]).forEach(function(c) {
       var color = c.status === 'ok' ? '#66bb6a' : c.status === 'warn' ? '#ffa726' : '#ef5350';
       var m = new AMap.Marker({
@@ -184,7 +212,82 @@
       });
       t.setMap(map);
       allMarkers.push(t);
+
+      // 找到对应学校
+      var school = (data.schools||[]).find(function(s) {
+        return (c.school||'').indexOf(s.name.replace('成都市','').replace('小学','').substring(0,2)) >= 0 ||
+               (c.school||'').indexOf(s.name.replace('成都市','')) >= 0;
+      });
+
+      // 点击小区 → 画路线 + 气泡显示距离
+      m.on('click', function() {
+        // 清除已有路线
+        allPolylines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
+        allInfoWindows.forEach(function(iw) { try { iw.close(); } catch(e) {} });
+        allPolylines = [];
+        allInfoWindows = [];
+
+        if (school) {
+          // 距离
+          var dist = haversine(c.lng, c.lat, school.lng, school.lat);
+          // 路线
+          var line = new AMap.Polyline({
+            path: [[c.lng, c.lat], [school.lng, school.lat]],
+            strokeColor: '#4fc3f7',
+            strokeWeight: 3,
+            strokeStyle: 'dashed',
+            zIndex: 200
+          });
+          line.setMap(map);
+          allPolylines.push(line);
+
+          // 距离标签
+          var distLabel = new AMap.Text({
+            position: [(c.lng + school.lng) / 2, (c.lat + school.lat) / 2],
+            text: '↔ ' + dist.toFixed(0) + '米',
+            offset: new AMap.Pixel(0, 0),
+            style: {
+              'background-color': '#4fc3f7',
+              'color': '#0f1923',
+              'font-size': '11px',
+              'font-weight': 'bold',
+              'padding': '2px 6px',
+              'border-radius': '3px',
+              'border': 'none',
+              'white-space': 'nowrap'
+            }
+          });
+          distLabel.setMap(map);
+          allPolylines.push(distLabel);
+
+          // 气泡
+          var iw = new AMap.InfoWindow({
+            content: '<div style="padding:8px 12px;font-size:12px;color:#222;min-width:200px">' +
+                     '<b style="color:#0f1923;font-size:13px">' + school.name + '</b><br/>' +
+                     '<span style="color:#666">📍 ' + (school.address||'') + '</span><br/>' +
+                     '<hr style="margin:4px 0;border:none;border-top:1px solid #eee"/>' +
+                     '<b style="color:#0f1923">→ ' + c.name + '</b><br/>' +
+                     '<span style="color:#666">距离: <b style="color:#4fc3f7">' + dist.toFixed(0) + '米</b> | 步行约' + Math.round(dist/80) + '分钟</span>' +
+                     '</div>',
+            offset: new AMap.Pixel(0, -10)
+          });
+          iw.open(map, [school.lng, school.lat]);
+          allInfoWindows.push(iw);
+        }
+      });
     });
+  }
+
+  // 哈弗辛公式：两点经纬度→米
+  function haversine(lng1, lat1, lng2, lat2) {
+    var R = 6371000;
+    var toRad = function(d) { return d * Math.PI / 180; };
+    var dLat = toRad(lat2 - lat1);
+    var dLng = toRad(lng2 - lng1);
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+            Math.sin(dLng/2) * Math.sin(dLng/2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   }
 
   // ===== 轮询 =====
