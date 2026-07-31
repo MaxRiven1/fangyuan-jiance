@@ -248,55 +248,91 @@
     map.setZoomAndCenter(C.mapZoom, C.mapCenter);
   }
 
-  // 路线+气泡提取为独立函数（marker点击和面板点击共用）
+  // 路线+气泡提取为独立函数
   function drawRoute(c, school) {
     allTransferLines.forEach(function(p) { try { p.setMap(null); } catch(e) {} });
     allInfoWindows.forEach(function(iw) { try { iw.close(); } catch(e) {} });
-    allTransferLines = [];
+    allTransferLines = []; allInfoWindows = [];
     var dist = haversine(c.lng, c.lat, school.lng, school.lat);
     var walkMin = Math.round(dist / 80);
-    var showContent = function() {
-      var content = '<div style="padding:8px 12px;font-size:12px;min-width:220px"><b style="color:#0f1923;font-size:13px">'+school.name+'</b><br/><span style="color:#666">📍 '+ (school.address||'') +'</span><hr style="margin:4px 0;border:none;border-top:1px solid #eee"/><b>→ '+c.name+'</b><br/><span style="color:#666">直线距离: <b style="color:#4fc3f7">'+dist.toFixed(0)+'米</b> | 步行约'+walkMin+'分钟</span><br/><span style="font-size:10px;color:#999">绿色=步行段 | 蓝色=公交线路</span></div>';
-      var iw = new AMap.InfoWindow({ content: content, offset: new AMap.Pixel(0,-10) });
+
+    // 生成气泡内容
+    function showInfoWindow(plan) {
+      var html = '<div style="padding:8px 12px;font-size:12px;min-width:240px;max-width:320px">';
+      html += '<b style="color:#0f1923;font-size:13px">🏫 '+school.name+'</b><br/>';
+      html += '<span style="color:#666;font-size:10px">📍 '+ (school.address||'?') +'</span>';
+      html += '<hr style="margin:4px 0;border:none;border-top:1px solid #eee"/>';
+      html += '<b>→ 🏠 '+c.name+'</b><br/>';
+      html += '<span style="color:#666;font-size:11px">直线: '+dist.toFixed(0)+'米 ~步行'+walkMin+'分钟</span>';
+
+      if (plan) {
+        var totalWalk=0, totalBus=0, totalBusMin=0, busNames=[];
+        plan.routes.forEach(function(seg) {
+          if ((seg.walking||seg.walk)&&(seg.walking||seg.walk).distance) {
+            var w = seg.walking||seg.walk;
+            totalWalk += w.distance;
+          }
+          if (seg.bus&&seg.bus.buslines) seg.bus.buslines.forEach(function(bl){
+            totalBus += bl.duration||0;
+            busNames.push((bl.name||bl.key_name||'?').replace(/\s+/g,''));
+          });
+        });
+        if (busNames.length) {
+          totalBusMin = Math.round(totalBus/60);
+          html += '<hr style="margin:3px 0;border:none;border-top:1px dashed #ddd"/>';
+          html += '<span style="font-size:11px;color:#333">🚶 步行'+totalWalk+'米 → ';
+          html += '🚌 <b>'+busNames.slice(0,3).join(' / ')+(busNames.length>3?'…':'')+'</b>';
+          html += ' ('+totalBusMin+'分钟)</span><br/>';
+          html += '<span style="font-size:10px;color:#999">总耗时约 '+(Math.round(totalWalk/80)+totalBusMin)+' 分钟</span>';
+        }
+      }
+      html += '</div>';
+      var iw = new AMap.InfoWindow({ content: html, offset: new AMap.Pixel(0,-10) });
       iw.open(map, [school.lng, school.lat]); allInfoWindows.push(iw);
-    };
-    var hasRoute = false;
+    }
+
+    var hasDrawn = false;
     try {
       var transfer = new AMap.Transfer({ map: map, city: '成都', extensions: 'all' });
       transfer.search([c.lng, c.lat], [school.lng, school.lat], function(status, result) {
         if (status==='complete' && result.plans && result.plans.length>0) {
-          result.plans[0].routes.forEach(function(route, ri) {
-            var routePath=[];
-            if (route.walking && route.walking.steps) {
-              route.walking.steps.forEach(function(s){if(s.path&&s.path.length>1)routePath=routePath.concat(s.path);});
-            } else if (route.walking_distance && Array.isArray(route.path)) {
-              routePath = routePath.concat(route.path);
+          var plan = result.plans[0];
+          plan.routes.forEach(function(seg) {
+            var path=[], color='#66bb6a';
+            // 步行段
+            if (seg.walking && seg.walking.steps) {
+              seg.walking.steps.forEach(function(s){ if(s.path&&Array.isArray(s.path)) path=path.concat(s.path); });
+            } else if (seg.walk && seg.walk.steps) {
+              seg.walk.steps.forEach(function(s){ if(s.path&&Array.isArray(s.path)) path=path.concat(s.path); });
             }
-            if (route.bus && route.bus.buslines && Array.isArray(route.bus.buslines)) {
-              route.bus.buslines.forEach(function(bl){
+            // 公交段（蓝色）
+            if (seg.bus && seg.bus.buslines) {
+              color = '#4fc3f7';
+              seg.bus.buslines.forEach(function(bl){
                 if (bl.path && Array.isArray(bl.path)) {
-                  bl.path.forEach(function(p){routePath.push(p);});
+                  bl.path.forEach(function(p){ path.push(p); });
                 }
               });
             }
-            if(routePath.length>1){
-              var poly=new AMap.Polyline({path:routePath,strokeColor:ri===0?'#66bb6a':'#4fc3f7',strokeWeight:4,strokeOpacity:0.7,zIndex:199});
-              poly.setMap(map);allTransferLines.push(poly);hasRoute=true;
+            if (path.length>1) {
+              var poly = new AMap.Polyline({ path:path, strokeColor:color, strokeWeight:4, strokeOpacity:0.75, zIndex:199 });
+              poly.setMap(map); allTransferLines.push(poly); hasDrawn = true;
             }
           });
+          showInfoWindow(plan);
+        } else {
+          // 路线为空,只画fallback+直线距离气泡
+          showInfoWindow(null);
         }
-        if (!hasRoute) {
-          // Transfer未返回有效路径,画fallback直线
-          var dashed = new AMap.Polyline({path:[[c.lng,c.lat],[school.lng,school.lat]],strokeColor:'#4fc3f7',strokeWeight:2,strokeStyle:'dashed',zIndex:199});
+        if (!hasDrawn) {
+          var dashed = new AMap.Polyline({ path:[[c.lng,c.lat],[school.lng,school.lat]], strokeColor:'#4fc3f7', strokeWeight:2, strokeStyle:'dashed', zIndex:199 });
           dashed.setMap(map); allTransferLines.push(dashed);
         }
-        showContent();
       });
     } catch(err){
-      // 抛错时画fallback直线
-      var dashed = new AMap.Polyline({path:[[c.lng,c.lat],[school.lng,school.lat]],strokeColor:'#4fc3f7',strokeWeight:2,strokeStyle:'dashed',zIndex:199});
+      var dashed = new AMap.Polyline({ path:[[c.lng,c.lat],[school.lng,school.lat]], strokeColor:'#4fc3f7', strokeWeight:2, strokeStyle:'dashed', zIndex:199 });
       dashed.setMap(map); allTransferLines.push(dashed);
-      showContent();
+      showInfoWindow(null);
     }
   }
 
