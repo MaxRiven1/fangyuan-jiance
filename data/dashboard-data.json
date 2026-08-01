@@ -1,1 +1,790 @@
-{"generatedAt":"2026-07-31T09:00:00+08:00","schools":[{"name":"成都市实验小学","district":"青羊区","lng":104.0642,"lat":30.6635,"address":"人民中路一段22号","tier":"省重点·五朵金花"},{"name":"成都市泡桐树小学","district":"青羊区","lng":104.058,"lat":30.665,"address":"支矶石街8号","tier":"省重点·五朵金花"},{"name":"成都市东城根街小学","district":"青羊区","lng":104.065,"lat":30.665,"address":"老东城根街9号","tier":"市重点"},{"name":"成都市胜西小学","district":"青羊区","lng":104.0537,"lat":30.6601,"address":"横小南街11号","tier":"市重点"},{"name":"成都市少城小学","district":"青羊区","lng":104.0541,"lat":30.6616,"address":"西胜街1号","tier":"市重点"},{"name":"成都市草堂小学","district":"青羊区","lng":104.042,"lat":30.663,"address":"草堂北路","tier":"省重点"},{"name":"成都市金沙小学","district":"青羊区","lng":104.005,"lat":30.674,"address":"金阳路90号","tier":"市重点"},{"name":"成都市人民北路小学","district":"金牛区","lng":104.074,"lat":30.688,"address":"人民北路","tier":"市重点"},{"name":"成都市石笋街小学","district":"金牛区","lng":104.058,"lat":30.682,"address":"花牌坊街","tier":"市重点"},{"name":"成都市茶店子小学","district":"金牛区","lng":104.0159,"lat":30.6964,"address":"育德路39号","tier":"区重点"},{"name":"成都市石室小学","district":"成华区","lng":104.108,"lat":30.648,"address":"双桥子","tier":"市重点"},{"name":"成都市双林小学","district":"成华区","lng":104.102,"lat":30.662,"address":"双林路","tier":"市重点"},{"name":"成都市成华小学","district":"成华区","lng":104.1,"lat":30.663,"address":"建设路片区","tier":"市重点"},{"name":"成都市建设路小学","district":"成华区","lng":104.105,"lat":30.656,"address":"建设路","tier":"区重点"}],"pois":{"金牛区":[{"name":"龙湖西宸天街","lng":104.014,"lat":30.694,"type":"shopping","address":"金牛大道"},{"name":"凯德广场·金牛","lng":104.024,"lat":30.708,"type":"shopping","address":"茶店子西街"},{"name":"茶店子客运站","lng":104.014,"lat":30.693,"type":"transit","address":"地铁2号线"},{"name":"羊犀立交地铁站","lng":104.057,"lat":30.7,"type":"transit","address":"地铁2/7号线"},{"name":"人民北路地铁站","lng":104.075,"lat":30.688,"type":"transit","address":"地铁1号线"},{"name":"花牌坊地铁站","lng":104.058,"lat":30.682,"type":"transit","address":"地铁6号线"},{"name":"新金牛公园","lng":104.019,"lat":30.692,"type":"park","address":"茶店子"},{"name":"花牌坊商圈","lng":104.061,"lat":30.681,"type":"shopping","address":"花牌坊街"},{"name":"万达广场(金牛)","lng":104.061,"lat":30.694,"type":"shopping","address":"人民北路一段"},{"name":"成都中医大银海眼科医院","lng":104.058,"lat":30.692,"type":"hospital","address":"营门口路"},{"name":"西部战区总医院","lng":104.085,"lat":30.71,"type":"hospital","address":"人民北路一段"},{"name":"一品天下美食街","lng":104.017,"lat":30.692,"type":"landmark","address":"一品天下大街"},{"name":"成都欢乐谷","lng":104.043,"lat":30.715,"type":"landmark","address":"西华大道"}],"青羊区":[{"name":"天府广场","lng":104.066,"lat":30.659,"type":"landmark","address":"人民南路"},{"name":"宽窄巷子","lng":104.057,"lat":30.667,"type":"landmark","address":"金河路口"},{"name":"杜甫草堂","lng":104.04,"lat":30.658,"type":"landmark","address":"草堂路"},{"name":"金沙遗址博物馆","lng":104.005,"lat":30.672,"type":"landmark","address":"金沙遗址路"},{"name":"青羊万达","lng":103.978,"lat":30.68,"type":"shopping","address":"光华北三路"},{"name":"鹏瑞利广场","lng":104.005,"lat":30.673,"type":"shopping","address":"培风路"},{"name":"西单商场","lng":104.008,"lat":30.671,"type":"shopping","address":"金沙公交枢纽旁"},{"name":"茂业仁和春天百货","lng":104.066,"lat":30.654,"type":"shopping","address":"人民中路"},{"name":"太升路商圈","lng":104.067,"lat":30.66,"type":"shopping","address":"太升南路"},{"name":"送仙桥古玩市场","lng":104.041,"lat":30.66,"type":"shopping","address":"送仙桥"},{"name":"浣花溪公园","lng":104.04,"lat":30.659,"type":"park","address":"草堂东路"},{"name":"人民公园地铁站","lng":104.055,"lat":30.66,"type":"transit","address":"地铁2号线"},{"name":"骡马市地铁站","lng":104.066,"lat":30.66,"type":"transit","address":"地铁1/4号线"},{"name":"金沙公交枢纽站","lng":104.008,"lat":30.67,"type":"transit","address":"BRT金沙站"},{"name":"四川省人民医院","lng":104.048,"lat":30.656,"type":"hospital","address":"一环路西二段"},{"name":"成都市第三人民医院","lng":104.065,"lat":30.658,"type":"hospital","address":"青龙街"},{"name":"成都市妇女儿童中心医院","lng":103.982,"lat":30.682,"type":"hospital","address":"光华东一路"}],"成华区":[{"name":"龙湖三千集","lng":104.108,"lat":30.658,"type":"shopping","address":"建设路"},{"name":"SM广场(成都)","lng":104.11,"lat":30.667,"type":"shopping","address":"二仙桥"},{"name":"伊藤洋华堂(建设路)","lng":104.108,"lat":30.66,"type":"shopping","address":"建设路"},{"name":"万象城(成都)","lng":104.105,"lat":30.64,"type":"shopping","address":"双成二路"},{"name":"双桥子家乐福","lng":104.103,"lat":30.648,"type":"shopping","address":"双桥子立交"},{"name":"339购物中心","lng":104.11,"lat":30.66,"type":"landmark","address":"建设北路"},{"name":"东郊记忆","lng":104.118,"lat":30.662,"type":"landmark","address":"建设南支路"},{"name":"地铁3号线红星桥","lng":104.105,"lat":30.665,"type":"transit","address":"红星桥站"},{"name":"地铁8号线东郊记忆","lng":104.118,"lat":30.66,"type":"transit","address":"东郊记忆站"},{"name":"成都市第六人民医院","lng":104.112,"lat":30.648,"type":"hospital","address":"建设南街"},{"name":"二仙桥公园","lng":104.108,"lat":30.658,"type":"park","address":"二仙桥"},{"name":"新华公园","lng":104.105,"lat":30.67,"type":"park","address":"双林路"},{"name":"成华公园","lng":104.108,"lat":30.67,"type":"park","address":"府青路"},{"name":"成都自然博物馆","lng":104.117,"lat":30.677,"type":"landmark","address":"成华大道"}]},"communities":[{"name":"红枫岭三期","district":"成华区","pool":"套三","lng":104.11,"lat":30.654,"school":"建设路小学枫林校区","schoolLevel":"区重点","layout":"","area":null,"elevator":true,"currentPrice":120,"baselinePrice":143,"price7dAvg":120,"priceChange":0,"priceChangePct":0,"statusText":"达标","status":"ok","daysCount":4,"priceHistory":[120,120,120,120],"note":"预算内-第一顺位"},{"name":"鼎城上都(套三)","district":"成华区","pool":"套三","lng":104.108,"lat":30.655,"school":"建设路小学枫林校区","schoolLevel":"区重点","layout":"","area":null,"elevator":true,"currentPrice":128,"baselinePrice":128,"price7dAvg":128,"priceChange":0,"priceChangePct":0,"statusText":"达标","status":"ok","daysCount":4,"priceHistory":[128,128,128,128],"note":"预算内-第二顺位"},{"name":"万科金色领域","district":"青羊区","pool":"套三","lng":104.01,"lat":30.68,"school":"泡小桐欣/草堂子美（青6区多校划片）","schoolLevel":"省重点","layout":"","area":null,"elevator":true,"currentPrice":156,"baselinePrice":156,"price7dAvg":156,"priceChange":0,"priceChangePct":0,"statusText":"超预算","status":"warn","daysCount":4,"priceHistory":[156,156,156,156],"note":"超预算6万-议价可及"},{"name":"和谐家园(套三)","district":"金牛区","pool":"套三","lng":104.016,"lat":30.695,"school":"茶店子小学","schoolLevel":"区重点","layout":"","area":null,"elevator":true,"currentPrice":178,"baselinePrice":178,"price7dAvg":178,"priceChange":0,"priceChangePct":0,"statusText":"严重超预算","status":"alert","daysCount":4,"priceHistory":[178,178,178,178],"note":"超预算28万"},{"name":"蓝光凯丽豪景/蓝光云鼎","district":"金牛区","pool":"套三","lng":104.06,"lat":30.67,"school":"石笋街小学","schoolLevel":"市重点","layout":"","area":null,"elevator":true,"currentPrice":168,"baselinePrice":168,"price7dAvg":168,"priceChange":0,"priceChangePct":0,"statusText":"超预算","status":"warn","daysCount":4,"priceHistory":[168,168,168,168],"note":"超预算18万起，中位远超"},{"name":"清溪雅筑","district":"青羊区","pool":"套三","lng":104.008,"lat":30.678,"school":"泡小桐欣/草堂子美（青6区多校划片）","schoolLevel":"省重点","layout":"","area":null,"elevator":true,"currentPrice":99.8,"baselinePrice":115,"price7dAvg":99.8,"priceChange":0,"priceChangePct":0,"statusText":"无双卫·剔除","status":"alert","daysCount":4,"priceHistory":[99.8,99.8,99.8,99.8],"note":"不符合硬性要求"},{"name":"和泓·东28(套三)","district":"成华区","pool":"套三","lng":104.06,"lat":30.67,"school":"建设路小学枫林校区","schoolLevel":"区重点","layout":"","area":null,"elevator":true,"currentPrice":119,"baselinePrice":122,"price7dAvg":119,"priceChange":0,"priceChangePct":0,"statusText":"达标","status":"ok","daysCount":4,"priceHistory":[119,119,119,119],"note":"存疑-72㎡小套三或全为单卫"},{"name":"和谐家园(套二)","district":"金牛区","pool":"套二","lng":104.016,"lat":30.695,"school":"茶店子小学","schoolLevel":"区重点","layout":"套二单卫 87.72㎡","area":null,"elevator":true,"currentPrice":96,"baselinePrice":99.8,"price7dAvg":96,"priceChange":0,"priceChangePct":0,"statusText":"达标","status":"ok","daysCount":3,"priceHistory":[96,96,96],"note":"预算内-顶尖学校最可及"},{"name":"和泓·东28(套二)","district":"成华区","pool":"套二","lng":104.06,"lat":30.67,"school":"建设路小学枫林校区","schoolLevel":"区重点","layout":"套二单卫 57-65㎡","area":null,"elevator":true,"currentPrice":78,"baselinePrice":90,"price7dAvg":78,"priceChange":0,"priceChangePct":0,"statusText":"达标","status":"ok","daysCount":3,"priceHistory":[78,78,78],"note":"预算内-百万元内套二最丰富"},{"name":"鼎城上都(套二)","district":"成华区","pool":"套二","lng":104.108,"lat":30.655,"school":"建设路小学枫林校区","schoolLevel":"区重点","layout":"套二单卫 46.99-63.22㎡","area":null,"elevator":true,"currentPrice":82,"baselinePrice":97,"price7dAvg":82,"priceChange":0,"priceChangePct":0,"statusText":"达标","status":"ok","daysCount":3,"priceHistory":[82,82,82],"note":"预算内-百万元内套二"},{"name":"花样年花郡","district":"成华区","pool":"套二","lng":104.1,"lat":30.662,"school":"成华小学","schoolLevel":"市重点","layout":"套二单卫 62.55㎡","area":null,"elevator":true,"currentPrice":96,"baselinePrice":96,"price7dAvg":96,"priceChange":0,"priceChangePct":0,"statusText":"达标","status":"ok","daysCount":2,"priceHistory":[96,96],"note":"预算内-成华小学对口唯一百万元内套二"},{"name":"时代凯悦","district":"青羊区","pool":"套二","lng":104.065,"lat":30.667,"school":"东城根街小学","schoolLevel":"市重点","layout":"套二单卫 56.8㎡","area":null,"elevator":true,"currentPrice":77,"baselinePrice":77,"price7dAvg":77,"priceChange":0,"priceChangePct":0,"statusText":"达标","status":"ok","daysCount":2,"priceHistory":[77,77],"note":"预算内-东城根街小学对口最低价标的"},{"name":"西城天下","district":"金牛区","pool":"套二","lng":104.015,"lat":30.697,"school":"茶店子小学","schoolLevel":"区重点","layout":"套二单卫 72.01㎡","area":null,"elevator":true,"currentPrice":97.2,"baselinePrice":97.2,"price7dAvg":97.2,"priceChange":0,"priceChangePct":0,"statusText":"达标","status":"ok","daysCount":2,"priceHistory":[97.2,97.2],"note":"预算内-茶店子小学对口第二选择"}],"districtSummary":{"金牛区":{"communityCount":4,"lowestPrice":96,"highestPrice":178},"青羊区":{"communityCount":3,"lowestPrice":77,"highestPrice":156},"成华区":{"communityCount":6,"lowestPrice":78,"highestPrice":128}}}
+{
+  "generatedAt": "2026-08-01T09:00:00+08:00",
+  "schools": [
+    {
+      "name": "成都市实验小学",
+      "district": "青羊区",
+      "lng": 104.0642,
+      "lat": 30.6635,
+      "address": "人民中路一段22号"
+    },
+    {
+      "name": "成都市泡桐树小学",
+      "district": "青羊区",
+      "lng": 104.058,
+      "lat": 30.665,
+      "address": "支矶石街8号"
+    },
+    {
+      "name": "成都市东城根街小学",
+      "district": "青羊区",
+      "lng": 104.065,
+      "lat": 30.665,
+      "address": "老东城根街9号"
+    },
+    {
+      "name": "成都市胜西小学",
+      "district": "青羊区",
+      "lng": 104.0537,
+      "lat": 30.6601,
+      "address": "横小南街11号"
+    },
+    {
+      "name": "成都市少城小学",
+      "district": "青羊区",
+      "lng": 104.0541,
+      "lat": 30.6616,
+      "address": "西胜街1号"
+    },
+    {
+      "name": "成都市草堂小学",
+      "district": "青羊区",
+      "lng": 104.042,
+      "lat": 30.663,
+      "address": "草堂北路"
+    },
+    {
+      "name": "成都市金沙小学",
+      "district": "青羊区",
+      "lng": 104.005,
+      "lat": 30.674,
+      "address": "金阳路90号"
+    },
+    {
+      "name": "成都市人民北路小学",
+      "district": "金牛区",
+      "lng": 104.074,
+      "lat": 30.688,
+      "address": "人民北路"
+    },
+    {
+      "name": "成都市石笋街小学",
+      "district": "金牛区",
+      "lng": 104.058,
+      "lat": 30.682,
+      "address": "花牌坊街"
+    },
+    {
+      "name": "成都市茶店子小学",
+      "district": "金牛区",
+      "lng": 104.0159,
+      "lat": 30.6964,
+      "address": "育德路39号"
+    },
+    {
+      "name": "成都市石室小学",
+      "district": "成华区",
+      "lng": 104.108,
+      "lat": 30.648,
+      "address": "双桥子"
+    },
+    {
+      "name": "成都市双林小学",
+      "district": "成华区",
+      "lng": 104.102,
+      "lat": 30.662,
+      "address": "双林路"
+    },
+    {
+      "name": "成都市成华小学",
+      "district": "成华区",
+      "lng": 104.1,
+      "lat": 30.663,
+      "address": "建设路片区"
+    },
+    {
+      "name": "成都市建设路小学",
+      "district": "成华区",
+      "lng": 104.105,
+      "lat": 30.656,
+      "address": "建设路"
+    }
+  ],
+  "pois": {
+    "金牛区": [
+      {
+        "name": "龙湖西宸天街",
+        "lng": 104.014,
+        "lat": 30.694,
+        "type": "shopping",
+        "address": "金牛大道"
+      },
+      {
+        "name": "凯德广场·金牛",
+        "lng": 104.024,
+        "lat": 30.708,
+        "type": "shopping",
+        "address": "茶店子西街"
+      },
+      {
+        "name": "茶店子客运站",
+        "lng": 104.014,
+        "lat": 30.693,
+        "type": "transit",
+        "address": "地铁2号线"
+      },
+      {
+        "name": "羊犀立交地铁站",
+        "lng": 104.057,
+        "lat": 30.7,
+        "type": "transit",
+        "address": "地铁2/7号线"
+      },
+      {
+        "name": "人民北路地铁站",
+        "lng": 104.075,
+        "lat": 30.688,
+        "type": "transit",
+        "address": "地铁1号线"
+      },
+      {
+        "name": "花牌坊地铁站",
+        "lng": 104.058,
+        "lat": 30.682,
+        "type": "transit",
+        "address": "地铁6号线"
+      },
+      {
+        "name": "新金牛公园",
+        "lng": 104.019,
+        "lat": 30.692,
+        "type": "park",
+        "address": "茶店子"
+      },
+      {
+        "name": "花牌坊商圈",
+        "lng": 104.061,
+        "lat": 30.681,
+        "type": "shopping",
+        "address": "花牌坊街"
+      },
+      {
+        "name": "万达广场(金牛)",
+        "lng": 104.061,
+        "lat": 30.694,
+        "type": "shopping",
+        "address": "人民北路一段"
+      },
+      {
+        "name": "成都中医大银海眼科医院",
+        "lng": 104.058,
+        "lat": 30.692,
+        "type": "hospital",
+        "address": "营门口路"
+      },
+      {
+        "name": "西部战区总医院",
+        "lng": 104.085,
+        "lat": 30.71,
+        "type": "hospital",
+        "address": "人民北路一段"
+      },
+      {
+        "name": "一品天下美食街",
+        "lng": 104.017,
+        "lat": 30.692,
+        "type": "landmark",
+        "address": "一品天下大街"
+      },
+      {
+        "name": "成都欢乐谷",
+        "lng": 104.043,
+        "lat": 30.715,
+        "type": "landmark",
+        "address": "西华大道"
+      }
+    ],
+    "青羊区": [
+      {
+        "name": "天府广场",
+        "lng": 104.066,
+        "lat": 30.659,
+        "type": "landmark",
+        "address": "人民南路"
+      },
+      {
+        "name": "宽窄巷子",
+        "lng": 104.057,
+        "lat": 30.667,
+        "type": "landmark",
+        "address": "金河路口"
+      },
+      {
+        "name": "杜甫草堂",
+        "lng": 104.04,
+        "lat": 30.658,
+        "type": "landmark",
+        "address": "草堂路"
+      },
+      {
+        "name": "金沙遗址博物馆",
+        "lng": 104.005,
+        "lat": 30.672,
+        "type": "landmark",
+        "address": "金沙遗址路"
+      },
+      {
+        "name": "青羊万达",
+        "lng": 103.978,
+        "lat": 30.68,
+        "type": "shopping",
+        "address": "光华北三路"
+      },
+      {
+        "name": "鹏瑞利广场",
+        "lng": 104.005,
+        "lat": 30.673,
+        "type": "shopping",
+        "address": "培风路"
+      },
+      {
+        "name": "西单商场",
+        "lng": 104.008,
+        "lat": 30.671,
+        "type": "shopping",
+        "address": "金沙公交枢纽旁"
+      },
+      {
+        "name": "茂业仁和春天百货",
+        "lng": 104.066,
+        "lat": 30.654,
+        "type": "shopping",
+        "address": "人民中路"
+      },
+      {
+        "name": "太升路商圈",
+        "lng": 104.067,
+        "lat": 30.66,
+        "type": "shopping",
+        "address": "太升南路"
+      },
+      {
+        "name": "送仙桥古玩市场",
+        "lng": 104.041,
+        "lat": 30.66,
+        "type": "shopping",
+        "address": "送仙桥"
+      },
+      {
+        "name": "浣花溪公园",
+        "lng": 104.04,
+        "lat": 30.659,
+        "type": "park",
+        "address": "草堂东路"
+      },
+      {
+        "name": "人民公园地铁站",
+        "lng": 104.055,
+        "lat": 30.66,
+        "type": "transit",
+        "address": "地铁2号线"
+      },
+      {
+        "name": "骡马市地铁站",
+        "lng": 104.066,
+        "lat": 30.66,
+        "type": "transit",
+        "address": "地铁1/4号线"
+      },
+      {
+        "name": "金沙公交枢纽站",
+        "lng": 104.008,
+        "lat": 30.67,
+        "type": "transit",
+        "address": "BRT金沙站"
+      },
+      {
+        "name": "四川省人民医院",
+        "lng": 104.048,
+        "lat": 30.656,
+        "type": "hospital",
+        "address": "一环路西二段"
+      },
+      {
+        "name": "成都市第三人民医院",
+        "lng": 104.065,
+        "lat": 30.658,
+        "type": "hospital",
+        "address": "青龙街"
+      },
+      {
+        "name": "成都市妇女儿童中心医院",
+        "lng": 103.982,
+        "lat": 30.682,
+        "type": "hospital",
+        "address": "光华东一路"
+      }
+    ],
+    "成华区": [
+      {
+        "name": "龙湖三千集",
+        "lng": 104.108,
+        "lat": 30.658,
+        "type": "shopping",
+        "address": "建设路"
+      },
+      {
+        "name": "SM广场(成都)",
+        "lng": 104.11,
+        "lat": 30.667,
+        "type": "shopping",
+        "address": "二仙桥"
+      },
+      {
+        "name": "伊藤洋华堂(建设路)",
+        "lng": 104.108,
+        "lat": 30.66,
+        "type": "shopping",
+        "address": "建设路"
+      },
+      {
+        "name": "万象城(成都)",
+        "lng": 104.105,
+        "lat": 30.64,
+        "type": "shopping",
+        "address": "双成二路"
+      },
+      {
+        "name": "双桥子家乐福",
+        "lng": 104.103,
+        "lat": 30.648,
+        "type": "shopping",
+        "address": "双桥子立交"
+      },
+      {
+        "name": "339购物中心",
+        "lng": 104.11,
+        "lat": 30.66,
+        "type": "landmark",
+        "address": "建设北路"
+      },
+      {
+        "name": "东郊记忆",
+        "lng": 104.118,
+        "lat": 30.662,
+        "type": "landmark",
+        "address": "建设南支路"
+      },
+      {
+        "name": "地铁3号线红星桥",
+        "lng": 104.105,
+        "lat": 30.665,
+        "type": "transit",
+        "address": "红星桥站"
+      },
+      {
+        "name": "地铁8号线东郊记忆",
+        "lng": 104.118,
+        "lat": 30.66,
+        "type": "transit",
+        "address": "东郊记忆站"
+      },
+      {
+        "name": "成都市第六人民医院",
+        "lng": 104.112,
+        "lat": 30.648,
+        "type": "hospital",
+        "address": "建设南街"
+      },
+      {
+        "name": "二仙桥公园",
+        "lng": 104.108,
+        "lat": 30.658,
+        "type": "park",
+        "address": "二仙桥"
+      },
+      {
+        "name": "新华公园",
+        "lng": 104.105,
+        "lat": 30.67,
+        "type": "park",
+        "address": "双林路"
+      },
+      {
+        "name": "成华公园",
+        "lng": 104.108,
+        "lat": 30.67,
+        "type": "park",
+        "address": "府青路"
+      },
+      {
+        "name": "成都自然博物馆",
+        "lng": 104.117,
+        "lat": 30.677,
+        "type": "landmark",
+        "address": "成华大道"
+      }
+    ]
+  },
+  "communities": [
+    {
+      "name": "红枫岭三期",
+      "district": "成华区",
+      "pool": "套三",
+      "lng": 104.11,
+      "lat": 30.654,
+      "school": "建设路小学枫林校区",
+      "schoolLevel": "一流",
+      "layout": "",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 120,
+      "baselinePrice": 143,
+      "price7dAvg": 120,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "达标",
+      "status": "ok",
+      "daysCount": 5,
+      "priceHistory": [
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "note": "预算内-第一顺位"
+    },
+    {
+      "name": "鼎城上都(套三)",
+      "district": "成华区",
+      "pool": "套三",
+      "lng": 104.108,
+      "lat": 30.655,
+      "school": "建设路小学枫林校区",
+      "schoolLevel": "一流",
+      "layout": "",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 128,
+      "baselinePrice": 128,
+      "price7dAvg": 128,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "达标",
+      "status": "ok",
+      "daysCount": 5,
+      "priceHistory": [
+        128,
+        128,
+        128,
+        128,
+        128
+      ],
+      "note": "预算内-第二顺位"
+    },
+    {
+      "name": "万科金色领域",
+      "district": "青羊区",
+      "pool": "套三",
+      "lng": 104.01,
+      "lat": 30.68,
+      "school": "泡小桐欣/草堂子美（青6区多校划片）",
+      "schoolLevel": "一流（名校分校）",
+      "layout": "",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 156,
+      "baselinePrice": 156,
+      "price7dAvg": 156,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "超预算",
+      "status": "warn",
+      "daysCount": 5,
+      "priceHistory": [
+        156,
+        156,
+        156,
+        156,
+        156
+      ],
+      "note": "超预算6万-议价可及"
+    },
+    {
+      "name": "和谐家园(套三)",
+      "district": "金牛区",
+      "pool": "套三",
+      "lng": 104.016,
+      "lat": 30.695,
+      "school": "茶店子小学",
+      "schoolLevel": "顶尖",
+      "layout": "",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 178,
+      "baselinePrice": 178,
+      "price7dAvg": 178,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "严重超预算",
+      "status": "alert",
+      "daysCount": 5,
+      "priceHistory": [
+        178,
+        178,
+        178,
+        178,
+        178
+      ],
+      "note": "超预算28万"
+    },
+    {
+      "name": "蓝光凯丽豪景/蓝光云鼎",
+      "district": "金牛区",
+      "pool": "套三",
+      "lng": 104.06,
+      "lat": 30.67,
+      "school": "石笋街小学",
+      "schoolLevel": "顶尖",
+      "layout": "",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 168,
+      "baselinePrice": 168,
+      "price7dAvg": 168,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "超预算",
+      "status": "warn",
+      "daysCount": 5,
+      "priceHistory": [
+        168,
+        168,
+        168,
+        168,
+        168
+      ],
+      "note": "超预算18万起，中位远超"
+    },
+    {
+      "name": "清溪雅筑",
+      "district": "青羊区",
+      "pool": "套三",
+      "lng": 104.008,
+      "lat": 30.678,
+      "school": "泡小桐欣/草堂子美（青6区多校划片）",
+      "schoolLevel": "一流（名校分校）",
+      "layout": "",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 99.8,
+      "baselinePrice": 115,
+      "price7dAvg": 99.8,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "无双卫·剔除",
+      "status": "alert",
+      "daysCount": 5,
+      "priceHistory": [
+        99.8,
+        99.8,
+        99.8,
+        99.8,
+        99.8
+      ],
+      "note": "不符合硬性要求"
+    },
+    {
+      "name": "和泓·东28(套三)",
+      "district": "成华区",
+      "pool": "套三",
+      "lng": 104.06,
+      "lat": 30.67,
+      "school": "建设路小学枫林校区",
+      "schoolLevel": "一流",
+      "layout": "",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 119,
+      "baselinePrice": 122,
+      "price7dAvg": 119,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "达标",
+      "status": "ok",
+      "daysCount": 5,
+      "priceHistory": [
+        119,
+        119,
+        119,
+        119,
+        119
+      ],
+      "note": "存疑-72㎡小套三或全为单卫"
+    },
+    {
+      "name": "和谐家园(套二)",
+      "district": "金牛区",
+      "pool": "套二",
+      "lng": 104.016,
+      "lat": 30.695,
+      "school": "茶店子小学",
+      "schoolLevel": "顶尖",
+      "layout": "套二单卫 87.72㎡",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 96,
+      "baselinePrice": 99.8,
+      "price7dAvg": 96,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "达标",
+      "status": "ok",
+      "daysCount": 4,
+      "priceHistory": [
+        96,
+        96,
+        96,
+        96
+      ],
+      "note": "预算内-顶尖学校最可及"
+    },
+    {
+      "name": "和泓·东28(套二)",
+      "district": "成华区",
+      "pool": "套二",
+      "lng": 104.06,
+      "lat": 30.67,
+      "school": "建设路小学枫林校区",
+      "schoolLevel": "一流",
+      "layout": "套二单卫 57-65㎡",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 78,
+      "baselinePrice": 90,
+      "price7dAvg": 78,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "达标",
+      "status": "ok",
+      "daysCount": 4,
+      "priceHistory": [
+        78,
+        78,
+        78,
+        78
+      ],
+      "note": "预算内-百万元内套二最丰富"
+    },
+    {
+      "name": "鼎城上都(套二)",
+      "district": "成华区",
+      "pool": "套二",
+      "lng": 104.108,
+      "lat": 30.655,
+      "school": "建设路小学枫林校区",
+      "schoolLevel": "一流",
+      "layout": "套二单卫 46.99-63.22㎡",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 82,
+      "baselinePrice": 97,
+      "price7dAvg": 82,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "达标",
+      "status": "ok",
+      "daysCount": 4,
+      "priceHistory": [
+        82,
+        82,
+        82,
+        82
+      ],
+      "note": "预算内-百万元内套二"
+    },
+    {
+      "name": "花样年花郡",
+      "district": "成华区",
+      "pool": "套二",
+      "lng": 104.1,
+      "lat": 30.662,
+      "school": "成华小学",
+      "schoolLevel": "一流（成华区传统名校）",
+      "layout": "套二单卫 62.55㎡",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 96,
+      "baselinePrice": 96,
+      "price7dAvg": 96,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "达标",
+      "status": "ok",
+      "daysCount": 2,
+      "priceHistory": [
+        96,
+        96
+      ],
+      "note": "预算内-成华小学对口唯一百万元内套二"
+    },
+    {
+      "name": "时代凯悦",
+      "district": "青羊区",
+      "pool": "套二",
+      "lng": 104.065,
+      "lat": 30.667,
+      "school": "东城根街小学",
+      "schoolLevel": "一流（青羊区知名）",
+      "layout": "套二单卫 56.8㎡",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 77,
+      "baselinePrice": 77,
+      "price7dAvg": 77,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "达标",
+      "status": "ok",
+      "daysCount": 2,
+      "priceHistory": [
+        77,
+        77
+      ],
+      "note": "预算内-东城根街小学对口最低价标的"
+    },
+    {
+      "name": "西城天下",
+      "district": "金牛区",
+      "pool": "套二",
+      "lng": 104.015,
+      "lat": 30.697,
+      "school": "茶店子小学",
+      "schoolLevel": "顶尖",
+      "layout": "套二单卫 72.01㎡",
+      "area": null,
+      "elevator": true,
+      "currentPrice": 97.2,
+      "baselinePrice": 97.2,
+      "price7dAvg": 97.2,
+      "priceChange": 0,
+      "priceChangePct": 0,
+      "statusText": "达标",
+      "status": "ok",
+      "daysCount": 2,
+      "priceHistory": [
+        97.2,
+        97.2
+      ],
+      "note": "预算内-茶店子小学对口第二选择"
+    }
+  ],
+  "districtSummary": {
+    "金牛区": {
+      "communityCount": 4,
+      "lowestPrice": 96,
+      "highestPrice": 178
+    },
+    "青羊区": {
+      "communityCount": 3,
+      "lowestPrice": 77,
+      "highestPrice": 156
+    },
+    "成华区": {
+      "communityCount": 6,
+      "lowestPrice": 78,
+      "highestPrice": 128
+    }
+  }
+}
