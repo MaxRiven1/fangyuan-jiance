@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T09:00:00+08:00",
+  "generatedAt": "2026-08-04T09:00:00+08:00",
   "schools": [
     {
       "name": "成都市实验小学",
@@ -435,8 +435,9 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 5,
+      "daysCount": 6,
       "priceHistory": [
+        120,
         120,
         120,
         120,
@@ -463,8 +464,9 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 5,
+      "daysCount": 6,
       "priceHistory": [
+        128,
         128,
         128,
         128,
@@ -484,20 +486,21 @@
       "layout": "",
       "area": null,
       "elevator": true,
-      "currentPrice": 156,
+      "currentPrice": 155,
       "baselinePrice": 156,
-      "price7dAvg": 156,
-      "priceChange": 0,
-      "priceChangePct": 0,
+      "price7dAvg": 155.83,
+      "priceChange": -0.83,
+      "priceChangePct": -0.53,
       "statusText": "超预算",
       "status": "warn",
-      "daysCount": 5,
+      "daysCount": 6,
       "priceHistory": [
         156,
         156,
         156,
         156,
-        156
+        156,
+        155
       ],
       "note": "超预算6万-议价可及"
     },
@@ -519,8 +522,9 @@
       "priceChangePct": 0,
       "statusText": "严重超预算",
       "status": "alert",
-      "daysCount": 5,
+      "daysCount": 6,
       "priceHistory": [
+        178,
         178,
         178,
         178,
@@ -547,8 +551,9 @@
       "priceChangePct": 0,
       "statusText": "超预算",
       "status": "warn",
-      "daysCount": 5,
+      "daysCount": 6,
       "priceHistory": [
+        168,
         168,
         168,
         168,
@@ -575,8 +580,9 @@
       "priceChangePct": 0,
       "statusText": "无双卫·剔除",
       "status": "alert",
-      "daysCount": 5,
+      "daysCount": 6,
       "priceHistory": [
+        99.8,
         99.8,
         99.8,
         99.8,
@@ -603,8 +609,9 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 5,
+      "daysCount": 6,
       "priceHistory": [
+        119,
         119,
         119,
         119,
@@ -631,8 +638,9 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 4,
+      "daysCount": 5,
       "priceHistory": [
+        96,
         96,
         96,
         96,
@@ -658,8 +666,9 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 4,
+      "daysCount": 5,
       "priceHistory": [
+        78,
         78,
         78,
         78,
@@ -685,8 +694,9 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 4,
+      "daysCount": 5,
       "priceHistory": [
+        82,
         82,
         82,
         82,
@@ -712,8 +722,9 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 2,
+      "daysCount": 3,
       "priceHistory": [
+        96,
         96,
         96
       ],
@@ -737,8 +748,9 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 2,
+      "daysCount": 3,
       "priceHistory": [
+        77,
         77,
         77
       ],
@@ -762,8 +774,9 @@
       "priceChangePct": 0,
       "statusText": "达标",
       "status": "ok",
-      "daysCount": 2,
+      "daysCount": 3,
       "priceHistory": [
+        97.2,
         97.2,
         97.2
       ],
@@ -779,7 +792,7 @@
     "青羊区": {
       "communityCount": 3,
       "lowestPrice": 77,
-      "highestPrice": 156
+      "highestPrice": 155
     },
     "成华区": {
       "communityCount": 6,
