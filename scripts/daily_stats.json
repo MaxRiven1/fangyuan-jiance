@@ -1,42 +1,272 @@
 {
   "JN-001": {
     "name": "和谐家园",
-    "error": "LOAD_TIMEOUT"
+    "在售套三数": 6,
+    "最低万": 135,
+    "中位万": 183.5,
+    "最低三套": [
+      {
+        "title": "和谐家园 3室2厅 西南",
+        "house": "高楼层 (共18层) 3室2厅 | 94.41平米 | 西南",
+        "position": "和谐家园",
+        "price": 135,
+        "unitPrice": "14,300元/平",
+        "href": "https://cd.ke.com/ershoufang/106128676076.html"
+      },
+      {
+        "title": "和谐家园 3室2厅 南",
+        "house": "低楼层 (共18层) 3室2厅 | 119.02平米 | 南",
+        "position": "和谐家园",
+        "price": 170,
+        "unitPrice": "14,284元/平",
+        "href": "https://cd.ke.com/ershoufang/106126534258.html"
+      },
+      {
+        "title": "和谐家园 3室2厅 东南 东南 西北",
+        "house": "高楼层 (共18层) 3室2厅 | 126.35平米 | 东南 东南 西北",
+        "position": "和谐家园",
+        "price": 178,
+        "unitPrice": "14,088元/平",
+        "href": "https://cd.ke.com/ershoufang/106128565273.html"
+      }
+    ]
   },
   "CH-001": {
     "name": "红枫岭三期",
-    "error": "LOAD_TIMEOUT"
-  },
-  "CH-002": {
-    "name": "蓝润V客尚东",
-    "error": "LOAD_TIMEOUT"
+    "在售套三数": 3,
+    "最低万": 139,
+    "中位万": 143,
+    "最低三套": [
+      {
+        "title": "红枫岭三期 3室2厅 东",
+        "house": "中楼层 (共33层) 3室2厅 | 90.27平米 | 东",
+        "position": "红枫岭三期",
+        "price": 139,
+        "unitPrice": "15,399元/平",
+        "href": "https://cd.ke.com/ershoufang/106127474012.html"
+      },
+      {
+        "title": "红枫岭三期 3室2厅 东南",
+        "house": "高楼层 (共33层) 3室2厅 | 89.68平米 | 东南",
+        "position": "红枫岭三期",
+        "price": 143,
+        "unitPrice": "15,946元/平",
+        "href": "https://cd.ke.com/ershoufang/106127610899.html"
+      },
+      {
+        "title": "红枫岭三期 3室2厅 南 北",
+        "house": "高楼层 (共33层) 3室2厅 | 132.89平米 | 南 北",
+        "position": "红枫岭三期",
+        "price": 180,
+        "unitPrice": "13,546元/平",
+        "href": "https://cd.ke.com/ershoufang/106128434596.html"
+      }
+    ]
   },
   "CH-003": {
     "name": "和泓东28",
-    "error": "LOAD_TIMEOUT"
+    "在售套三数": 2,
+    "最低万": 119,
+    "中位万": 120.5,
+    "最低三套": [
+      {
+        "title": "和泓东28 3室2厅 西",
+        "house": "低楼层 (共34层) 3室2厅 | 72.49平米 | 西",
+        "position": "和泓东28",
+        "price": 119,
+        "unitPrice": "16,417元/平",
+        "href": "https://cd.ke.com/ershoufang/106126528587.html"
+      },
+      {
+        "title": "和泓东28 3室2厅 西南",
+        "house": "中楼层 (共34层) 3室2厅 | 72.49平米 | 西南",
+        "position": "和泓东28",
+        "price": 122,
+        "unitPrice": "16,830元/平",
+        "href": "https://cd.ke.com/ershoufang/106122936635.html"
+      }
+    ]
   },
   "CH-004": {
     "name": "鼎城上都",
-    "error": "LOAD_TIMEOUT"
+    "在售套三数": 2,
+    "最低万": 128,
+    "中位万": 149,
+    "最低三套": [
+      {
+        "title": "鼎城上都 3室2厅 西南",
+        "house": "中楼层 (共28层) 3室2厅 | 91.67平米 | 西南",
+        "position": "鼎城上都",
+        "price": 128,
+        "unitPrice": "13,964元/平",
+        "href": "https://cd.ke.com/ershoufang/106126172291.html"
+      },
+      {
+        "title": "鼎城上都 3室2厅 东南",
+        "house": "低楼层 (共29层) 3室2厅 | 82.4平米 | 东南",
+        "position": "鼎城上都",
+        "price": 170,
+        "unitPrice": "20,632元/平",
+        "href": "https://cd.ke.com/ershoufang/106127836739.html"
+      }
+    ]
   },
   "JN-002a": {
     "name": "蓝光凯丽豪景",
-    "error": "LOAD_TIMEOUT"
+    "在售套三数": 10,
+    "最低万": 148,
+    "中位万": 230,
+    "最低三套": [
+      {
+        "title": "凯丽豪景 3室2厅 南 北",
+        "house": "高楼层 (共30层) 3室2厅 | 86.28平米 | 南 北",
+        "position": "凯丽豪景",
+        "price": 148,
+        "unitPrice": "17,154元/平",
+        "href": "https://cd.ke.com/ershoufang/106120790658.html"
+      },
+      {
+        "title": "凯丽豪景 3室2厅 东南",
+        "house": "高楼层 (共30层) 3室2厅 | 86.28平米 | 东南",
+        "position": "凯丽豪景",
+        "price": 158,
+        "unitPrice": "18,313元/平",
+        "href": "https://cd.ke.com/ershoufang/106123741255.html"
+      },
+      {
+        "title": "凯丽豪景 3室2厅 西北",
+        "house": "高楼层 (共32层) 3室2厅 | 105.44平米 | 西北",
+        "position": "凯丽豪景",
+        "price": 180,
+        "unitPrice": "17,072元/平",
+        "href": "https://cd.ke.com/ershoufang/106121202002.html"
+      }
+    ]
   },
   "JN-002b": {
     "name": "蓝光云鼎",
-    "error": "LOAD_TIMEOUT"
-  },
-  "JN-003": {
-    "name": "中加水岸",
-    "error": "LOAD_TIMEOUT"
+    "在售套三数": 5,
+    "最低万": 168,
+    "中位万": 200,
+    "最低三套": [
+      {
+        "title": "蓝光云鼎 3室2厅 南 北",
+        "house": "高楼层 (共31层) 3室2厅 | 87.11平米 | 南 北",
+        "position": "蓝光云鼎",
+        "price": 168,
+        "unitPrice": "19,286元/平",
+        "href": "https://cd.ke.com/ershoufang/106125825823.html"
+      },
+      {
+        "title": "蓝光云鼎 3室2厅 西南",
+        "house": "高楼层 (共28层) 3室2厅 | 97.68平米 | 西南",
+        "position": "蓝光云鼎",
+        "price": 185,
+        "unitPrice": "18,940元/平",
+        "href": "https://cd.ke.com/ershoufang/106126968973.html"
+      },
+      {
+        "title": "蓝光云鼎 3室2厅 东北",
+        "house": "中楼层 (共28层) | 2012年 | 3室2厅 | 83.6平米 | 东北",
+        "position": "蓝光云鼎",
+        "price": 200,
+        "unitPrice": "23,924元/平",
+        "href": "https://cd.ke.com/ershoufang/106127750902.html"
+      }
+    ]
   },
   "QY-001": {
     "name": "万科金色领域",
-    "error": "LOAD_TIMEOUT"
+    "在售套三数": 13,
+    "最低万": 156,
+    "中位万": 167,
+    "最低三套": [
+      {
+        "title": "万科金色领域 3室2厅 南",
+        "house": "低楼层 (共24层) 3室2厅 | 86.08平米 | 南",
+        "position": "万科金色领域",
+        "price": 156,
+        "unitPrice": "18,123元/平",
+        "href": "https://cd.ke.com/ershoufang/106118423430.html"
+      },
+      {
+        "title": "万科金色领域 3室2厅 东",
+        "house": "高楼层 (共24层) 3室2厅 | 88.47平米 | 东",
+        "position": "万科金色领域",
+        "price": 158,
+        "unitPrice": "17,860元/平",
+        "href": "https://cd.ke.com/ershoufang/106126554798.html"
+      },
+      {
+        "title": "万科金色领域 3室2厅 南",
+        "house": "中楼层 (共24层) 3室2厅 | 87.23平米 | 南",
+        "position": "万科金色领域",
+        "price": 159.8,
+        "unitPrice": "18,320元/平",
+        "href": "https://cd.ke.com/ershoufang/106127328114.html"
+      }
+    ]
   },
   "QY-002": {
     "name": "清溪雅筑",
-    "error": "LOAD_TIMEOUT"
+    "在售套三数": 11,
+    "最低万": 99.8,
+    "中位万": 118,
+    "最低三套": [
+      {
+        "title": "清溪雅筑 3室2厅 北",
+        "house": "高楼层 (共18层) 3室2厅 | 86.71平米 | 北",
+        "position": "清溪雅筑",
+        "price": 99.8,
+        "unitPrice": "11,510元/平",
+        "href": "https://cd.ke.com/ershoufang/106128341283.html"
+      },
+      {
+        "title": "清溪雅筑 3室2厅 东",
+        "house": "中楼层 (共18层) 3室2厅 | 89.89平米 | 东",
+        "position": "清溪雅筑",
+        "price": 109.8,
+        "unitPrice": "12,215元/平",
+        "href": "https://cd.ke.com/ershoufang/106127697879.html"
+      },
+      {
+        "title": "清溪雅筑 3室2厅 东",
+        "house": "中楼层 (共18层) 3室2厅 | 89.73平米 | 东",
+        "position": "清溪雅筑",
+        "price": 110,
+        "unitPrice": "12,259元/平",
+        "href": "https://cd.ke.com/ershoufang/106124856321.html"
+      }
+    ]
+  },
+  "CH-005": {
+    "name": "花样年花郡",
+    "在售套三数": 0,
+    "最低万": null,
+    "中位万": null,
+    "最低三套": []
+  },
+  "QY-003": {
+    "name": "时代凯悦",
+    "在售套三数": 0,
+    "最低万": null,
+    "中位万": null,
+    "最低三套": []
+  },
+  "JN-004": {
+    "name": "西城天下",
+    "在售套三数": 1,
+    "最低万": 180,
+    "中位万": 180,
+    "最低三套": [
+      {
+        "title": "西城天下 3室2厅 南 北",
+        "house": "中楼层 (共31层) 3室2厅 | 124.75平米 | 南 北",
+        "position": "西城天下",
+        "price": 180,
+        "unitPrice": "14,429元/平",
+        "href": "https://cd.ke.com/ershoufang/106126779325.html"
+      }
+    ]
   }
 }

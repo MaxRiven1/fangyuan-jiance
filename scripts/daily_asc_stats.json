@@ -1,0 +1,1041 @@
+{
+  "JN-001": {
+    "name": "和谐家园",
+    "套三3室2厅数": 6,
+    "套三最低": 135,
+    "套三中位": 183.5,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 94.41,
+        "price": 135,
+        "unit": "14300元/平",
+        "house": "高楼层 (共18层) 3室2厅 | 94.41平米 | 西南",
+        "href": "https://cd.ke.com/ershoufang/106128676076.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 119.02,
+        "price": 170,
+        "unit": "14284元/平",
+        "house": "低楼层 (共18层) 3室2厅 | 119.02平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106126534258.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 126.35,
+        "price": 178,
+        "unit": "14088元/平",
+        "house": "高楼层 (共18层) 3室2厅 | 126.35平米 | 东南 东南 西北",
+        "href": "https://cd.ke.com/ershoufang/106128565273.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 119.02,
+        "price": 189,
+        "unit": "15880元/平",
+        "house": "中楼层 (共18层) 3室2厅 | 119.02平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106124584443.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 126.35,
+        "price": 189,
+        "unit": "14959元/平",
+        "house": "中楼层 (共18层) 3室2厅 | 126.35平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106126479085.html"
+      }
+    ],
+    "套二数": 15,
+    "套二le100数": 3,
+    "套二最低": 96,
+    "套二le100中位": 99.8,
+    "套二中位": 120,
+    "套二le100清单": [
+      {
+        "huxing": "2室1厅",
+        "area": 87.72,
+        "price": 96,
+        "unit": "10944元/平",
+        "house": "低楼层 (共18层) 2室1厅 | 87.72平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106128630321.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 94.31,
+        "price": 99.8,
+        "unit": "10583元/平",
+        "house": "低楼层 (共18层) 2室1厅 | 94.31平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106126477713.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 94.31,
+        "price": 100,
+        "unit": "10604元/平",
+        "house": "高楼层 (共18层) 2室2厅 | 94.31平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106119032424.html"
+      }
+    ],
+    "l3原始数": 12,
+    "l2原始数": 18
+  },
+  "CH-001": {
+    "name": "红枫岭三期",
+    "套三3室2厅数": 5,
+    "套三最低": 120,
+    "套三中位": 139,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 90.27,
+        "price": 120,
+        "unit": "13294元/平",
+        "house": "低楼层 (共33层) 3室2厅 | 90.27平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106124011275.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 90.38,
+        "price": 137.8,
+        "unit": "15247元/平",
+        "house": "中楼层 (共33层) 3室2厅 | 90.38平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106127704195.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 90.27,
+        "price": 139,
+        "unit": "15399元/平",
+        "house": "中楼层 (共33层) 3室2厅 | 90.27平米 | 东北",
+        "href": "https://cd.ke.com/ershoufang/106127474012.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 90.14,
+        "price": 142,
+        "unit": "15754元/平",
+        "house": "中楼层 (共33层) 3室2厅 | 90.14平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106128435362.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 89.68,
+        "price": 143,
+        "unit": "15946元/平",
+        "house": "高楼层 (共33层) 3室2厅 | 89.68平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106127610899.html"
+      }
+    ],
+    "套二数": 10,
+    "套二le100数": 0,
+    "套二最低": 107,
+    "套二le100中位": null,
+    "套二中位": 112,
+    "套二le100清单": [],
+    "l3原始数": 26,
+    "l2原始数": 29
+  },
+  "CH-002": {
+    "name": "蓝润V客尚东",
+    "套三3室2厅数": 4,
+    "套三最低": 90,
+    "套三中位": 94.25,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 69.31,
+        "price": 90,
+        "unit": "12986元/平",
+        "house": "高楼层 (共34层) 3室2厅 | 69.31平米 | 北",
+        "href": "https://cd.ke.com/ershoufang/106119585338.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 69.31,
+        "price": 90,
+        "unit": "12986元/平",
+        "house": "高楼层 (共34层) 3室2厅 | 69.31平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106127282180.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 69.31,
+        "price": 98.5,
+        "unit": "14212元/平",
+        "house": "中楼层 (共34层) 3室2厅 | 69.31平米 | 东北",
+        "href": "https://cd.ke.com/ershoufang/106127174933.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 83.47,
+        "price": 128,
+        "unit": "15335元/平",
+        "house": "高楼层 (共34层) 3室2厅 | 83.47平米 | 北",
+        "href": "https://cd.ke.com/ershoufang/106122233715.html"
+      }
+    ],
+    "套二数": 0,
+    "套二le100数": 0,
+    "套二最低": null,
+    "套二le100中位": null,
+    "套二中位": null,
+    "套二le100清单": [],
+    "l3原始数": 13,
+    "l2原始数": 2
+  },
+  "CH-003": {
+    "name": "和泓东28",
+    "套三3室2厅数": 2,
+    "套三最低": 119,
+    "套三中位": 120.5,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 72.49,
+        "price": 119,
+        "unit": "16417元/平",
+        "house": "低楼层 (共34层) 3室2厅 | 72.49平米 | 西",
+        "href": "https://cd.ke.com/ershoufang/106126528587.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 72.49,
+        "price": 122,
+        "unit": "16830元/平",
+        "house": "中楼层 (共34层) 3室2厅 | 72.49平米 | 西南",
+        "href": "https://cd.ke.com/ershoufang/106122936635.html"
+      }
+    ],
+    "套二数": 30,
+    "套二le100数": 19,
+    "套二最低": 78,
+    "套二le100中位": 90,
+    "套二中位": 94.9,
+    "套二le100清单": [
+      {
+        "huxing": "2室1厅",
+        "area": 57.69,
+        "price": 78,
+        "unit": "13521元/平",
+        "house": "中楼层 (共31层) 2室1厅 | 57.69平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106126089608.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.69,
+        "price": 85,
+        "unit": "14734元/平",
+        "house": "低楼层 (共31层) 2室1厅 | 57.69平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106123800048.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.86,
+        "price": 86,
+        "unit": "14864元/平",
+        "house": "中楼层 (共34层) 2室1厅 | 57.86平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106127866115.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.86,
+        "price": 87,
+        "unit": "15037元/平",
+        "house": "低楼层 (共34层) 2室1厅 | 57.86平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106127775664.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.69,
+        "price": 88,
+        "unit": "15254元/平",
+        "house": "中楼层 (共31层) 2室1厅 | 57.69平米 | 东北",
+        "href": "https://cd.ke.com/ershoufang/106127194438.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.69,
+        "price": 88,
+        "unit": "15254元/平",
+        "house": "中楼层 (共31层) 2室1厅 | 57.69平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106121403333.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 59.53,
+        "price": 88,
+        "unit": "14783元/平",
+        "house": "中楼层 (共31层) 2室1厅 | 59.53平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106126121752.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.86,
+        "price": 89.8,
+        "unit": "15521元/平",
+        "house": "中楼层 (共34层) 2室1厅 | 57.86平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106124911026.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.89,
+        "price": 90,
+        "unit": "15547元/平",
+        "house": "高楼层 (共34层) 2室1厅 | 57.89平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106125995072.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 59.53,
+        "price": 90,
+        "unit": "15119元/平",
+        "house": "高楼层 (共31层) 2室1厅 | 59.53平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106127460604.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 59.53,
+        "price": 90,
+        "unit": "15119元/平",
+        "house": "中楼层 (共31层) 2室1厅 | 59.53平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106128051016.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 59.53,
+        "price": 91.8,
+        "unit": "15421元/平",
+        "house": "中楼层 (共31层) 2室1厅 | 59.53平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106123347473.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 59.53,
+        "price": 93,
+        "unit": "15623元/平",
+        "house": "中楼层 (共31层) 2室1厅 | 59.53平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106127850292.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57,
+        "price": 94,
+        "unit": "16492元/平",
+        "house": "低楼层 (共34层) 2室1厅 | 57平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106119516799.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.89,
+        "price": 94,
+        "unit": "16238元/平",
+        "house": "高楼层 (共34层) 2室1厅 | 57.89平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106120608358.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.89,
+        "price": 95.8,
+        "unit": "16549元/平",
+        "house": "低楼层 (共34层) 2室1厅 | 57.89平米 | 西",
+        "href": "https://cd.ke.com/ershoufang/106124801855.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.69,
+        "price": 98,
+        "unit": "16988元/平",
+        "house": "中楼层 (共31层) 2室1厅 | 57.69平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106122207510.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 57.86,
+        "price": 98,
+        "unit": "16938元/平",
+        "house": "中楼层 (共34层) 2室1厅 | 57.86平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106120789669.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 65.8,
+        "price": 100,
+        "unit": "15198元/平",
+        "house": "低楼层 (共31层) 2室2厅 | 65.8平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106125659014.html"
+      }
+    ],
+    "l3原始数": 11,
+    "l2原始数": 30
+  },
+  "CH-004": {
+    "name": "鼎城上都",
+    "套三3室2厅数": 2,
+    "套三最低": 128,
+    "套三中位": 149,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 91.67,
+        "price": 128,
+        "unit": "13964元/平",
+        "house": "中楼层 (共28层) 3室2厅 | 91.67平米 | 西南",
+        "href": "https://cd.ke.com/ershoufang/106126172291.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 82.4,
+        "price": 170,
+        "unit": "20632元/平",
+        "house": "低楼层 (共29层) 3室2厅 | 82.4平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106127836739.html"
+      }
+    ],
+    "套二数": 8,
+    "套二le100数": 3,
+    "套二最低": 82,
+    "套二le100中位": 97,
+    "套二中位": 105,
+    "套二le100清单": [
+      {
+        "huxing": "2室1厅",
+        "area": 46.99,
+        "price": 82,
+        "unit": "17451元/平",
+        "house": "高楼层 (共29层) 2室1厅 | 46.99平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106128273296.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 61.39,
+        "price": 97,
+        "unit": "15801元/平",
+        "house": "高楼层 (共28层) | 2017年 | 2室1厅 | 61.39平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106125639650.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 63.22,
+        "price": 99,
+        "unit": "15660元/平",
+        "house": "高楼层 (共28层) 2室1厅 | 63.22平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106124671656.html"
+      }
+    ],
+    "l3原始数": 7,
+    "l2原始数": 9
+  },
+  "JN-002a": {
+    "name": "蓝光凯丽豪景",
+    "套三3室2厅数": 17,
+    "套三最低": 148,
+    "套三中位": 230,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 86.28,
+        "price": 148,
+        "unit": "17154元/平",
+        "house": "高楼层 (共30层) 3室2厅 | 86.28平米 | 南 北",
+        "href": "https://cd.ke.com/ershoufang/106120790658.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 86.28,
+        "price": 158,
+        "unit": "18313元/平",
+        "house": "高楼层 (共30层) 3室2厅 | 86.28平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106123741255.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 105.44,
+        "price": 180,
+        "unit": "17072元/平",
+        "house": "高楼层 (共32层) 3室2厅 | 105.44平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106121202002.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 98.44,
+        "price": 189,
+        "unit": "19200元/平",
+        "house": "低楼层 (共32层) 3室2厅 | 98.44平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106121277438.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 107.77,
+        "price": 198,
+        "unit": "18373元/平",
+        "house": "高楼层 (共32层) 3室2厅 | 107.77平米 | 北 西北",
+        "href": "https://cd.ke.com/ershoufang/106120353057.html"
+      }
+    ],
+    "套二数": 21,
+    "套二le100数": 2,
+    "套二最低": 99,
+    "套二le100中位": 99.5,
+    "套二中位": 152.8,
+    "套二le100清单": [
+      {
+        "huxing": "2室1厅",
+        "area": 61.76,
+        "price": 99,
+        "unit": "16030元/平",
+        "house": "高楼层 (共30层) 2室1厅 | 61.76平米 | 西南",
+        "href": "https://cd.ke.com/ershoufang/106127855873.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 62.06,
+        "price": 100,
+        "unit": "16114元/平",
+        "house": "中楼层 (共30层) 2室1厅 | 62.06平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106125446754.html"
+      }
+    ],
+    "l3原始数": 26,
+    "l2原始数": 22
+  },
+  "JN-002b": {
+    "name": "蓝光云鼎",
+    "套三3室2厅数": 5,
+    "套三最低": 168,
+    "套三中位": 200,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 87.11,
+        "price": 168,
+        "unit": "19286元/平",
+        "house": "高楼层 (共31层) 3室2厅 | 87.11平米 | 南 北",
+        "href": "https://cd.ke.com/ershoufang/106125825823.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 97.68,
+        "price": 178,
+        "unit": "18223元/平",
+        "house": "高楼层 (共28层) 3室2厅 | 97.68平米 | 西南",
+        "href": "https://cd.ke.com/ershoufang/106126968973.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 83.6,
+        "price": 200,
+        "unit": "23924元/平",
+        "house": "中楼层 (共28层) | 2012年 | 3室2厅 | 83.6平米 | 东北",
+        "href": "https://cd.ke.com/ershoufang/106127750902.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 113.83,
+        "price": 228,
+        "unit": "20030元/平",
+        "house": "中楼层 (共28层) 3室2厅 | 113.83平米 | 东北",
+        "href": "https://cd.ke.com/ershoufang/106128554196.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 113.83,
+        "price": 239,
+        "unit": "20997元/平",
+        "house": "高楼层 (共28层) 3室2厅 | 113.83平米 | 西南",
+        "href": "https://cd.ke.com/ershoufang/106114953449.html"
+      }
+    ],
+    "套二数": 10,
+    "套二le100数": 0,
+    "套二最低": 109,
+    "套二le100中位": null,
+    "套二中位": 130,
+    "套二le100清单": [],
+    "l3原始数": 16,
+    "l2原始数": 11
+  },
+  "JN-003": {
+    "name": "中加水岸",
+    "套三3室2厅数": 16,
+    "套三最低": 133,
+    "套三中位": 159.5,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 86.69,
+        "price": 133,
+        "unit": "15343元/平",
+        "house": "低楼层 (共26层) 3室2厅 | 86.69平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106126359350.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 85.05,
+        "price": 136,
+        "unit": "15991元/平",
+        "house": "中楼层 (共33层) 3室2厅 | 85.05平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106120909781.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 90.05,
+        "price": 144,
+        "unit": "15992元/平",
+        "house": "高楼层 (共33层) 3室2厅 | 90.05平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106127152029.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 85.05,
+        "price": 150,
+        "unit": "17637元/平",
+        "house": "高楼层 (共33层) 3室2厅 | 85.05平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106121049264.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 85.1,
+        "price": 155,
+        "unit": "18214元/平",
+        "house": "中楼层 (共34层) 3室2厅 | 85.1平米 | 西南",
+        "href": "https://cd.ke.com/ershoufang/106126917769.html"
+      }
+    ],
+    "套二数": 14,
+    "套二le100数": 0,
+    "套二最低": 108,
+    "套二le100中位": null,
+    "套二中位": 118.9,
+    "套二le100清单": [],
+    "l3原始数": 30,
+    "l2原始数": 15
+  },
+  "QY-001": {
+    "name": "万科金色领域",
+    "套三3室2厅数": 16,
+    "套三最低": 155,
+    "套三中位": 170,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 86.08,
+        "price": 155,
+        "unit": "18007元/平",
+        "house": "低楼层 (共24层) 3室2厅 | 86.08平米 | 南 北",
+        "href": "https://cd.ke.com/ershoufang/106128709397.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 86.08,
+        "price": 156,
+        "unit": "18123元/平",
+        "house": "低楼层 (共24层) 3室2厅 | 86.08平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106118423430.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 88.47,
+        "price": 158,
+        "unit": "17860元/平",
+        "house": "高楼层 (共24层) 3室2厅 | 88.47平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106126554798.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 87.23,
+        "price": 159.8,
+        "unit": "18320元/平",
+        "house": "中楼层 (共24层) 3室2厅 | 87.23平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106127328114.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 93.24,
+        "price": 162,
+        "unit": "17375元/平",
+        "house": "高楼层 (共24层) 3室2厅 | 93.24平米 | 北",
+        "href": "https://cd.ke.com/ershoufang/106126041842.html"
+      }
+    ],
+    "套二数": 17,
+    "套二le100数": 0,
+    "套二最低": 126,
+    "套二le100中位": null,
+    "套二中位": 145,
+    "套二le100清单": [],
+    "l3原始数": 30,
+    "l2原始数": 21
+  },
+  "QY-002": {
+    "name": "清溪雅筑",
+    "套三3室2厅数": 15,
+    "套三最低": 99.8,
+    "套三中位": 115,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 86.71,
+        "price": 99.8,
+        "unit": "11510元/平",
+        "house": "高楼层 (共18层) 3室2厅 | 86.71平米 | 北",
+        "href": "https://cd.ke.com/ershoufang/106128341283.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 91.44,
+        "price": 108.8,
+        "unit": "11899元/平",
+        "house": "低楼层 (共18层) 3室2厅 | 91.44平米 | 北",
+        "href": "https://cd.ke.com/ershoufang/106126942352.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 89.89,
+        "price": 109.8,
+        "unit": "12215元/平",
+        "house": "中楼层 (共18层) 3室2厅 | 89.89平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106127697879.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 90.12,
+        "price": 110,
+        "unit": "12206元/平",
+        "house": "低楼层 (共18层) 3室2厅 | 90.12平米 | 南 北",
+        "href": "https://cd.ke.com/ershoufang/106125618043.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 89.73,
+        "price": 110,
+        "unit": "12259元/平",
+        "house": "中楼层 (共18层) 3室2厅 | 89.73平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106124856321.html"
+      }
+    ],
+    "套二数": 25,
+    "套二le100数": 16,
+    "套二最低": 83,
+    "套二le100中位": 95.5,
+    "套二中位": 99,
+    "套二le100清单": [
+      {
+        "huxing": "2室1厅",
+        "area": 73.9,
+        "price": 83,
+        "unit": "11232元/平",
+        "house": "低楼层 (共18层) 2室1厅 | 73.9平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106126347819.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 68.8,
+        "price": 83.5,
+        "unit": "12137元/平",
+        "house": "低楼层 (共18层) 2室2厅 | 68.8平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106127037955.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 73.03,
+        "price": 89,
+        "unit": "12187元/平",
+        "house": "中楼层 (共18层) 2室2厅 | 73.03平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106124128310.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 72.5,
+        "price": 92,
+        "unit": "12690元/平",
+        "house": "中楼层 (共18层) 2室2厅 | 72.5平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106127399877.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 73.58,
+        "price": 92,
+        "unit": "12504元/平",
+        "house": "中楼层 (共18层) 2室2厅 | 73.58平米 | 西",
+        "href": "https://cd.ke.com/ershoufang/106128714470.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 71.9,
+        "price": 93.8,
+        "unit": "13046元/平",
+        "house": "低楼层 (共18层) 2室1厅 | 71.9平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106115135153.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 79.53,
+        "price": 95,
+        "unit": "11946元/平",
+        "house": "中楼层 (共18层) 2室1厅 | 79.53平米 | 西",
+        "href": "https://cd.ke.com/ershoufang/106126458281.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 73.58,
+        "price": 95,
+        "unit": "12912元/平",
+        "house": "高楼层 (共18层) 2室1厅 | 73.58平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106127001004.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 79.21,
+        "price": 96,
+        "unit": "12120元/平",
+        "house": "中楼层 (共18层) 2室2厅 | 79.21平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106127252733.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 69.65,
+        "price": 98,
+        "unit": "14071元/平",
+        "house": "高楼层 (共18层) 2室2厅 | 69.65平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106125536832.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 69.77,
+        "price": 98,
+        "unit": "14047元/平",
+        "house": "高楼层 (共18层) 2室1厅 | 69.77平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106126795927.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 73.03,
+        "price": 98,
+        "unit": "13420元/平",
+        "house": "高楼层 (共18层) 2室2厅 | 73.03平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106128186265.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 76.1,
+        "price": 99,
+        "unit": "13010元/平",
+        "house": "高楼层 (共18层) | 2012年 | 2室2厅 | 76.1平米 | 西",
+        "href": "https://cd.ke.com/ershoufang/106125345176.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 73.73,
+        "price": 99,
+        "unit": "13428元/平",
+        "house": "高楼层 (共18层) 2室1厅 | 73.73平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106126209260.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 74.92,
+        "price": 99,
+        "unit": "13215元/平",
+        "house": "高楼层 (共18层) 2室2厅 | 74.92平米 | 东",
+        "href": "https://cd.ke.com/ershoufang/106116034358.html"
+      },
+      {
+        "huxing": "2室2厅",
+        "area": 74.54,
+        "price": 100,
+        "unit": "13416元/平",
+        "house": "高楼层 (共18层) 2室2厅 | 74.54平米 | 西",
+        "href": "https://cd.ke.com/ershoufang/106118808268.html"
+      }
+    ],
+    "l3原始数": 30,
+    "l2原始数": 27
+  },
+  "CH-005": {
+    "name": "花样年花郡",
+    "套三3室2厅数": 22,
+    "套三最低": 155,
+    "套三中位": 225,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 101.66,
+        "price": 155,
+        "unit": "15247元/平",
+        "house": "低楼层 (共18层) 3室2厅 | 101.66平米 | 北",
+        "href": "https://cd.ke.com/ershoufang/106121926173.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 107.46,
+        "price": 169,
+        "unit": "15727元/平",
+        "house": "高楼层 (共24层) 3室2厅 | 107.46平米 | 南 北",
+        "href": "https://cd.ke.com/ershoufang/106122053941.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 111.52,
+        "price": 178,
+        "unit": "15962元/平",
+        "house": "高楼层 (共24层) 3室2厅 | 111.52平米 | 西北",
+        "href": "https://cd.ke.com/ershoufang/106123127322.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 100.98,
+        "price": 179,
+        "unit": "17727元/平",
+        "house": "高楼层 (共18层) 3室2厅 | 100.98平米 | 南 北",
+        "href": "https://cd.ke.com/ershoufang/106126662845.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 106.47,
+        "price": 183,
+        "unit": "17188元/平",
+        "house": "低楼层 (共24层) 3室2厅 | 106.47平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106122551715.html"
+      }
+    ],
+    "套二数": 30,
+    "套二le100数": 3,
+    "套二最低": 96,
+    "套二le100中位": 99,
+    "套二中位": 135.4,
+    "套二le100清单": [
+      {
+        "huxing": "2室1厅",
+        "area": 62.55,
+        "price": 96,
+        "unit": "15348元/平",
+        "house": "低楼层 (共32层) 2室1厅 | 62.55平米 | 西",
+        "href": "https://cd.ke.com/ershoufang/106126267305.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 70.03,
+        "price": 99,
+        "unit": "14137元/平",
+        "house": "低楼层 (共32层) 2室1厅 | 70.03平米 | 南 北",
+        "href": "https://cd.ke.com/ershoufang/106122665201.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 70.03,
+        "price": 100,
+        "unit": "14280元/平",
+        "house": "中楼层 (共32层) 2室1厅 | 70.03平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106114569160.html"
+      }
+    ],
+    "l3原始数": 29,
+    "l2原始数": 30
+  },
+  "QY-003": {
+    "name": "时代凯悦",
+    "套三3室2厅数": 0,
+    "套三最低": null,
+    "套三中位": null,
+    "套三最低5": [],
+    "套二数": 6,
+    "套二le100数": 2,
+    "套二最低": 77,
+    "套二le100中位": 86.5,
+    "套二中位": 124,
+    "套二le100清单": [
+      {
+        "huxing": "2室1厅",
+        "area": 56.8,
+        "price": 77,
+        "unit": "13557元/平",
+        "house": "中楼层 (共24层) 2室1厅 | 56.8平米 | 西南",
+        "href": "https://cd.ke.com/ershoufang/106128414153.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 70.97,
+        "price": 96,
+        "unit": "13527元/平",
+        "house": "中楼层 (共24层) 2室1厅 | 70.97平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106124536179.html"
+      }
+    ],
+    "l3原始数": 0,
+    "l2原始数": 6
+  },
+  "JN-004": {
+    "name": "西城天下",
+    "套三3室2厅数": 9,
+    "套三最低": 180,
+    "套三中位": 188,
+    "套三最低5": [
+      {
+        "huxing": "3室2厅",
+        "area": 124.75,
+        "price": 180,
+        "unit": "14429元/平",
+        "house": "中楼层 (共31层) 3室2厅 | 124.75平米 | 南 北",
+        "href": "https://cd.ke.com/ershoufang/106126779325.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 125.06,
+        "price": 185,
+        "unit": "14793元/平",
+        "house": "高楼层 (共31层) 3室2厅 | 125.06平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106127647296.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 125.06,
+        "price": 188,
+        "unit": "15033元/平",
+        "house": "中楼层 (共31层) 3室2厅 | 125.06平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106115111473.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 124.75,
+        "price": 188,
+        "unit": "15071元/平",
+        "house": "高楼层 (共31层) 3室2厅 | 124.75平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106128661191.html"
+      },
+      {
+        "huxing": "3室2厅",
+        "area": 125.06,
+        "price": 188,
+        "unit": "15033元/平",
+        "house": "中楼层 (共30层) 3室2厅 | 125.06平米 | 东南",
+        "href": "https://cd.ke.com/ershoufang/106128701638.html"
+      }
+    ],
+    "套二数": 26,
+    "套二le100数": 2,
+    "套二最低": 97.2,
+    "套二le100中位": 97.2,
+    "套二中位": 127.9,
+    "套二le100清单": [
+      {
+        "huxing": "2室1厅",
+        "area": 72.01,
+        "price": 97.2,
+        "unit": "13499元/平",
+        "house": "高楼层 (共31层) 2室1厅 | 72.01平米 | 东北",
+        "href": "https://cd.ke.com/ershoufang/106127957635.html"
+      },
+      {
+        "huxing": "2室1厅",
+        "area": 72.01,
+        "price": 97.2,
+        "unit": "13499元/平",
+        "house": "高楼层 (共30层) 2室1厅 | 72.01平米 | 南",
+        "href": "https://cd.ke.com/ershoufang/106119462788.html"
+      }
+    ],
+    "l3原始数": 14,
+    "l2原始数": 26
+  }
+}

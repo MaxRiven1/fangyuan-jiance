@@ -12,6 +12,9 @@ const COMMUNITIES = [
   { id: 'JN-002b', name: '蓝光云鼎', search: '蓝光云鼎', districtHint: ['金牛', '花牌坊'] },
   { id: 'QY-001', name: '万科金色领域', search: '金色领域', districtHint: ['青羊', '万家湾', '光华'] },
   { id: 'QY-002', name: '清溪雅筑', search: '清溪雅筑', districtHint: ['青羊', '万家湾', '光华'] },
+  // 2026-08-01 修复：以下两个池内小区在07-31扩围改脚本时被误删，务必保留
+  { id: 'CH-002', name: '蓝润V客尚东', search: '蓝润V客尚东', districtHint: ['成华', '二仙桥', '理工大'] },
+  { id: 'JN-003', name: '中加水岸', search: '中加水岸', districtHint: ['金牛', '沙河源'] },
   // 2026-07-31 新增14校对口小区
   { id: 'CH-005', name: '花样年花郡', search: '花样年花郡', districtHint: ['成华', '双桥子', '万年场'] },
   { id: 'QY-003', name: '时代凯悦', search: '时代凯悦', districtHint: ['青羊', '骡马市', '西玉龙街'] },
